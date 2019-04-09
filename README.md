@@ -17,16 +17,16 @@ List of 300 VueJS Interview Questions
 -------------------------------------------------------------------
 | No. | Questions |
 |---- | ---------
-|1  | [What is VueJS](#what-is-vuejs) |
-|2  | [What are the major features of VueJS](#what-are-the-major-features-of-vuejs) |
-|3  | [What are the lifecycle methods of VueJS](#what-are-the-lifecycle-methods-of-vuejs)|
-|4  | [What are the conditional directives](#what-are-the-conditional-directives)|
-|5  | [What is the difference between v-show and v-if directives](#what-is-the-difference-between-v-show-and-v-if-directives)|
-|6  | [What is the purpose of v-for directive?](#what-is-the-purpose-of-v-for-directive)|
-|7  | [What is vue instance?](#what-is-vue-instance)|
-|8  | [How do you achieve conditional group of elements?](#how-do-you-achieve-conditional-group-of-elements)|
-|9  | [How do you reuse elements with key attribute?](#how-do-you-reuse-elements-with-key-attribute)|
-|10 | [Why should not use if and for directives together on the same element?](#why-should-not-use-if-and-for-directives-together-on-the-same-element)|
+|1  | [VueJS란 무엇인가?](#what-is-vuejs) |
+|2  | [VueJS의 주요 특징은?](#what-are-the-major-features-of-vuejs) |
+|3  | [VueJS의 라이프사이클(lifecycle) 함수는?](#what-are-the-lifecycle-methods-of-vuejs)|
+|4  | [조건부 지시자(conditional directives)란?](#what-are-the-conditional-directives)|
+|5  | [v-show와 v-if의 차이점은?](#what-is-the-difference-between-v-show-and-v-if-directives)|
+|6  | [v-for를 쓰는 목적은?](#what-is-the-purpose-of-v-for-directive)|
+|7  | [Vue 인스턴스란?](#what-is-vue-instance)|
+|8  | [여러 요소(element)들을 한 번에 조건부로 나타내는 방법은?](#how-do-you-achieve-conditional-group-of-elements)|
+|9  | [key 속성을 이용해 요소(element)를 재사용하는 방법은?](#how-do-you-reuse-elements-with-key-attribute)|
+|10 | [같은 요소(element)에서 v-for와 v-if를 함께 쓰면 안 되는 이유는?](#why-should-not-use-if-and-for-directives-together-on-the-same-element)|
 |11 | [Why do you need to use key attribute on for directive?](#why-do-you-need-to-use-key-attribute-on-for-directive)|
 |12 | [What are the array detection mutation methods?](#what-are-the-array-detection-mutation-methods)|
 |13 | [What are the array detection non mutation methods?](#what-are-the-array-detection-non-mutation-methods)|
@@ -184,11 +184,13 @@ List of 300 VueJS Interview Questions
 |165| [How do you perform asynchronous operations?](#how-do-you-perform-asynchronous-operations)|
 |166| [What are differences between mutations and actions?](#what-are-differences-between-mutations-and-actions)|
 
-1.  ### What is VueJS?
-    **Vue.js** is an open-source, progressive Javascript framework for building user interfaces that aim to be incrementally adoptable. The core library of VueJS is focused on the `view layer` only, and is easy to pick up and integrate with other libraries or existing projects.
-2.  ### What are the major features of VueJS?
-    Below are the some of major features available with VueJS
-    1. **Virtual DOM:** It uses virtual DOM similar to other existing frameworks such as ReactJS, Ember etc. Virtual DOM is a light-weight in-memory tree representation of the original HTML DOM and updated without affecting the original DOM.
+1.  ### VueJS란 무엇인가?
+    **Vue.js**는 사용자 인터페이스를 만들기 위한 진보적인 프레임워크입니다. 핵심 라이브러리는 `뷰 레이어`만 초점을 맞추어 다른 라이브러리나 기존 프로젝트와의 통합이 쉽습니다.
+
+2.  ### VueJS의 주요 특징은?
+    아래의 항목들은 VueJS의 주요 특징들입니다.
+    1. **가상 DOM(Virtual DOM):** VueJS에서는 ReactJS, Ember 프레임워크와 유사하게 가상 DOM을 사용합니다. Virtual DOM is a light-weight in-memory tree representation of the original HTML DOM and updated without affecting the original DOM.
+    가상 DOM은 원본 HTML DOM을 표현하는 메모리 상의 가벼운 DOM 트리로, 원본 DOM에 영향을 미치지 않고 업데이트가 가능합니다.
     2. **Components:** Used to create reusable custom elements in VueJS applications.
     3. **Templates:** VueJS provides HTML based templates that bind the DOM with the Vue instance data
     4. **Routing:** Navigation between pages is achieved through vue-router
