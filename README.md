@@ -189,21 +189,21 @@ List of 300 VueJS Interview Questions
 
 2.  ### VueJS의 주요 특징은?
     아래의 항목들은 VueJS의 주요 특징들입니다.
-    1. **가상 DOM(Virtual DOM):** VueJS에서는 ReactJS, Ember 프레임워크와 유사하게 가상 DOM을 사용합니다. Virtual DOM is a light-weight in-memory tree representation of the original HTML DOM and updated without affecting the original DOM.
-    가상 DOM은 원본 HTML DOM을 표현하는 메모리 상의 가벼운 DOM 트리로, 원본 DOM에 영향을 미치지 않고 업데이트가 가능합니다.
-    2. **Components:** Used to create reusable custom elements in VueJS applications.
-    3. **Templates:** VueJS provides HTML based templates that bind the DOM with the Vue instance data
-    4. **Routing:** Navigation between pages is achieved through vue-router
-    5. **Light weight:** VueJS is light weight library compared to other frameworks
-3.  ### What are the lifecycle methods of VueJS?
-    Lifecycle hooks are a window into how the library you’re using works behind-the-scenes. By using these hooks, you will know when your component is created, added to the DOM, updated, or destroyed. Let's look at lifecycle diagram before going to each lifecycle hook in detail,
+    1. **가상 DOM(Virtual DOM):** VueJS에서는 ReactJS, Ember 프레임워크와 유사하게 가상 DOM을 사용합니다. 가상 DOM은 원본 HTML DOM을 표현하는 메모리 상의 가벼운 DOM 트리로, 원본 DOM에 영향을 미치지 않고 업데이트를 할 수 있습니다.
+    2. **컴포넌트(Components):** VueJS 어플리케이션에서 재사용할 수 있는 요소(Element)들을 만들 수 있습니다.
+    3. **템플릿(Templates):** VueJS는 Vue 인스턴스 데이터와 DOM에 접근할 수 있는 HTML 기반의 템플릿을 제공합니다.
+    4. **라우팅(Routing):** 페이지의 전환은 vue-router를 이용합니다.
+    5. **저용량(Light weight):** VueJS는 다른 프레임워크와 비교해 저용량입니다.
+
+3.  ### VueJS의 라이프사이클(lifecycle) 함수는?
+    라이프사이클 훅(Lifecycle hook)은 사용중인 라이브러리가 어떤 순서로 동작하는지를 알려주는 역할을 합니다. 훅을 이용해 컴포넌트가 언제 생성되는지, 언제 DOM에 추가되는지, 업데이트되고 사라지는지 알 수 있습니다. 아래의 다이어그램을 통해 VueJS의 전반적인 라이프사이클을 확인할 수 있습니다.
 
     <img src="https://github.com/sudheerj/vuejs-interview-questions/blob/master/images/vuelifecycle.png" width="400" height="800">
 
-    1. **Creation(Initialization):**
-        Creation Hooks allow you to perform actions before your component has even been added to the DOM. You need to use these hooks if you need to set things up in your component both during client rendering and server rendering. Unlike other hooks, creation hooks are also run during server-side rendering.
+    1. **Creation(초기화):**
+         Create 훅은 컴포넌트가 DOM에 추가되기 전에 실행되는 단계입니다. 클라이언트와 서버가 렌더링 단계 전에 컴포넌트에 설정해야 할 것들이 있을 때 사용하는 단계입니다. 다른 훅과는 다르게, Create 훅은 서버 사이드 렌더링에서도 지원되는 훅입니다.
         1. beforeCreate:
-           This hook runs at the very initialization of your component. hook observes data and initialization events in your component. Here, data is still not reactive and events that occur during the component’s lifecycle have not been set up yet.
+           `beforeCreate` 훅은 컴포넌트 초기화 단계 중 가장 처음으로 실행됩니다. 이 훅에서는 컴포넌트의 data를 관찰하고, 이벤트를 초기화합니다. 이 단계에서 data는 아직까지 반응적이지 않으며, 컴포넌트의 라이프사이클에서 발생하는 이벤트 역시 설정되지 않은 상태입니다.
         ```javascript
             new Vue({
               data: {
@@ -218,7 +218,7 @@ List of 300 VueJS Interview Questions
                // count is undefined
          ```
         2. created:
-            This hook is invoked when Vue has set up events and data observation. Here, events are active and access to reactive data is enabled though templates have not yet been mounted or rendered.
+            `created` 훅은 Vue 인스턴스가 이벤트를 설정하고 data를 관찰할 때 발생합니다. 이 단계에서 템플릿은 아직 마운트되거나 렌더링되지 않았지만, 이벤트들이 활성화되며 data에 반응적으로 접근하는 것이 가능합니다.
         ```javascript
           new Vue({
             data: {
@@ -231,11 +231,11 @@ List of 300 VueJS Interview Questions
           })
              // count is: 10
         ```
-        **Note:** Remember that, You will not have access to the DOM or the target mounting element (this.$el) inside of creation hooks
-    2. **Mounting(DOM Insertion):**
-        Mounting hooks are often the most-used hooks and they allow you to access your component immediately before and after the first render.
+        **주의:** Create 훅에서는 DOM에 직접 접근하거나 마운트할 엘리먼트(`this.$el`)에 직접 접근할 수 없다는 점을 기억하세요.
+    2. **Mounting(DOM 추가):**
+        Mount 훅은 가장 많이 사용되는 단계로, 컴포넌트가 렌더된 직전이나 직후에 컴포넌트에 접근할 수 있는 단계입니다.
         1. beforeMount:
-            The beforeMount allows you to access your component immediately before and after the first render.
+          `beforeMount` 훅은 컴포넌트가 DOM에 추가되기 직전에 실행되는 훅입니다.
         ```javascript
           new Vue({
             beforeMount: function () {
@@ -245,22 +245,22 @@ List of 300 VueJS Interview Questions
           })
         ```
         2. mounted:
-            This is a most used hook and you will have full access to the reactive component, templates, and rendered DOM (via. this.$el).  The most frequently used patterns are fetching data for your component.
+          `mounted` 훅은 반응적인 컴포넌트, 템플릿, 렌더된 DOM(`this.$el`) 모두에 접근할 수 있어서 가장 많이 사용되는 훅입니다. 흔히 컴포넌트에서 필요한 데이터를 가져오는 데(fetch) 가장 많이 사용됩니다.
         ```javascript
         <div id="app">
-            <p>I’m text inside the component.</p>
+            <p>I'm text inside the component.</p>
         </div>
           new Vue({
-            el: ‘#app’,
+            el: '#app',
             mounted: function() {
               console.log(this.$el.textContent); // I'm text inside the component.
             }
           })
         ```
-    3. **Updating (Diff & Re-render):**
-        Updating hooks are called whenever a reactive property used by your component changes, or something else causes it to re-render
+    3. **Updating (재 렌더링):**
+        Update 훅은 컴포넌트 내부의 반응적인 속성이 변했거나, 그 외의 것들이 재 렌더링을 일으킬 때 실행되는 단계입니다.
         1. beforeUpdate:
-        The beforeUpdate hook runs after data changes on your component and the update cycle begins, right before the DOM is patched and re-rendered.
+        `beforeUpdate` 훅은 컴포넌트의 data가 변경되어 업데이트 사이클이 시작될 때 실행됩니다.
         ```javascript
         <div id="app">
           <p>{{counter}}</p>
@@ -285,7 +285,7 @@ List of 300 VueJS Interview Questions
           })
         ```
         2. updated:
-            This hook runs after data changes on your component and the DOM re-renders.
+          `updated` 훅은 컴포넌트의 data가 변하여 재 렌더링이 일어난 후에 실행됩니다.
         ```javascript
         <div id="app">
           <p ref="dom">{{counter}}</p>
@@ -308,10 +308,10 @@ List of 300 VueJS Interview Questions
             }
           })
         ```
-    4. **Destruction (Teardown):**
-        Destruction hooks allow you to perform actions when your component is destroyed, such as cleanup or analytics sending.
+    4. **Destruction(해체):**
+        Destruction 훅은 컴포넌트를 더 이상 사용하지 않을 때 사용하는 단계입니다.
         1. beforeDestroy:
-        `beforeDestroy` is fired right before teardown. If you need to cleanup events or reactive subscriptions, beforeDestroy would probably be the time to do it. Your component will still be fully present and functional.
+        `beforeDestroy` 훅은 컴포넌트가 해체되기 직전에 실행됩니다. 이 훅은 반응적인 이벤트들을이나 데이터들을 해체하는 훅으로 적합합니다. 이 단계에서 컴포넌트는 여전히 문제없이 잘 동작합니다.
         ```javascript
         new Vue ({
           data() {
@@ -327,7 +327,7 @@ List of 300 VueJS Interview Questions
         })
         ```
         2. destroyed:
-        This hooks is called after your component has been destroyed, its directives have been unbound and its event listeners have been removed.
+        `destroyed` 훅은 컴포넌트가 해체되고 난 직후에 호출됩니다. 모든 지시자들의 바인딩이 해제되었으며, 이벤트 리스너가 제거된 상태입니다.
         ```javascript
         new Vue ({
             destroyed: function() {
@@ -338,7 +338,7 @@ List of 300 VueJS Interview Questions
 
 4.  ### What are the conditional directives?
     VueJS provides set of directives to show or hide elements based on conditions. The available directives are: **v-if, v-else, v-else-if and v-show**
-    
+
     **1. v-if:**  The v-if directive adds or removes DOM elements based on the given expression. For example, the below button will not show if isLoggedIn is set to false.
     ```javascript
     <button v-if="isLoggedIn">Logout</button>
@@ -375,7 +375,7 @@ List of 300 VueJS Interview Questions
     2. v-if supports v-else and v-else-if directives whereas v-show doesn't support else directives.
     3. v-if has higher toggle costs while v-show has higher initial render costs. i.e, v-show has a performance advantage if the elements are switched on and off frequently, while the v-if has the advantage when it comes to initial render time.
     4. v-if supports `<template>` tab but v-show doesn't support.
-        
+
 6.  ### What is the purpose of v-for directive?
     The built-in v-for directive allows us to loop through items in an array or object. You can iterate on each element in the array or object.
     1. Array usage:
@@ -518,14 +518,14 @@ List of 300 VueJS Interview Questions
      </ul>
      ```
 11.  ### Why do you need to use key attribute on for directive?
-     In order to track each node’s identity, and thus reuse and reorder existing elements, you need to provide a unique `key` attribute for each item with in `v-for` iteration. An ideal value for key would be the unique id of each item. Let us take an example usage,
+     In order to track each node's identity, and thus reuse and reorder existing elements, you need to provide a unique `key` attribute for each item with in `v-for` iteration. An ideal value for key would be the unique id of each item. Let us take an example usage,
      ```javascript
      <div v-for="item in items" :key="item.id">
        {{item.name}}
      </div>
      ```
      Hence, It is always recommended to provide a key with v-for whenever possible, unless the iterated DOM content is simple.
-     **Note:** You shouldn’t use non-primitive values like objects and arrays as v-for keys. Use string or numeric values instead.
+     **Note:** You shouldn't use non-primitive values like objects and arrays as v-for keys. Use string or numeric values instead.
 12.  ### What are the array detection mutation methods?
      As the name suggests, mutation methods modifies the original array. Below are the list of array mutation methods which trigger view updates.
      1. push()
@@ -535,7 +535,7 @@ List of 300 VueJS Interview Questions
      5. splice()
      6. sort()
      7. reverse()
-     
+
      If you perform any of the above mutation method on the list then it triggers view update. For example, push method on array named 'items' trigger a view update,
      ```javascript
      vm.todos.push({ message: 'Baz' })
@@ -565,7 +565,7 @@ List of 300 VueJS Interview Questions
       vm.todos.length = todosLength
       ```
      You can overcome both the caveats using `set` and `splice` methods, Let's see the solutions with an examples,
-     
+
      **First use case solution**
      ```javascript
      // Vue.set
@@ -642,7 +642,7 @@ List of 300 VueJS Interview Questions
      4. .self
      5. .once
      6. .passive
-     
+
      Let's take an example of stop modifier,
      ```html
      <!-- the click event's propagation will be stopped -->
@@ -912,7 +912,7 @@ List of 300 VueJS Interview Questions
        // ...
      }
      ```
-     Now both ComponentA and ComponentB can be used inside ComponentC‘s template.
+     Now both ComponentA and ComponentB can be used inside ComponentC's template.
 
      In **global registration**, you need to export all common or base components in a separate file. But some of the popular bundlers like `webpack` make this process simpler by using `require.context` to globally register base components in the below entry file(one-time).
 
@@ -963,7 +963,7 @@ List of 300 VueJS Interview Questions
        address: Object
      }
      ```
-     As mentioned in the above code snippet, you can list props as an object, where the properties’ names and values contain the prop names and types, respectively.
+     As mentioned in the above code snippet, you can list props as an object, where the properties' names and values contain the prop names and types, respectively.
 36.  ### What is the data flow followed by props?
      All props follows a one-way-down binding between the child property and the parent one. i.e, When the parent property is updated then that latest prop value will be passed down to the child, but not the otherway(child to parent) around. The child component should not mutate the prop otherwise it throws a warning in the console.
      The possible mutation cases can be solved as below,
@@ -979,8 +979,8 @@ List of 300 VueJS Interview Questions
      }
      ```
      2. When you try to transform the parent prop:
-     
-     You can define a computed property using the prop’s value,
+
+     You can define a computed property using the prop's value,
      ```javascript
      props: ['environment'],
      computed: {
@@ -1258,7 +1258,7 @@ List of 300 VueJS Interview Questions
      1. mustache interpolations
      2. v-bind expressions
 
-     For example, Let's define a local filter named capitalize in a component’s options
+     For example, Let's define a local filter named capitalize in a component's options
      ```javascript
      filters: {
        capitalize: function (value) {
@@ -1279,7 +1279,7 @@ List of 300 VueJS Interview Questions
 51.  ### What are the different ways to create filters?
      You can define filters in two ways,
      1. **Local filters:**
-     You can define local filters in a component’s options. In this case, filter is applicable to that specific component.
+     You can define local filters in a component's options. In this case, filter is applicable to that specific component.
      ```javascript
      filters: {
        capitalize: function (value) {
@@ -1404,7 +1404,7 @@ List of 300 VueJS Interview Questions
      Using Vue CLI, mixins can be specified anywhere in the project folder but preferably within `/src/mixins` for ease of access. Once these mixins are created in a `.js` file and exposed with the `export` keyword, they can be imported in any component with the `import` keyword and their file paths.
 60.  ### What are the merging strategies in mixins?
      When a mixin and the component itself contain overlapping options, the options will be merged based on some strategies.
-     1. The data objects undergo a recursive merge, with the component’s data taking priority over mixins in cases of overlapping or conflicts.
+     1. The data objects undergo a recursive merge, with the component's data taking priority over mixins in cases of overlapping or conflicts.
      ```javascript
      var mixin = {
        data: function () {
@@ -1425,7 +1425,7 @@ List of 300 VueJS Interview Questions
        }
      })
      ```
-     2. The Hook functions which are overlapping merged into an array so that all of them will be called. Mixin hooks will be called before the component’s own hooks.
+     2. The Hook functions which are overlapping merged into an array so that all of them will be called. Mixin hooks will be called before the component's own hooks.
      ```javascript
      const myMixin = {
        created(){
@@ -1444,7 +1444,7 @@ List of 300 VueJS Interview Questions
      //Called from Mixin
      //Called from Component
      ```
-     3. The options that expect object values(such as methods, components and directives) will be merged into the same object. In this case, the component’s options will take priority when there are conflicting keys in these objects.
+     3. The options that expect object values(such as methods, components and directives) will be merged into the same object. In this case, the component's options will take priority when there are conflicting keys in these objects.
      ```javascript
      var mixin = {
        methods: {
@@ -1545,7 +1545,7 @@ List of 300 VueJS Interview Questions
         4. `expression`: The expression of the binding as a string. For example in `v-my-directive="1 + 1"`, the expression would be "1 + 1".
         5. `arg`: The argument passed to the directive, if any. For example in v-my-directive:foo, the arg would be "foo".
         6. `modifiers`: An object containing modifiers, if any. For example in v-my-directive.foo.bar, the modifiers object would be `{ foo: true, bar: true }`.
-     3. `vnode`: The virtual node produced by Vue’s compiler.
+     3. `vnode`: The virtual node produced by Vue's compiler.
      4. `oldVnode`: The previous virtual node, only available in the update and componentUpdated hooks.
 
      The arguments can be represented diagrammatically across the hooks as below,
@@ -1575,7 +1575,7 @@ List of 300 VueJS Interview Questions
 68.  ### What is the benefit of render functions over templates?
      In VueJS, the templates are very powerful and recommended to build HTML as part of your application. However, some of the special cases like dynamic component creation based on input or slot value can be achieved through render functions. Also, these functions gives the full programmatic power of javascript eco system.
 69.  ### What is a render function?
-     Render function is a normal function which receives a `createElement` method as it’s first argument used to create virtual nodes. Internally Vue.js' templates actually compile down to render functions at build time. Hence templates are just syntactic sugar of render functions. Let's take an example of simple Div markup and corresponding render function,
+     Render function is a normal function which receives a `createElement` method as it's first argument used to create virtual nodes. Internally Vue.js' templates actually compile down to render functions at build time. Hence templates are just syntactic sugar of render functions. Let's take an example of simple Div markup and corresponding render function,
      The HTML markup can be written in template tag as below,
      ```javascript
      <template>
@@ -1681,14 +1681,14 @@ List of 300 VueJS Interview Questions
 
         | Templates | Render function |
         |---- | --------- |
-        | Conditional and looping directives: v-if and v-for  | Use JavaScript’s if/else and map concepts|
+        | Conditional and looping directives: v-if and v-for  | Use JavaScript's if/else and map concepts|
         | Two-way binding: v-model  | Apply own JS logic with value binding and event binding |
         | Capture Event modifiers: .passive, .capture, .once and .capture.once or .once.capture| &, !, ~ and ~! |
         | Event and key modifiers: .stop, .prevent, .self, keys(.enter, .13) and Modifiers Keys(.ctrl, .alt, .shift, .meta) | Use javascript solutions: event.stopPropagation(), event.preventDefault(), if (event.target !== event.currentTarget) return, if (event.keyCode !== 13) return and if (!event.ctrlKey) return |
         | Slots: slot attributes | Render functions provide this.$slots and this.$scopedSlots instance properties|
 73.  ### What are functional components?
      The functional components are just simple functions to create simple components just by passing a context. Every functional component follows two rules,
-      1. **Stateless:** It doesn’t keep any state by itself
+      1. **Stateless:** It doesn't keep any state by itself
       2. **Instanceless:** It has no instance, thus no this
 
      You need to define `functional: true` to make it functional. Let's take an example of functional components,
@@ -1794,9 +1794,9 @@ List of 300 VueJS Interview Questions
        <comp-b v-else></comp-b>
      </keep-alive>
      ```
-     **Note:** Remember that keep-alive tag doesn’t render a DOM element itself, and doesn’t show up in the component parent chain.
+     **Note:** Remember that keep-alive tag doesn't render a DOM element itself, and doesn't show up in the component parent chain.
 81.  ### What are async components?
-     In large applications, we may need to divide the app into smaller chunks and only load a component from the server when it’s needed. To make this happen, Vue allows you to define your component as a factory function that asynchronously resolves your component definition. These components are known as async component.
+     In large applications, we may need to divide the app into smaller chunks and only load a component from the server when it's needed. To make this happen, Vue allows you to define your component as a factory function that asynchronously resolves your component definition. These components are known as async component.
      Let's see an example of async component using webpack code-splitting feature,
      ```javascript
      Vue.component('async-webpack-example', function (resolve, reject) {
@@ -1862,7 +1862,7 @@ List of 300 VueJS Interview Questions
      **Note:** Remember that recursive component can lead infinite loops with `max stack size exceeded` error, so make sure recursive invocation is conditional(for example, v-if directive).
 
 86.  ### How do you resolve circular dependencies between components?
-     In complex applications, vue components will actually be each other’s descendent and ancestor in the render tree. Let's say componentA and componentB included in their respective templates which makes circular dependency,
+     In complex applications, vue components will actually be each other's descendent and ancestor in the render tree. Let's say componentA and componentB included in their respective templates which makes circular dependency,
      ```javascript
      //ComponentA
      <div>
@@ -2043,7 +2043,7 @@ List of 300 VueJS Interview Questions
      }).$mount('#app')
      ```
 100. ### How do you access parent instance?
-     The $parent object refers to the **immediate outer scope**. The parent will be accessible as `this.$parent` for the child, and the child will be pushed into the parent’s $children array. It establishes a parent-child relationship between the two instances(parent and child). You can access parent data and properties similar to $root.
+     The $parent object refers to the **immediate outer scope**. The parent will be accessible as `this.$parent` for the child, and the child will be pushed into the parent's $children array. It establishes a parent-child relationship between the two instances(parent and child). You can access parent data and properties similar to $root.
 101. ### What is vuex?
      Vuex is a state management pattern + library (Flux-inspired Application Architecture) for Vue.js applications. It serves as a centralized store for all the components in an application, with rules ensuring that the state can only be mutated in a predictable fashion.
 102. ### What are the major components of State Management Pattern?
