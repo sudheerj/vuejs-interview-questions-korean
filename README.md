@@ -21,11 +21,11 @@ List of 300 VueJS Interview Questions
 |3  | [VueJS의 라이프사이클(lifecycle) 함수는](#VueJS의-라이프사이클(lifecycle)-함수는)|
 |4  | [조건부 지시자(conditional directives)란](#조건부-지시자(conditional-directives)란)|
 |5  | [v-show와 v-if의 차이점은](#v-show와-v-if의-차이점은)|
-|6  | [v-for를 쓰는 목적은](#what-is-the-purpose-of-v-for-directive)|
-|7  | [Vue 인스턴스란](#what-is-vue-instance)|
-|8  | [여러 요소(element)들을 한 번에 조건부로 나타내는 방법은](#how-do-you-achieve-conditional-group-of-elements)|
-|9  | [key 속성을 이용해 요소(element)를 재사용하는 방법은](#how-do-you-reuse-elements-with-key-attribute)|
-|10 | [같은 요소(element)에서 v-for와 v-if를 함께 쓰면 안 되는 이유는](#why-should-not-use-if-and-for-directives-together-on-the-same-element)|
+|6  | [v-for를 쓰는 목적은](#v-for를-쓰는-목적은)|
+|7  | [Vue 인스턴스란](#Vue-인스턴스란)|
+|8  | [여러 엘리먼트들을 한 번에 조건부로 나타내는 방법은](#여러-엘리먼트들을-한-번에-조건부로-나타내는-방법은)|
+|9  | [key 속성을 이용해 엘리먼트를 재사용하는 방법은](#key-속성을-이용해-엘리먼트를-재사용하는-방법은)|
+|10 | [같은 엘리먼트에서 v-for와 v-if를 함께 쓰면 안 되는 이유는](#같은-엘리먼트에서-v-for와-v-if를-함께-쓰면-안-되는-이유는)|
 |11 | [Why do you need to use key attribute on for directive?](#why-do-you-need-to-use-key-attribute-on-for-directive)|
 |12 | [What are the array detection mutation methods?](#what-are-the-array-detection-mutation-methods)|
 |13 | [What are the array detection non mutation methods?](#what-are-the-array-detection-non-mutation-methods)|
@@ -46,7 +46,8 @@ List of 300 VueJS Interview Questions
 |28 | [When component needs a single root element?](#when-component-needs-a-single-root-element)|
 |29 | [How do you communicate from child to parent using events?](#how-do-you-communicate-from-child-to-parent-using-events)|
 |30 | [How do you implement model on custom input components?](#how-do-you-implement-model-on-custom-input-components)|
-|31 | [What are slots?](#what-are-slots)|
+
+<!-- |31 | [What are slots?](#what-are-slots)|
 |32 | [What is global registration in components?](#what-is-global-registration-in-components)|
 |33 | [Why do you need local registration?](#why-do-you-need-local-registration)|
 |34 | [What is the difference between local and global registration in module system?](#what-is-the-difference-between-local-and-global-registration-in-module-system)|
@@ -181,28 +182,31 @@ List of 300 VueJS Interview Questions
 |163| [How do you perform mutations in components?](#how-do-you-perform-mutations-in-components)|
 |164| [Is it mandatory to use constants for mutation types?](#is-it-mandatory-to-use-constants-for-mutation-types)|
 |165| [How do you perform asynchronous operations?](#how-do-you-perform-asynchronous-operations)|
-|166| [What are differences between mutations and actions?](#what-are-differences-between-mutations-and-actions)|
+|166| [What are differences between mutations and actions?](#what-are-differences-between-mutations-and-actions)| -->
 
-1.  ### VueJS란 무엇인가?
+1.  ### VueJS란 무엇인가
     **Vue.js**는 사용자 인터페이스를 만들기 위한 진보적인 프레임워크입니다. 핵심 라이브러리는 `뷰 레이어`만 초점을 맞추어 다른 라이브러리나 기존 프로젝트와의 통합이 쉽습니다.
 
-2.  ### VueJS의 주요 특징은?
+2.  ### VueJS의 주요 특징은
     아래의 항목들은 VueJS의 주요 특징들입니다.
+
     1. **가상 DOM(Virtual DOM):** VueJS에서는 ReactJS, Ember 프레임워크와 유사하게 가상 DOM을 사용합니다. 가상 DOM은 원본 HTML DOM을 표현하는 메모리 상의 가벼운 DOM 트리로, 원본 DOM에 영향을 미치지 않고 업데이트를 할 수 있습니다.
-    2. **컴포넌트(Components):** VueJS 어플리케이션에서 재사용할 수 있는 요소(Element)들을 만들 수 있습니다.
+    2. **컴포넌트(Components):** VueJS 어플리케이션에서 재사용할 수 있는 엘리먼트들을 만들 수 있습니다.
     3. **템플릿(Templates):** VueJS는 Vue 인스턴스 데이터와 DOM에 접근할 수 있는 HTML 기반의 템플릿을 제공합니다.
     4. **라우팅(Routing):** 페이지의 전환은 vue-router를 이용합니다.
     5. **저용량(Light weight):** VueJS는 다른 프레임워크와 비교해 저용량입니다.
 
-3.  ### VueJS의 라이프사이클(lifecycle) 함수는?
+3.  ### VueJS의 라이프사이클(lifecycle) 함수는
     라이프사이클 훅(Lifecycle hook)은 사용중인 라이브러리가 어떤 순서로 동작하는지를 알려주는 역할을 합니다. 훅을 이용해 컴포넌트가 언제 생성되는지, 언제 DOM에 추가되는지, 업데이트되고 사라지는지 알 수 있습니다. 아래의 다이어그램을 통해 VueJS의 전반적인 라이프사이클을 확인할 수 있습니다.
 
     <img src="https://github.com/sudheerj/vuejs-interview-questions/blob/master/images/vuelifecycle.png" width="400" height="800">
 
     1. **Creation(초기화):**
          Create 훅은 컴포넌트가 DOM에 추가되기 전에 실행되는 단계입니다. 클라이언트와 서버가 렌더링 단계 전에 컴포넌트에 설정해야 할 것들이 있을 때 사용하는 단계입니다. 다른 훅과는 다르게, Create 훅은 서버 사이드 렌더링에서도 지원되는 훅입니다.
+
         1. beforeCreate:
            `beforeCreate` 훅은 컴포넌트 초기화 단계 중 가장 처음으로 실행됩니다. 이 훅에서는 컴포넌트의 data를 관찰하고, 이벤트를 초기화합니다. 이 단계에서 data는 아직까지 반응적이지 않으며, 컴포넌트의 라이프사이클에서 발생하는 이벤트 역시 설정되지 않은 상태입니다.
+
         ```javascript
             new Vue({
               data: {
@@ -216,8 +220,10 @@ List of 300 VueJS Interview Questions
             })
                // count is undefined
          ```
+
         2. created:
             `created` 훅은 Vue 인스턴스가 이벤트를 설정하고 data를 관찰할 때 발생합니다. 이 단계에서 템플릿은 아직 마운트되거나 렌더링되지 않았지만, 이벤트들이 활성화되며 data에 반응적으로 접근하는 것이 가능합니다.
+
         ```javascript
           new Vue({
             data: {
@@ -230,9 +236,12 @@ List of 300 VueJS Interview Questions
           })
              // count is: 10
         ```
+
         **주의:** Create 훅에서는 DOM에 직접 접근하거나 마운트할 엘리먼트(`this.$el`)에 직접 접근할 수 없다는 점을 기억하세요.
+
     2. **Mounting(DOM 추가):**
-        Mount 훅은 가장 많이 사용되는 단계로, 컴포넌트가 렌더된 직전이나 직후에 컴포넌트에 접근할 수 있는 단계입니다.
+        Mount 훅은 가장 많이 사용되는 단계로, 컴포넌트가 렌더링되기 직전이나 직후에 컴포넌트에 접근할 수 있는 단계입니다.
+
         1. beforeMount:
           `beforeMount` 훅은 컴포넌트가 DOM에 추가되기 직전에 실행되는 훅입니다.
         ```javascript
@@ -243,8 +252,10 @@ List of 300 VueJS Interview Questions
             }
           })
         ```
+
         2. mounted:
-          `mounted` 훅은 반응적인 컴포넌트, 템플릿, 렌더된 DOM(`this.$el`) 모두에 접근할 수 있어서 가장 많이 사용되는 훅입니다. 흔히 컴포넌트에서 필요한 데이터를 가져오는 데(fetch) 가장 많이 사용됩니다.
+          `mounted` 훅은 반응적인 컴포넌트, 템플릿, 렌더링된 DOM(`this.$el`) 모두에 접근할 수 있어서 가장 많이 사용되는 훅입니다. 흔히 컴포넌트에서 필요한 데이터를 가져오는 데(fetch) 가장 많이 사용됩니다.
+
         ```javascript
         <div id="app">
             <p>I'm text inside the component.</p>
@@ -256,8 +267,10 @@ List of 300 VueJS Interview Questions
             }
           })
         ```
+
     3. **Updating (재 렌더링):**
         Update 훅은 컴포넌트 내부의 반응적인 속성이 변했거나, 그 외의 것들이 재 렌더링을 일으킬 때 실행되는 단계입니다.
+
         1. beforeUpdate:
         `beforeUpdate` 훅은 컴포넌트의 data가 변경되어 업데이트 사이클이 시작될 때 실행됩니다.
         ```javascript
@@ -283,8 +296,10 @@ List of 300 VueJS Interview Questions
             }
           })
         ```
+
         2. updated:
           `updated` 훅은 컴포넌트의 data가 변하여 재 렌더링이 일어난 후에 실행됩니다.
+
         ```javascript
         <div id="app">
           <p ref="dom">{{counter}}</p>
@@ -307,10 +322,13 @@ List of 300 VueJS Interview Questions
             }
           })
         ```
+
     4. **Destruction(해체):**
         Destruction 훅은 컴포넌트를 더 이상 사용하지 않을 때 사용하는 단계입니다.
+
         1. beforeDestroy:
         `beforeDestroy` 훅은 컴포넌트가 해체되기 직전에 실행됩니다. 이 훅은 반응적인 이벤트들을이나 데이터들을 해체하는 훅으로 적합합니다. 이 단계에서 컴포넌트는 여전히 문제없이 잘 동작합니다.
+
         ```javascript
         new Vue ({
           data() {
@@ -325,8 +343,10 @@ List of 300 VueJS Interview Questions
           }
         })
         ```
+
         2. destroyed:
         `destroyed` 훅은 컴포넌트가 해체되고 난 직후에 호출됩니다. 모든 지시자들의 바인딩이 해제되었으며, 이벤트 리스너가 제거된 상태입니다.
+
         ```javascript
         new Vue ({
             destroyed: function() {
@@ -335,49 +355,57 @@ List of 300 VueJS Interview Questions
           })
         ```
 
-4.  ### What are the conditional directives?
-    VueJS provides set of directives to show or hide elements based on conditions. The available directives are: **v-if, v-else, v-else-if and v-show**
+4.  ### 조건부 지시자(conditional directives)란
+    VueJS는 조건에 따라 엘리먼트를 보여주거나 숨길 수 있는 지시자들을 제공합니다. 사용할 수 있는 지시자들은 **v-if, v-else, v-else-if and v-show**가 있습니다.
 
-    **1. v-if:**  The v-if directive adds or removes DOM elements based on the given expression. For example, the below button will not show if isLoggedIn is set to false.
+    **1. v-if:**  v-if 지시자는 조건에 따라 DOM 엘리먼트를 추가하거나 제거합니다. 예를 들어, 아래의 버튼은 `isLoggedIn`의 값이 `false`라면 나타나지 않습니다.
+
     ```javascript
     <button v-if="isLoggedIn">Logout</button>
     ```
-    You can also control multiple elements with a single v-if statement by wrapping all the elements in a `<template>` element with the condition. For example, you can have both label and button together conditionally applied,
+
+    엘리먼트들을 `<template>` 태그로 감싼다면, 하나의 v-if만으로 여러 엘리먼트들의 조건을 설정할 수 있습니다. 예를 들어, 아래와 같이 `label`과 `button` 태그를 하나의 조건 지시자로 제어할 수 있습니다.
+
     ```javascript
     <template v-if="isLoggedIn">
       <label> Logout </button>
       <button> Logout </button>
     </template>
     ```
-    **2. v-else:**  This directive is used to display content only when the expression adjacent v-if resolves to false. This is similar to else block in any programming language to display alternative content and it is preceded by v-if or v-else-if block. You don't need to pass any value to this.
-    For example, v-else is used to display LogIn button if isLoggedIn is set to false(not logged in).
+
+    **2. v-else:**  프로그래밍 언어에서 `if`의 조건에 맞지 않는 경우 `else`로 넘어가는 것처럼, v-else 지시자는 인접한 v-if 지시자 또는 v-else-if 지시자가 `false`일 때만 그 내용이 나타납니다. 이 지시자에는 조건을 지정할 필요가 없습니다. 예를 들어, 아래의 예시는 `isLoggedIn`이 `false`일 때(즉 로그인 된 상태가 아닐 때), v-else를 이용해 로그인 버튼을 보여줍니다.
+
     ```javascript
     <button v-if="isLoggedIn"> Logout </button>
     <button v-else> Log In </button>
     ```
-    **3. v-else-if:** This directive is used when we need more than two options to be checked.
-    For example, we want to display some text instead of LogIn button when ifLoginDisabled property is set to true. This can be achieved through v-else statement.
+
+    **3. v-else-if:** v-else-if 지시자는 v-if 이외의 다른 조건을 추가로 확인해야 할 때 사용합니다. 예를 들어, `ifLoginDisabled`의 값이 `true`일 때는 로그인 버튼 대신 텍스트를 보여주고 싶으므로 v-else-if 지시자를 이용할 수 있습니다.
+
     ```javascript
     <button v-if="isLoggedIn"> Logout </button>
     <label v-else-if="isLoginDisabled"> User login disabled </label>
     <button v-else> Log In </button>
     ```
 
-    **4. v-show:** This directive is similar to v-if but it renders all elements to the DOM and then uses the CSS display property to show/hide elements. This directive is recommended if the elements are switched on and off frequently.
+    **4. v-show:** v-show 지시자는 v-if 지시자와 비슷한 기능을 하지만, DOM에 엘리먼트가 추가된 상태에서 CSS의 display 값을 이용해 보여주고 숨김을 결정합니다. v-show 지시자는 조건문이 자주 토글될 때 권장됩니다.
+
     ```javascript
     <span v-show="user.name">Welcome user,{{user.name}}</span>
     ```
-5.  ### What is the difference between v-show and v-if directives?
-    Below are some of the main differences between between **v-show** and **v-if** directives,
 
-    1. v-if only renders the element to the DOM if the expression passes whereas v-show renders all elements to the DOM and then uses the CSS display property to show/hide elements based on expression.
-    2. v-if supports v-else and v-else-if directives whereas v-show doesn't support else directives.
-    3. v-if has higher toggle costs while v-show has higher initial render costs. i.e, v-show has a performance advantage if the elements are switched on and off frequently, while the v-if has the advantage when it comes to initial render time.
-    4. v-if supports `<template>` tab but v-show doesn't support.
+5.  ### v-show와 v-if의 차이점은
+    **v-show**와 **v-if**의 주요 차이점은 다음과 같습니다.
 
-6.  ### What is the purpose of v-for directive?
-    The built-in v-for directive allows us to loop through items in an array or object. You can iterate on each element in the array or object.
-    1. Array usage:
+    1. v-if는 조건이 일치하는 엘리먼트만 DOM에 렌더링하는 반면, v-show는 모든 엘리먼트를 DOM에 렌더링한 후 CSS를 이용해 내용을 보여주거나 숨깁니다.
+    2. v-if와 v-else-if에서는 v-else를 사용할 수 있지만, v-show에서는 사용할 수 없습니다.
+    3. v-if는 토글할 때 높은 렌더링 비용이 들지만, v-show는 초기의 렌더링 작업에서 높은 비용이 듭니다. 즉, v-show는 요소를 자주 켜고 끄는 경우 성능 상의 이점이 있지만, 초기 렌더링 작업에서는 v-if가 더 효율적입니다.
+    4. v-if는 `<template>`태그에서 사용할 수 있지만 v-show는 사용할 수 없습니다.
+
+6.  ### v-for를 쓰는 목적은
+    v-for 지시자는 배열이나 객체를 순환하면서 반복적인 렌더링을 가능하게 합니다.
+
+    1. 배열의 경우:
     ```javascript
     <ul id="list">
       <li v-for="(item, index) in items">
@@ -395,9 +423,9 @@ List of 300 VueJS Interview Questions
       }
     })
     ```
-    You can also use `of` as the delimiter instead of `in`, similar to javascript iterators.
+    자바스크립트 순환문과 유사하게, `in` 외에도 `of`를 사용할 수 있습니다.
 
-    2. Object usage:
+    2. 객체의 경우:
     ```javascript
     <div id="object">
       <div v-for="(value, key, index) in user">
@@ -416,16 +444,21 @@ List of 300 VueJS Interview Questions
       }
     })
     ```
-7.  ### What is vue instance?
-    Every Vue application works by creating a new Vue instance with the Vue function. Generally the variable vm (short for ViewModel) is used to refer Vue instance. You can create vue instance as below,
+
+7.  ### Vue 인스턴스란
+    모든 Vue 어플리케이션은 Vue 함수를 이용해 Vue 인스턴스를 생성하면서 동작합니다. 일반적으로 `vm`(ViewModel의 축약형)이라는 변수를 이용해 Vue 인스턴스를 참조합니다. 아래와 같은 방법으로 Vue 인스턴스를 생성할 수 있습니다.
+
     ```javascript
     var vm = new Vue({
       // options
     })
     ```
-    As mentioned in the above code snippets, you need to pass options object. You can find the full list of options in the API reference.
-8.  ### How do you achieve conditional group of elements?
-    You can achieve conditional group of elements(toggle multiple elements at a time) by applying **v-if** directive on `<template>` element which works as invisible wrapper(no rendering) for group of elements. For example, you can conditionally group user details based on valid user condition.
+
+    위의 코드에서 볼 수 있듯, 옵션을 설정하기 위한 객체를 전달해야 합니다. 이 옵션은 API 문서에서 자세히 확인할 수 있습니다.
+
+8.  ### 여러 엘리먼트들을 한 번에 조건부로 나타내는 방법은
+    렌더링에 영향을 미치지 않는 `<template>` 태그에 **v-if** 지시자를 적용함으로써 여러 엘리먼트들을 한 번에 조건부로 나타낼 수 있습니다. 예를 들어, 아래와 같이 유효한 사용자인 경우에 한해서 사용자 정보를 보여줄 수 있습니다.
+
     ```javascript
     <template v-if="condition">
       <h1>Name</h1>
@@ -433,8 +466,10 @@ List of 300 VueJS Interview Questions
       <p>Contact Details</p>
     </template>
     ```
-9.  ### How do you reuse elements with key attribute?
-    Vue always tries to render elements as efficient as possible. So it tries to reuse the elements instead of building them from scratch. But this behavior may cause problems in few scenarios. For example, if you try to render the same input element in both `v-if` and `v-else` blocks then it holds the previous value as below,
+
+9.  ### key 속성을 이용해 엘리먼트를 재사용하는 방법은
+    Vue는 가능한 한 엘리먼트를 효율적으로 렌더링하려 합니다. 그래서 엘리먼트를 처음부터 다시 만들기보다는 재사용하려 합니다. 그러나 이는 몇 가지 상황에서 문제를 일으킬 수 있습니다. 예를 들어, `input` 엘리먼트를 `v-if`와 `v-else` 블록 양쪽에서 사용하면, `input` 엘리먼트는 조건문에 따라 바뀌지 않고 최초에 렌더링 된 엘리먼트의 상태를 유지하고 있습니다.
+
     ```javascript
     <template v-if="loginType === 'Admin'">
       <label>Admin</label>
@@ -445,7 +480,9 @@ List of 300 VueJS Interview Questions
       <input placeholder="Enter your name">
     </template>
     ```
-    In this case, it shouldn't reuse. We can make both input elements as separate by applying **key** attribute as below,
+
+    이 경우에서 `input` 엘리먼트는 재사용되어서는 안 되기 때문에, **key** 속성을 이용해 두 개의 `input` 엘리먼트를 별개의 것으로 취급할 수 있습니다.
+
     ```javascript
         <template v-if="loginType === 'Admin'">
           <label>Admin</label>
@@ -456,11 +493,15 @@ List of 300 VueJS Interview Questions
           <input placeholder="Enter your name" key="user-name">
         </template>
     ```
-    The above code make sure both inputs are independent and doesn't impact each other.
-10. ### Why should not use if and for directives together on the same element?
-    It is recommended not to use v-if on the same element as v-for. Because v-for directive has a higher priority than v-if. There are two cases where developers try to use this combination,
-    1. To filter items in a list
-     For example, if you try to filter the list using v-if tag,
+
+    위의 경우는 두 개의 `input` 엘리먼트가 별개의 것으로 취급되며 서로에게 어떤 영향도 끼치지 않습니다.
+
+10. ### 같은 엘리먼트에서 v-for와 v-if를 함께 쓰면 안 되는 이유는
+    v-for 지시자는 v-if 보다 더 높은 우선 순위를 갖고 있기 때문에, 한 엘리먼트 내에서 v-for와 v-if를 함께 쓰는 것은 권장되지 않습니다. 일반적으로 다음과 같은 이유 때문에 두 지시자를 함께 쓰곤 합니다.
+
+    1. 리스트의 요소를 필터링하기 위해
+    예를 들어, v-if 지시자를 이용해 리스트에 있는 아이템을 필터링하고 싶은 경우입니다.
+
      ```javascript
      <ul>
        <li
@@ -472,7 +513,9 @@ List of 300 VueJS Interview Questions
        <li>
      </ul>
      ```
-     This can be avoided by preparing the filtered list using computed property on the initial list
+
+     이 경우는 사전에 computed 속성을 이용해, 필터링된 리스트를 만들어 사용할 수 있습니다.
+
      ```javascript
      computed: {
        activeUsers: function () {
@@ -492,8 +535,10 @@ List of 300 VueJS Interview Questions
      </ul>
 
      ```
-    2. To avoid rendering a list if it should be hidden
-     For example, if you try to conditionally check if the user is to be shown or hidden
+
+    2. 리스트 자체가 숨겨져야 할 때
+     예를 들어, v-if를 이용해 반복되는 리스트를 숨기고 싶은 경우입니다.
+
      ```javascript
      <ul>
        <li
@@ -505,7 +550,9 @@ List of 300 VueJS Interview Questions
        <li>
      </ul>
      ```
-     This can be solved by moving the condition to a parent by avoiding this check for each user
+
+     이 경우는 조건문을 상위 엘리먼트로 옮김으로써 해결할 수 있습니다.
+
      ```javascript
      <ul v-if="shouldShowUsers">
        <li
@@ -516,6 +563,7 @@ List of 300 VueJS Interview Questions
        <li>
      </ul>
      ```
+
 11.  ### Why do you need to use key attribute on for directive?
      In order to track each node's identity, and thus reuse and reorder existing elements, you need to provide a unique `key` attribute for each item with in `v-for` iteration. An ideal value for key would be the unique id of each item. Let us take an example usage,
      ```javascript
