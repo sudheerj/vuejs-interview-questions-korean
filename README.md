@@ -26,16 +26,16 @@ List of 300 VueJS Interview Questions
 |8  | [여러 엘리먼트들을 한 번에 조건부로 나타내는 방법은](#여러-엘리먼트들을-한-번에-조건부로-나타내는-방법은)|
 |9  | [key 속성을 이용해 엘리먼트를 재사용하는 방법은](#key-속성을-이용해-엘리먼트를-재사용하는-방법은)|
 |10 | [같은 엘리먼트에서 v-for와 v-if를 함께 쓰면 안 되는 이유는](#같은-엘리먼트에서-v-for와-v-if를-함께-쓰면-안-되는-이유는)|
-|11 | [Why do you need to use key attribute on for directive?](#why-do-you-need-to-use-key-attribute-on-for-directive)|
-|12 | [What are the array detection mutation methods?](#what-are-the-array-detection-mutation-methods)|
-|13 | [What are the array detection non mutation methods?](#what-are-the-array-detection-non-mutation-methods)|
-|14 | [What are the caveats of array changes detection?](#what-are-the-caveats-of-array-changes-detection)|
-|15 | [What are the caveats of object changes detection?](#what-are-the-caveats-of-object-changes-detection)|
-|16 | [How do you use for directive with a range?](#how-do-you-use-for-directive-with-a-range)|
-|17 | [How do you use for directive on template?](#how-do-you-use-for-directive-on-template)|
-|18 | [How do you use event handlers?](#how-do-you-use-event-handlers)|
-|19 | [What are the event modifiers provided by vue?](#what-are-the-event-modifiers-provided-by-vue)|
-|20 | [What are key modifiers?](#what-are-key-modifiers)|
+|11 | [v-for에서 key 속성이 필요한 이유](#v-for에서-key-속성이-필요한-이유)|
+|12 | [배열을 변화시키는 함수(Mutation method)란](#배열을-변화시키는-함수(Mutation-method)란)|
+|13 | [배열을 대체하는 함수(Non-mutation method)란](#배열을-대체하는-함수(Non-mutation-method)란)|
+|14 | [배열 변경을 탐지할 때 주의할 점](#배열-변경을-탐지할-때-주의할-점)|
+|15 | [객체 변경을 탐지할 때 주의할 점](#객체-변경을-탐지할-때-주의할-점)|
+|16 | [v-for를 특정 범위만큼 반복하는 방법은](#v-for를-특정-범위만큼-반복하는-방법은)|
+|17 | [v-for로 템플릿을 반복하는 방법은](#[v-for로-템플릿을-반복하는-방법은)|
+|18 | [이벤트 핸들러를 사용하는 방법은](#이벤트-핸들러를-사용하는-방법은)|
+|19 | [Vue에서 이벤트 수식어(Event modifier)란](#Vue에서-이벤트-수식어(Event-modifier)란)|
+|20 | [키 수식어(Key modifiers)란](#키-수식어(Key-modifiers)란)|
 |21 | [How do you define custom key modifier aliases?](#how-do-you-define-custom-key-modifier-aliases)|
 |22 | [What are the supported System Modifier Keys?](#what-are-the-supported-system-modifier-keys)|
 |23 | [What are the supported Mouse Button Modifiers?](#what-are-the-supported-mouse-button-modifiers)|
@@ -185,7 +185,7 @@ List of 300 VueJS Interview Questions
 |166| [What are differences between mutations and actions?](#what-are-differences-between-mutations-and-actions)| -->
 
 1.  ### VueJS란 무엇인가
-    **Vue.js**는 사용자 인터페이스를 만들기 위한 진보적인 프레임워크입니다. 핵심 라이브러리는 `뷰 레이어`만 초점을 맞추어 다른 라이브러리나 기존 프로젝트와의 통합이 쉽습니다.
+    **Vue.js**는 사용자 인터페이스를 만들기 위한 진보적인 프레임워크입니다. 핵심 라이브러리는 `뷰 레이어`만 초점을 맞추어, 다른 라이브러리나 기존 프로젝트와의 통합이 쉽습니다.
 
 2.  ### VueJS의 주요 특징은
     아래의 항목들은 VueJS의 주요 특징들입니다.
@@ -197,7 +197,7 @@ List of 300 VueJS Interview Questions
     5. **저용량(Light weight):** VueJS는 다른 프레임워크와 비교해 저용량입니다.
 
 3.  ### VueJS의 라이프사이클(lifecycle) 함수는
-    라이프사이클 훅(Lifecycle hook)은 사용중인 라이브러리가 어떤 순서로 동작하는지를 알려주는 역할을 합니다. 훅을 이용해 컴포넌트가 언제 생성되는지, 언제 DOM에 추가되는지, 업데이트되고 사라지는지 알 수 있습니다. 아래의 다이어그램을 통해 VueJS의 전반적인 라이프사이클을 확인할 수 있습니다.
+    라이프사이클 훅(Lifecycle hook)은 사용중인 라이브러리가 어떤 순서로 동작하는지를 알려주는 역할을 합니다. 훅을 이용해 컴포넌트가 언제 생성되고, 언제 DOM에 추가되며, 언제 업데이트되고 언제 사라지는지 알 수 있습니다. 아래의 다이어그램을 통해 VueJS의 전반적인 라이프사이클을 확인할 수 있습니다.
 
     <img src="https://github.com/sudheerj/vuejs-interview-questions/blob/master/images/vuelifecycle.png" width="400" height="800">
 
@@ -254,11 +254,11 @@ List of 300 VueJS Interview Questions
         ```
 
         2. mounted:
-          `mounted` 훅은 반응적인 컴포넌트, 템플릿, 렌더링된 DOM(`this.$el`) 모두에 접근할 수 있어서 가장 많이 사용되는 훅입니다. 흔히 컴포넌트에서 필요한 데이터를 가져오는 데(fetch) 가장 많이 사용됩니다.
+          `mounted` 훅은 반응적인 data, 템플릿, 렌더링된 DOM(`this.$el`) 모두에 접근할 수 있어서 가장 많이 사용되는 훅입니다. 흔히 컴포넌트에서 필요한 데이터를 외부에서 가져오는(fetch) 용도로 많이 사용됩니다.
 
         ```javascript
         <div id="app">
-            <p>I'm text inside the component.</p>
+            <p>I’m text inside the component.</p>
         </div>
           new Vue({
             el: '#app',
@@ -327,7 +327,7 @@ List of 300 VueJS Interview Questions
         Destruction 훅은 컴포넌트를 더 이상 사용하지 않을 때 사용하는 단계입니다.
 
         1. beforeDestroy:
-        `beforeDestroy` 훅은 컴포넌트가 해체되기 직전에 실행됩니다. 이 훅은 반응적인 이벤트들을이나 데이터들을 해체하는 훅으로 적합합니다. 이 단계에서 컴포넌트는 여전히 문제없이 잘 동작합니다.
+        `beforeDestroy` 훅은 컴포넌트가 해체되기 직전에 실행됩니다. 이 훅은 반응적인 이벤트들이나 data들을 해체하는 훅으로 적합합니다. 이 단계에서 컴포넌트는 여전히 문제없이 잘 동작합니다.
 
         ```javascript
         new Vue ({
@@ -380,7 +380,7 @@ List of 300 VueJS Interview Questions
     <button v-else> Log In </button>
     ```
 
-    **3. v-else-if:** v-else-if 지시자는 v-if 이외의 다른 조건을 추가로 확인해야 할 때 사용합니다. 예를 들어, `ifLoginDisabled`의 값이 `true`일 때는 로그인 버튼 대신 텍스트를 보여주고 싶으므로 v-else-if 지시자를 이용할 수 있습니다.
+    **3. v-else-if:** v-else-if 지시자는 v-if 이외의 다른 조건을 추가로 확인해야 할 때 사용합니다. 예를 들어,  v-else-if 지시자를 이용해 `ifLoginDisabled`의 값이 `true`일 때는 로그인 버튼 대신 텍스트를 보여줄 수 있습니다.
 
     ```javascript
     <button v-if="isLoggedIn"> Logout </button>
@@ -481,7 +481,7 @@ List of 300 VueJS Interview Questions
     </template>
     ```
 
-    이 경우에서 `input` 엘리먼트는 재사용되어서는 안 되기 때문에, **key** 속성을 이용해 두 개의 `input` 엘리먼트를 별개의 것으로 취급할 수 있습니다.
+    이 경우에서 `input` 엘리먼트는 재사용되어서는 안 되기 때문에, **key** 속성을 이용해 두 개의 `input` 엘리먼트를 별개의 것으로 취급하도록 선언할 수 있습니다.
 
     ```javascript
         <template v-if="loginType === 'Admin'">
@@ -514,7 +514,7 @@ List of 300 VueJS Interview Questions
      </ul>
      ```
 
-     이 경우는 사전에 computed 속성을 이용해, 필터링된 리스트를 만들어 사용할 수 있습니다.
+     이 경우는 아래와 같이 사전에 computed 속성을 이용해 필터링된 리스트를 만들어 사용할 수 있습니다.
 
      ```javascript
      computed: {
@@ -551,7 +551,7 @@ List of 300 VueJS Interview Questions
      </ul>
      ```
 
-     이 경우는 조건문을 상위 엘리먼트로 옮김으로써 해결할 수 있습니다.
+     이 경우는 아래와 같이 조건문을 상위 엘리먼트로 옮김으로써 해결할 수 있습니다.
 
      ```javascript
      <ul v-if="shouldShowUsers">
@@ -564,16 +564,19 @@ List of 300 VueJS Interview Questions
      </ul>
      ```
 
-11.  ### Why do you need to use key attribute on for directive?
-     In order to track each node's identity, and thus reuse and reorder existing elements, you need to provide a unique `key` attribute for each item with in `v-for` iteration. An ideal value for key would be the unique id of each item. Let us take an example usage,
+11.  ### v-for에서 key 속성이 필요한 이유
+    Vue에서 개별 DOM 노드들을 추적하고 기존 엘리먼트의 재사용/재정렬을 위해, v-for의 요소에 고유한 key 속성을 제공해야 합니다. key에 대한 이상적인 값은 각 항목을 식별할 수 있는 고유한 ID입니다.
+
      ```javascript
      <div v-for="item in items" :key="item.id">
        {{item.name}}
      </div>
      ```
-     Hence, It is always recommended to provide a key with v-for whenever possible, unless the iterated DOM content is simple.
-     **Note:** You shouldn't use non-primitive values like objects and arrays as v-for keys. Use string or numeric values instead.
-12.  ### What are the array detection mutation methods?
+
+     반복되는 DOM 내용이 단순한 경우나 의도적인 성능 향상을 위해 기본 동작에 의존하지 않는 경우를 제외하면, 가능하면 언제나 v-for에 key를 추가하는 것이 좋습니다.
+     **Note:** 객체나 배열처럼, 기본 타입(Primitive value)이 아닌 값을 키로 사용해서는 안됩니다. 문자열이나 숫자를 사용하세요.
+
+12.  ### 배열을 변화시키는 함수(Mutation method)란
      As the name suggests, mutation methods modifies the original array. Below are the list of array mutation methods which trigger view updates.
      1. push()
      2. pop()
@@ -587,7 +590,7 @@ List of 300 VueJS Interview Questions
      ```javascript
      vm.todos.push({ message: 'Baz' })
      ```
-13.  ### What are the array detection non-mutation methods?
+13.  ### 배열을 대체하는 함수(Non-mutation method)란
      The methods which do not mutate the original array but always return a new array are called non-mutation methods. Below are the list of non-mutation methods,
      1. filter()
      2. concat()
@@ -600,7 +603,8 @@ List of 300 VueJS Interview Questions
      })
      ```
      This approach won't re-render the entire list due to VueJS implementation.
-14.  ### What are the caveats of array changes detection?
+
+14.  ### 배열 변경을 탐지할 때 주의할 점
      Vue cannot detect changes for the array in the below two cases,
 
      1. When you directly set an item with the index,For example,
@@ -625,7 +629,7 @@ List of 300 VueJS Interview Questions
      ```javascript
      vm.todos.splice(todosLength)
      ```
-15.  ### What are the caveats of object changes detection?
+15.  ### 객체 변경을 탐지할 때 주의할 점
      Vue cannot detect changes for the object in property addition or deletion., Lets take an example of user data changes,
      ```javascript
      var vm = new Vue({
@@ -648,7 +652,7 @@ List of 300 VueJS Interview Questions
        email: john@email.com
      })
      ```
-16.  ### How do you use v-for directive with a range?
+16.  ### v-for를 특정 범위만큼 반복하는 방법은?
      You can also use integer type(say 'n') for v-for directive which repeats the element many times.
      ```javascript
      <div>
@@ -656,7 +660,7 @@ List of 300 VueJS Interview Questions
      </div>
      ```
      It displays the number 1 to 20.
-17.  ### How do you use v-for directive on template?
+17.  ### v-for로 템플릿을 반복하는 방법은
      Just similar to v-if directive on template, you can also use a `<template>` tag with v-for directive to render a block of multiple elements. Let's take a todo example,
      ```javascript
      <ul>
@@ -666,7 +670,7 @@ List of 300 VueJS Interview Questions
        </template>
      </ul>
      ```
-18.  ### How do you use event handlers?
+18.  ### 이벤트 핸들러를 사용하는 방법은?
      You can use event handlers in vue similar to plain javascript. The method calls also support the special $event variable.
      ```javascript
      <button v-on:click="show('Welcome to VueJS world', $event)">
@@ -681,7 +685,7 @@ List of 300 VueJS Interview Questions
        }
      }
      ```
-19.  ### What are the event modifiers provided by vue?
+19.  ### Vue에서 이벤트 수식어(Event modifier)란?
      Normally, javascript provides event.preventDefault() or event.stopPropagation() inside event handlers. You can use methods provided by vue, but these methods are meant for data logic instead of dealing with DOM events. Vue provides below event modifiers for v-on and these modifiers are directive postfixes denoted by a dot.
      1. .stop
      2. .prevent
