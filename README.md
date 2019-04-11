@@ -31,7 +31,7 @@ List of 300 VueJS Interview Questions
 |13 | [배열을 대체하는 함수(Non-mutation method)란](#배열을-대체하는-함수(Non-mutation-method)란)|
 |14 | [배열 변경을 탐지할 때 주의할 점](#배열-변경을-탐지할-때-주의할-점)|
 |15 | [객체 변경을 탐지할 때 주의할 점](#객체-변경을-탐지할-때-주의할-점)|
-|16 | [v-for를 특정 범위만큼 반복하는 방법은](#v-for를-특정-범위만큼-반복하는-방법은)|
+|16 | [v-for를 특정 횟수만큼 반복하는 방법은](#v-for를-특정-횟수만큼-반복하는-방법은)|
 |17 | [v-for로 템플릿을 반복하는 방법은](#[v-for로-템플릿을-반복하는-방법은)|
 |18 | [이벤트 핸들러를 사용하는 방법은](#이벤트-핸들러를-사용하는-방법은)|
 |19 | [Vue에서 이벤트 수식어(Event modifier)란](#Vue에서-이벤트-수식어(Event-modifier)란)|
@@ -564,7 +564,8 @@ List of 300 VueJS Interview Questions
      </ul>
      ```
 
-11.  ### v-for에서 key 속성이 필요한 이유
+11. ### v-for에서 key 속성이 필요한 이유
+
     Vue에서 개별 DOM 노드들을 추적하고 기존 엘리먼트의 재사용/재정렬을 위해, v-for의 요소에 고유한 key 속성을 제공해야 합니다. key에 대한 이상적인 값은 각 항목을 식별할 수 있는 고유한 ID입니다.
 
      ```javascript
@@ -577,7 +578,7 @@ List of 300 VueJS Interview Questions
      **Note:** 객체나 배열처럼, 기본 타입(Primitive value)이 아닌 값을 키로 사용해서는 안됩니다. 문자열이나 숫자를 사용하세요.
 
 12.  ### 배열을 변화시키는 함수(Mutation method)란
-     As the name suggests, mutation methods modifies the original array. Below are the list of array mutation methods which trigger view updates.
+     이름에서 볼 수 있듯, 배열을 변화시키는 함수(mutation methods)는 원본 배열을 변경시킵니다. 아래의 함수는 뷰(view) 업데이트를 일으킵니다.
      1. push()
      2. pop()
      3. shift()
@@ -586,51 +587,61 @@ List of 300 VueJS Interview Questions
      6. sort()
      7. reverse()
 
-     If you perform any of the above mutation method on the list then it triggers view update. For example, push method on array named 'items' trigger a view update,
+     예를 들어, 아래와 같이 `todos` 배열에 `push` 함수를 실행시키면 뷰 업데이트가 일어납니다.
+
      ```javascript
      vm.todos.push({ message: 'Baz' })
      ```
+
 13.  ### 배열을 대체하는 함수(Non-mutation method)란
-     The methods which do not mutate the original array but always return a new array are called non-mutation methods. Below are the list of non-mutation methods,
+     배열을 대체하는 함수는 원본 배열을 수정하지 않고, 항상 새로운 배열을 반환합니다. 아래의 함수는 배열을 대체하는 함수입니다.
      1. filter()
      2. concat()
      3. slice()
 
-     For example, lets take a todo list where it replaces the old array with new one based on status filter,
+     예를 들어, 아래와 같이 `status` 속성에 따라 `todos` 배열을 필터링한 새로운 배열을 반환받을 수 있습니다.
+
      ```javascript
      vm.todos = vm.todos.filter(function (todo) {
        return todo.status.match(/Completed/)
      })
      ```
-     This approach won't re-render the entire list due to VueJS implementation.
+
+     Vue가 DOM을 효율적으로 재사용하기 때문에, 전체 리스트가 새로 렌더링되지는 않습니다.
 
 14.  ### 배열 변경을 탐지할 때 주의할 점
-     Vue cannot detect changes for the array in the below two cases,
+     Vue는 아래의 두 가지 경우의 변경 사항을 감지할 수 없습니다.
 
-     1. When you directly set an item with the index,For example,
-        ```javascript
-        vm.todos[indexOfTodo] = newTodo
-        ```
-     2. When you modify the length of the array, For example,
+     1. 인덱스로 배열에 있는 항목을 직접 할당하는 경우
+      ```javascript
+      vm.todos[indexOfTodo] = newTodo
+      ```
+
+     2. 배열의 길이를 수정하는 경우
       ```javascript
       vm.todos.length = todosLength
       ```
-     You can overcome both the caveats using `set` and `splice` methods, Let's see the solutions with an examples,
 
-     **First use case solution**
+     이는 `set`과 `splice` 함수를 이용해 해결할 수 있습니다.
+
+     **첫 번째 경우**
      ```javascript
      // Vue.set
      Vue.set(vm.todos, indexOfTodo, newTodoValue)
-     (or)
+     ```
+     ```javascript
      // Array.prototype.splice
      vm.todos.splice(indexOfTodo, 1, newTodoValue)
      ```
-     **Second use case solution**
+     **두 번째 경우**
      ```javascript
      vm.todos.splice(todosLength)
      ```
+
 15.  ### 객체 변경을 탐지할 때 주의할 점
-     Vue cannot detect changes for the object in property addition or deletion., Lets take an example of user data changes,
+
+     Vue는 추가되거나 삭제된 속성에 반응형으로 접근할 수 없습니다.
+
      ```javascript
      var vm = new Vue({
        data: {
@@ -644,24 +655,34 @@ List of 300 VueJS Interview Questions
 
      vm.email = john@email.com // `vm.email` is NOT reactive
      ```
-     You can overcome this scenario using the Vue.set(object, key, value) method or Object.assign(),
+
+     이 경우는 `Vue.set(object, key, value)`나 `Object.assign()`를 이용함으로써 반응형 속성을 추가할 수 있습니다.
+
      ```javascript
      Vue.set(vm.user, 'email', john@email.com);
-     (or)
+     ```
+     ```javascript
      vm.user = Object.assign({}, vm.user, {
        email: john@email.com
      })
      ```
-16.  ### v-for를 특정 범위만큼 반복하는 방법은?
-     You can also use integer type(say 'n') for v-for directive which repeats the element many times.
+
+16.  ### v-for를 특정 횟수만큼 반복하는 방법은?
+
+     `v-for` 지시자에 정수를 사용해 특정 횟수만큼 반복해 렌더링 할 수 있습니다.
+
      ```javascript
      <div>
        <span v-for="n in 20">{{ n }} </span>
      </div>
      ```
-     It displays the number 1 to 20.
+
+     이 경우 1부터 20까지 숫자가 출력됩니다.
+
 17.  ### v-for로 템플릿을 반복하는 방법은
-     Just similar to v-if directive on template, you can also use a `<template>` tag with v-for directive to render a block of multiple elements. Let's take a todo example,
+
+     `<template>`에서 v-if를 사용한 것과 유사하게, `<template>`에서 v-for 문법을 사용할 수 있습니다.
+
      ```javascript
      <ul>
        <template v-for="todo in todos">
@@ -670,8 +691,11 @@ List of 300 VueJS Interview Questions
        </template>
      </ul>
      ```
+
 18.  ### 이벤트 핸들러를 사용하는 방법은?
-     You can use event handlers in vue similar to plain javascript. The method calls also support the special $event variable.
+
+     VueJS에서는 순수 자바스크립트와 유사하게 이벤트 핸들러를 사용할 수 있습니다. 함수에서 `$event` 변수를 호출해 사용할 수 있습니다.
+
      ```javascript
      <button v-on:click="show('Welcome to VueJS world', $event)">
        Submit
@@ -685,8 +709,11 @@ List of 300 VueJS Interview Questions
        }
      }
      ```
+
 19.  ### Vue에서 이벤트 수식어(Event modifier)란?
-     Normally, javascript provides event.preventDefault() or event.stopPropagation() inside event handlers. You can use methods provided by vue, but these methods are meant for data logic instead of dealing with DOM events. Vue provides below event modifiers for v-on and these modifiers are directive postfixes denoted by a dot.
+     일반적으로 자바스크립트에서는 이벤트 핸들러 내부에서 `event.preventDefault()` 또는 `event.stopPropagation()`를 제공합니다. Vue의 메소드 내부에서도 이 작업을 할 수 있지만, DOM에서 발생한 이벤트와 메소드의 로직은 별개로 구분하는 것이 좋습니다.
+
+      이 문제를 해결하기 위해, Vue는 `v-on` 이벤트에 이벤트 수식어를 제공합니다. 수식어는 점으로 표시된 접미사 입니다.
      1. .stop
      2. .prevent
      3. .capture
@@ -704,6 +731,7 @@ List of 300 VueJS Interview Questions
      <!-- modifiers can be chained -->
      <a v-on:click.stop.prevent="doThat"></a>
      ```
+
 20.  ### What are key modifiers?
      Vue supports key modifiers on `v-on` for handling keyboard events. Let's take an example of keyup event with enter keycode.
      ```html
@@ -729,6 +757,7 @@ List of 300 VueJS Interview Questions
      <input @keyup.enter="submit">
      ```
      **The use of keyCode events is deprecated and may not be supported in new browsers.**
+
 21.  ### How do you define custom key modifier aliases?
      You can define custom key modifier aliases via the global `config.keyCodes`. There are few guidelines for the properties
      1. You can't use camelCase. Instead you can use kebab-case with double quotation marks
@@ -740,6 +769,7 @@ List of 300 VueJS Interview Questions
        down: [40, 87]
      }
      ```
+
 22.  ### What are the supported System Modifier Keys?
      Vue supports below modifiers to trigger mouse or keyboard event listeners when the corresponding key is pressed,
      1. .ctrl
@@ -752,6 +782,7 @@ List of 300 VueJS Interview Questions
      <!-- Ctrl + Click -->
      <div @click.ctrl="doSomething">Do something</div>
      ```
+
 23.  ### What are the supported Mouse Button Modifiers?
      Vue supports below mouse button modifiers
      1. .left
@@ -766,6 +797,7 @@ List of 300 VueJS Interview Questions
         v-on:mousedown.left="decrement"
       />
      ```
+
 24.  ### How do you implement two-way binding?
      You can use the `v-model` directive to create two-way data bindings on form input, textarea, and select elements. Lets take an example of it using input component,
      ```javascript
@@ -773,6 +805,7 @@ List of 300 VueJS Interview Questions
      <p>The message is: {{ message }}</p>
      ```
      Remember, v-model will ignore the initial `value`, `checked` or `selected` attributes found on any form elements. So it always use the Vue instance data as the source of truth.
+
 25.  ### What are the supported modifiers on model?
      There are three modifiers supported for v-model directive.
 
@@ -789,6 +822,7 @@ List of 300 VueJS Interview Questions
      ```javascript
      <input v-model.trim="msg">
      ```
+
 26.  ### What are components and give an example?
      Components are reusable Vue instances with a name. They accept the same options as new Vue, such as data, computed, watch, methods, and lifecycle hooks(except few root-specific options like el). Lets take an example of counter component,
      ```javascript
@@ -810,6 +844,7 @@ List of 300 VueJS Interview Questions
 
      var vm = new Vue({ el: '#app' });
      ```
+
 27.  ### What are props?
      Props are custom attributes you can register on a component. When a value is passed to a prop attribute, it becomes a property on that component instance. You can pass those list of values as props option and use them as similar to data variables in template.
      ```javascript
@@ -822,6 +857,7 @@ List of 300 VueJS Interview Questions
      ```javascript
      <todo-item title="Learn Vue conceptsnfirst"></todo-item>
      ```
+
 28.  ### When component needs a single root element?
      Every component must have a single root element **when template has more than one element**. In this case, you need to wrap the elements with a parent element.
      ```javascript
@@ -831,6 +867,7 @@ List of 300 VueJS Interview Questions
      </div>
      ```
      Otherwise there will an error throwing, saying that "Component template should contain exactly one root element...".
+
 29.  ### How do you communicate from child to parent using events?
      If you want child wants to communicate back up to the parent, then emit an event from child using `$event` object to parent,
      ```javascript
@@ -858,6 +895,7 @@ List of 300 VueJS Interview Questions
      </ul>
      <span> Total todos count is {{total}}</span>
      ```
+
 30.  ### How do you implement model on custom input components?
      The custom events can also be used to create custom inputs that work with v-model. The <input> inside the component must follow below rules,
      1. Bind the value attribute to a value prop
@@ -878,6 +916,7 @@ List of 300 VueJS Interview Questions
      ```javascript
      <custom-input v-model="searchInput"></custom-input>
      ```
+
 31.  ### What are slots?
      Vue implements a content distribution API using the <slot> element to serve as distribution outlets for content created after after the current Web Components spec draft. Let's create an alert component with slots for content insertion,
      ```javascript
@@ -896,6 +935,7 @@ List of 300 VueJS Interview Questions
        There is an issue with in application.
      </alert>
      ```
+
 32.  ### What is global registration in components?
      The components which are globally registered can be used in the template of any root Vue instance (new Vue) created after registration. In the global registration, the components created using Vue.component as below,
      ```javascript
@@ -920,6 +960,7 @@ List of 300 VueJS Interview Questions
      </div>
      ```
      Remember that the components can be used in subcomponents as well.
+
 33.  ### Why do you need local registration?
      Due to global registration, even if you don't use the component it could still be included in your final build. So it will create unnecessary javascript in the application. This can be avoided using local registration with the below steps,
      1. First you need to define your components as plain JavaScript objects
@@ -949,7 +990,9 @@ List of 300 VueJS Interview Questions
        }
      })
      ```
-34.  ### What is the difference between local and global registration in module system?
+
+34.  ### What is the difference between local and global registration in
+module system?
      In **local registration**, you need to create each component in components folder(optional but it is recommended) and import them in another component file components section. Let's say you want to register component A and B in component C, the configuration seems as below,
      ```javascript
      import ComponentA from './ComponentA'
