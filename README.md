@@ -3,30 +3,29 @@
 
 List of 300 VueJS Interview Questions
 
-본 문서는 [sudheerj](https://github.com/sudheerj)의 [vuejs-interview-questions](https://github.com/sudheerj/vuejs-interview-questions)를 번역한 문서입니다.
-
 ### Contributor
 
 <a href="https://github.com/wormwlrm" target="_blank" rel="nofollow">
 	<img src="https://avatars3.githubusercontent.com/u/26682772?s=60&v=4">
 </a>
 
+> 본 문서는 [sudheerj](https://github.com/sudheerj)의 [vuejs-interview-questions](https://github.com/sudheerj/vuejs-interview-questions)의 번역본입니다.
 > 이 프로젝트가 마음에 드셨다면 :star:를 눌러주세요. 풀 리퀘스트는 언제든 환영입니다.
 
 ### Table of Contents
 -------------------------------------------------------------------
 | No. | Questions |
 |---- | ---------
-|1  | [VueJS란 무엇인가?](#what-is-vuejs) |
-|2  | [VueJS의 주요 특징은?](#what-are-the-major-features-of-vuejs) |
-|3  | [VueJS의 라이프사이클(lifecycle) 함수는?](#what-are-the-lifecycle-methods-of-vuejs)|
-|4  | [조건부 지시자(conditional directives)란?](#what-are-the-conditional-directives)|
-|5  | [v-show와 v-if의 차이점은?](#what-is-the-difference-between-v-show-and-v-if-directives)|
-|6  | [v-for를 쓰는 목적은?](#what-is-the-purpose-of-v-for-directive)|
-|7  | [Vue 인스턴스란?](#what-is-vue-instance)|
-|8  | [여러 요소(element)들을 한 번에 조건부로 나타내는 방법은?](#how-do-you-achieve-conditional-group-of-elements)|
-|9  | [key 속성을 이용해 요소(element)를 재사용하는 방법은?](#how-do-you-reuse-elements-with-key-attribute)|
-|10 | [같은 요소(element)에서 v-for와 v-if를 함께 쓰면 안 되는 이유는?](#why-should-not-use-if-and-for-directives-together-on-the-same-element)|
+|1  | [VueJS란 무엇인가](#VueJS란-무엇인가) |
+|2  | [VueJS의 주요 특징은](#VueJS의-주요-특징은) |
+|3  | [VueJS의 라이프사이클(lifecycle) 함수는](#VueJS의-라이프사이클(lifecycle)-함수는)|
+|4  | [조건부 지시자(conditional directives)란](#조건부-지시자(conditional-directives)란)|
+|5  | [v-show와 v-if의 차이점은](#v-show와-v-if의-차이점은)|
+|6  | [v-for를 쓰는 목적은](#what-is-the-purpose-of-v-for-directive)|
+|7  | [Vue 인스턴스란](#what-is-vue-instance)|
+|8  | [여러 요소(element)들을 한 번에 조건부로 나타내는 방법은](#how-do-you-achieve-conditional-group-of-elements)|
+|9  | [key 속성을 이용해 요소(element)를 재사용하는 방법은](#how-do-you-reuse-elements-with-key-attribute)|
+|10 | [같은 요소(element)에서 v-for와 v-if를 함께 쓰면 안 되는 이유는](#why-should-not-use-if-and-for-directives-together-on-the-same-element)|
 |11 | [Why do you need to use key attribute on for directive?](#why-do-you-need-to-use-key-attribute-on-for-directive)|
 |12 | [What are the array detection mutation methods?](#what-are-the-array-detection-mutation-methods)|
 |13 | [What are the array detection non mutation methods?](#what-are-the-array-detection-non-mutation-methods)|
