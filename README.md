@@ -9,8 +9,9 @@ List of 300 VueJS Interview Questions
 	<img src="https://avatars3.githubusercontent.com/u/26682772?s=60&v=4">
 </a>
 
-> 본 문서는 [sudheerj](https://github.com/sudheerj)의 [vuejs-interview-questions](https://github.com/sudheerj/vuejs-interview-questions)의 번역본입니다.
-> 이 프로젝트가 마음에 드셨다면 :star:를 눌러주세요. 풀 리퀘스트는 언제든 환영입니다.
+> * :clipboard: 본 문서는 [sudheerj](https://github.com/sudheerj)의 [vuejs-interview-questions](https://github.com/sudheerj/vuejs-interview-questions)의 번역본입니다.
+> * :star: 이 프로젝트가 마음에 드셨다면 **STAR**를 눌러주세요.
+> * :heavy_check_mark: 풀 리퀘스트는 언제든 환영입니다.
 
 ### Table of Contents
 -------------------------------------------------------------------
@@ -36,18 +37,17 @@ List of 300 VueJS Interview Questions
 |18 | [이벤트 핸들러를 사용하는 방법은](#이벤트-핸들러를-사용하는-방법은)|
 |19 | [Vue에서 이벤트 수식어(Event modifier)란](#Vue에서-이벤트-수식어(Event-modifier)란)|
 |20 | [키 수식어(Key modifiers)란](#키-수식어(Key-modifiers)란)|
-|21 | [How do you define custom key modifier aliases?](#how-do-you-define-custom-key-modifier-aliases)|
-|22 | [What are the supported System Modifier Keys?](#what-are-the-supported-system-modifier-keys)|
-|23 | [What are the supported Mouse Button Modifiers?](#what-are-the-supported-mouse-button-modifiers)|
-|24 | [How do you implement two way binding?](#how-do-you-implement-two-way-binding)|
-|25 | [What are the supported modifiers on model?](#what-are-the-supported-modifiers-on-model)|
-|26 | [What are components and give an example?](#what-are-components-and-give-an-example)|
-|27 | [What are props?](#what-are-props)|
-|28 | [When component needs a single root element?](#when-component-needs-a-single-root-element)|
-|29 | [How do you communicate from child to parent using events?](#how-do-you-communicate-from-child-to-parent-using-events)|
-|30 | [How do you implement model on custom input components?](#how-do-you-implement-model-on-custom-input-components)|
-
-<!-- |31 | [What are slots?](#what-are-slots)|
+|21 | [키 수식어를 커스터마이징하는 방법은](#키-수식어를-커스터마이징하는-방법은)|
+|22 | [시스템 수식어 키(System modifier key)란](#시스템-수식어-키(System-modifier-key)란)|
+|23 | [마우스 버튼 수식어(Mouse button modifier)란?](#마우스-버튼-수식어(Mouse-button-modifier)란)|
+|24 | [v-model의 역할은](#v-model의-역할은)|
+|25 | [v-model에서 지원되는 수식어는?](#v-model에서-지원되는-수식어는?)|
+|26 | [컴포넌트(Component)란](#컴포넌트(Component)란)|
+|27 | [props란?](#props란)|
+|28 | [컴포넌트에서 여러 엘리먼트를 쓰려면?](#컴포넌트에서-여러-엘리먼트를-쓰려면?)|
+|29 | [하위 컴포넌트에서 상위 컴포넌트로 이벤트를 전달하는 방법은?](#하위-컴포넌트에서-상위-컴포넌트로-이벤트를-전달하는-방법은?)|
+|30 | [사용자 정의의 input 컴포넌트에서 v-model을 사용하는 법은?](#사용자-정의의-input-컴포넌트에서-v-model을-사용하는-법은)|
+|31 | [slots이란?](#slots이란?)|
 |32 | [What is global registration in components?](#what-is-global-registration-in-components)|
 |33 | [Why do you need local registration?](#why-do-you-need-local-registration)|
 |34 | [What is the difference between local and global registration in module system?](#what-is-the-difference-between-local-and-global-registration-in-module-system)|
@@ -77,7 +77,9 @@ List of 300 VueJS Interview Questions
 |58 | [What are global mixins?](#what-are-global-mixins)|
 |59 | [How do you use mixins in CLI?](#how-do-you-use-mixins-in-cli)|
 |60 | [What are the merging strategies in mixins?](#what-are-the-merging-strategies-in-mixins)|
-|61 | [What are custom options merging strategies?](#what-are-custom-options-merging-strategies)|
+
+
+<!-- |61 | [What are custom options merging strategies?](#what-are-custom-options-merging-strategies)|
 |62 | [What are custom directives?](#what-are-custom-directives)|
 |63 | [How do you register directives locally?](#how-do-you-register-directives-locally)|
 |64 | [What are the hook functions provided by directives?](#what-are-the-hook-functions-provided-by-directives)|
@@ -732,36 +734,43 @@ List of 300 VueJS Interview Questions
      <a v-on:click.stop.prevent="doThat"></a>
      ```
 
-20.  ### What are key modifiers?
-     Vue supports key modifiers on `v-on` for handling keyboard events. Let's take an example of keyup event with enter keycode.
+20.  ### 키 수식어(Key modifiers)란?
+
+     Vue는 키보드 이벤트를 제어하기 위해 `v-on` 지시자에 키 수식어를 제공합니다.
+
      ```html
      <!-- only call `vm.show()` when the `keyCode` is 13 -->
      <input v-on:keyup.13="show">
      ```
-     Remembering all the key codes is really difficult. It supports the full list of key codes aliases
-     1. .enter
-     2. .tab
-     3. .delete (captures both “Delete” and “Backspace” keys)
-     4. .esc
-     5. .space
-     6. .up
-     7. .down
-     8. .left
-     9. .right
 
-     Now the above keyup code snippet can be written with aliases as follows,
+     모든 키 코드를 외우는 것은 어렵기 때문에, Vue에서는 자주 사용되는 키들은 별칭을 제공하고 있습니다.
+
+     1. `.enter`
+     2. `.tab`
+     3. `.delete` (“Delete”와 “Backspace” 포함)
+     4. `.esc`
+     5. `.space`
+     6. `.up`
+     7. `.down`
+     8. `.left`
+     9. `.right`
+
+     위 예시의 키 코드는 아래와 같이 별칭으로 다시 쓸 수 있습니다.
+
      ```javascript
      <input v-on:keyup.enter="submit">
      // (OR)
      <!-- with shorthand notation-->
      <input @keyup.enter="submit">
      ```
-     **The use of keyCode events is deprecated and may not be supported in new browsers.**
+     **키 코드 이벤트의 사용은 최신 브라우저에서는 지원되지 않을 수 있습니다.**
 
-21.  ### How do you define custom key modifier aliases?
-     You can define custom key modifier aliases via the global `config.keyCodes`. There are few guidelines for the properties
-     1. You can't use camelCase. Instead you can use kebab-case with double quotation marks
-     2. You can define multiple values in an array format
+21.  ### 키 수식어를 커스터마이징하는 방법은?
+
+     전역 `config.keyCodes` 객체를 통해 키 수식어를 커스터마이징할 수 있습니다. 여기에는 몇 가지 규칙들이 있습니다.
+
+     1. 카멜 케이스(camelCase)를 대신 쌍따옴표로 감싸진 케밥 케이스(Kebab-case)를 사용해야 합니다.
+     2. 배열을 이용해 한 번에 여러 값들을 정의할 수 있습니다.
      ```javascript
      Vue.config.keyCodes = {
        f1: 112,
@@ -770,26 +779,30 @@ List of 300 VueJS Interview Questions
      }
      ```
 
-22.  ### What are the supported System Modifier Keys?
-     Vue supports below modifiers to trigger mouse or keyboard event listeners when the corresponding key is pressed,
-     1. .ctrl
-     2. .alt
-     3. .shift
-     4. .meta
+22.  ### 시스템 수식어 키(System modifier key)란?
 
-     Lets take an example of control modifier with click event,
+     Vue에서는 다음 수식어를 사용해 해당 수식어 키가 눌러진 경우에만 마우스 또는 키보드 이벤트를 발생시킬 수 있습니다.
+     1. `.ctrl`
+     2. `.alt`
+     3. `.shift`
+     4. `.meta`
+
+     아래는 컨트롤 키가 눌린 상태에서 클릭 이벤트를 활성화 하는 예시입니다.
+
      ```javascript
      <!-- Ctrl + Click -->
      <div @click.ctrl="doSomething">Do something</div>
      ```
 
-23.  ### What are the supported Mouse Button Modifiers?
-     Vue supports below mouse button modifiers
-     1. .left
-     2. .right
-     3. .middle
+23.  ### 마우스 버튼 수식어(Mouse button modifier)란?
 
-     For example, the usage of `.right` modifier as below
+     Vue는 특정한 마우스 버튼으로 발생한 이벤트를 제어할 수 있습니다.
+     1. `.left`
+     2. `.right`
+     3. `.middle`
+
+     마우스 이벤트로 `.right`를 이용한 예시입니다.
+
      ```javascript
       <button
         v-if="button === 'right'"
@@ -798,33 +811,42 @@ List of 300 VueJS Interview Questions
       />
      ```
 
-24.  ### How do you implement two-way binding?
-     You can use the `v-model` directive to create two-way data bindings on form input, textarea, and select elements. Lets take an example of it using input component,
+24.  ### v-model의 역할은?
+
+     `v-model` 지시자를 이용해 `input`, `textarea`, `select` 엘리먼트의 데이터를 양방향으로 제어할 수 있습니다. 아래의 `input` 엘리먼트를 살펴보세요.
+
      ```javascript
      <input v-model="message" placeholder="Enter input here">
      <p>The message is: {{ message }}</p>
      ```
-     Remember, v-model will ignore the initial `value`, `checked` or `selected` attributes found on any form elements. So it always use the Vue instance data as the source of truth.
 
-25.  ### What are the supported modifiers on model?
-     There are three modifiers supported for v-model directive.
+     `v-model`은 모든 `form` 엘리먼트에서 HTML 속성(attribute)으로 선언된 `value`, `checked` 그리고 `selected`를 무시합니다. 그 대신 Vue 인스턴스에서 `v-model`로 바인딩한 값을 이용합니다. 따라서 컴포넌트의 data에서 초기값을 선언해야 합니다.
 
-     **1. lazy:** By default, v-model syncs the input with the data after each input event. You can add the lazy modifier to instead sync after change events.
+25.  ### v-model에서 지원되는 수식어는?
+
+     `v-model` 지시자에는 세 가지 수식어가 지원됩니다.
+
+     **1. lazy:** 기본적으로, `v-model`은 하나의 키 입력 이벤트가 발생할 때마다 data가 업데이트됩니다. 이를 방지하기 위해서는 `.lazy` 수식어를 이용합니다.
+
      ```javascript
      <!-- synced after "change" instead of "input" -->
      <input v-model.lazy="msg" >
      ```
-     **2. number:** If you want user input to be automatically typecast as a number, you can add the number modifier to your v-model. Even with type="number", the value of HTML input elements always returns a string. So, this typecast modifier is required.
+
+     **2. number:** `v-model`에 `.number` 수식어를 붙이면 자동적으로 사용자의 입력의 자료형이 `Number`로 변환됩니다. HTML `input` 태그의 속성이 `type="number"`일지라도 반환되는 값의 자료형은 문자열이기 때문에, 숫자 자료형이 필요하다면 `.number` 수식어를 사용해야 합니다.
+
      ```javascript
      <input v-model.number="age" type="number">
      ```
-     **3. trim:** If you want whitespace from user input to be trimmed automatically, you can add the trim modifier to your v-model.
+
+     **3. trim:** `.trim` 수식어를 사용자 입력에서 처음과 끝에 들어있는 공백을 자동으로 제거해줍니다.
      ```javascript
      <input v-model.trim="msg">
      ```
 
-26.  ### What are components and give an example?
-     Components are reusable Vue instances with a name. They accept the same options as new Vue, such as data, computed, watch, methods, and lifecycle hooks(except few root-specific options like el). Lets take an example of counter component,
+26.  ### 컴포넌트(Component)란?
+
+     컴포넌트란 **재사용 가능하면서 이름이 명명된 Vue 인스턴스**입니다. 컴포넌트는 Vue처럼 data, computed, watch, methods, 라이프사이클 옵션을 갖고 있습니다. 아래는 Vue에 전역으로 컴포넌트를 추가하는 예시입니다.
      ```javascript
      // Define a new component called button-counter
      Vue.component('button-counter', {
@@ -836,7 +858,7 @@ List of 300 VueJS Interview Questions
        },
      })
      ```
-     Let's use this component inside a root Vue instance created with new Vue
+     이 컴포넌트는 전역으로 선언되었기 때문에 Vue 인스턴스에서 사용할 수 있습니다.
      ```javascript
      <div id="app">
        <button-counter></button-counter>
@@ -845,31 +867,35 @@ List of 300 VueJS Interview Questions
      var vm = new Vue({ el: '#app' });
      ```
 
-27.  ### What are props?
-     Props are custom attributes you can register on a component. When a value is passed to a prop attribute, it becomes a property on that component instance. You can pass those list of values as props option and use them as similar to data variables in template.
+27.  ### props란?
+
+     props는 상위 컴포넌트의 정보를 하위 컴포넌트로 전달할 수 있는 사용자 지정의 속성입니다. 상위 컴포넌트에서 전달되는 props는 하위 컴포넌트의 속성으로 여겨지며, 하위 컴포넌트에서는 props 옵션을 사용하여 수신할 것으로 예상되는 props를 명시적으로 선언해야 합니다.
      ```javascript
      Vue.component('todo-item', {
        props: ['title'],
        template: '<h2>{{ title }}</h2>'
      })
      ```
-     Once the props are registered, you can pass them as custom atrtributes.
+     하위 컴포넌트에서 props가 등록되고 나면, 상위 컴포넌트에서는 사용자 지정 속성을 이용해 값을 전달할 수 있습니다.
      ```javascript
      <todo-item title="Learn Vue conceptsnfirst"></todo-item>
      ```
 
-28.  ### When component needs a single root element?
-     Every component must have a single root element **when template has more than one element**. In this case, you need to wrap the elements with a parent element.
+28.  ### 컴포넌트에서 여러 엘리먼트를 쓰려면?
+
+     템플릿이 여러 개의 엘리먼트들로 구성되어 있을 때, **컴포넌트의 최상단 템플릿은 반드시 단일 엘리먼트로 감싸져 있어야 합니다.**
      ```javascript
      <div class="todo-item">
        <h2>{{ title }}</h2>
        <div v-html="content"></div>
      </div>
      ```
-     Otherwise there will an error throwing, saying that "Component template should contain exactly one root element...".
+     그렇지 않다면, `"Component template should contain exactly one root element..."`라는 에러를 발생시킵니다.
 
-29.  ### How do you communicate from child to parent using events?
-     If you want child wants to communicate back up to the parent, then emit an event from child using `$event` object to parent,
+29.  ### 하위 컴포넌트에서 상위 컴포넌트로 이벤트를 전달하는 방법은?
+
+     하위 컴포넌트에서 `$event` 객체를 이용해 상위 컴포넌트로 이벤트를 발생킬 수 있습니다.
+
      ```javascript
      Vue.component('todo-tem', {
        props: ['todo'],
@@ -884,23 +910,25 @@ List of 300 VueJS Interview Questions
        `
      })
      ```
-     Now you can use this todo-item in parent component to access the count value.
+     이 때 상위 컴포넌트에서는 `v-on` 지시자를 이용해 하위 컴포넌트에서 명명한 이벤트와 값을 사용할 수 있습니다.
      ```javascript
      <ul v-for="todo in todos">
-     <li>
+      <li>
         <todo-item
-           v-bind:key="todo.id"
-           v-bind:todo="todo" v-on:increment-count="total += 1"></todo-item>
-     </li>
+          v-bind:key="todo.id"
+          v-bind:todo="todo"
+          v-on:increment-count="total += 1">
+        </todo-item>
+      </li>
      </ul>
      <span> Total todos count is {{total}}</span>
      ```
 
-30.  ### How do you implement model on custom input components?
-     The custom events can also be used to create custom inputs that work with v-model. The <input> inside the component must follow below rules,
-     1. Bind the value attribute to a value prop
-     2. On input, emit its own custom input event with the new value.
-     Let's take a custom-input component as an example,
+30.  ### 사용자 정의의 input 컴포넌트에서 v-model을 사용하는 법은?
+
+     사용자 정의 input 컴포넌트에서도 `v-model`을 활용할 수 있습니다. 해당 컴포넌트의 `input`은 아래 규칙들을 준수해야 합니다.
+     1. `input`의 `value`를 props를 이용해 바인딩합니다.
+     2. 새로운 값이 입력되는 `input` 이벤트 발생 시, 해당 값을 `emit`하여 상위 컴포넌트로 이벤트를 전달합니다.
      ```javascript
      Vue.component('custom-input', {
        props: ['value'],
@@ -912,13 +940,14 @@ List of 300 VueJS Interview Questions
        `
      })
      ```
-     Now you can use `v-model` with this component,
+     이 경우 상위 컴포넌트에서 `v-model`을 이용해 값을 바인딩할 수 있습니다.
      ```javascript
      <custom-input v-model="searchInput"></custom-input>
      ```
 
-31.  ### What are slots?
-     Vue implements a content distribution API using the <slot> element to serve as distribution outlets for content created after after the current Web Components spec draft. Let's create an alert component with slots for content insertion,
+31.  ### slots이란?
+
+     Vue에서는 `<slot>`을 이용해 상위 컴포넌트에서 하위 컴포넌트 내부에 사용자 정의의 컨텐츠를 집어 넣을 수 있습니다. 하위 컴포넌트에 `<slot>`을 이용해 문구를 동적으로 넣을 수 있는 컴포넌트를 만들어봅시다.
      ```javascript
      Vue.component('alert', {
        template: `
@@ -929,7 +958,8 @@ List of 300 VueJS Interview Questions
        `
      })
      ```
-     Now you can insert dynamic content as below,
+     `<alert>` 태그 안에 넣은 값은 컴포넌트 내부의 `<slot>`의 컨텐츠로 들어가게 됩니다.
+
      ```javascript
      <alert>
        There is an issue with in application.
