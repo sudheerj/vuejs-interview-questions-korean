@@ -48,8 +48,8 @@ List of 300 VueJS Interview Questions
 |29 | [하위 컴포넌트에서 상위 컴포넌트로 이벤트를 전달하는 방법은?](#하위-컴포넌트에서-상위-컴포넌트로-이벤트를-전달하는-방법은?)|
 |30 | [사용자 정의의 input 컴포넌트에서 v-model을 사용하는 법은?](#사용자-정의의-input-컴포넌트에서-v-model을-사용하는-법은)|
 |31 | [slots이란?](#slots이란?)|
-|32 | [What is global registration in components?](#what-is-global-registration-in-components)|
-|33 | [Why do you need local registration?](#why-do-you-need-local-registration)|
+|32 | [컴포넌트를 전역 등록하는 방법은?](#컴포넌트를-전역-등록하는-방법은)|
+|33 | [컴포넌트의 지역 등록이 필요한 이유는?](#컴포넌트의-지역-등록이-필요한-이유는?)|
 |34 | [What is the difference between local and global registration in module system?](#what-is-the-difference-between-local-and-global-registration-in-module-system)|
 |35 | [What are possible prop types?](#what-are-possible-prop-types)|
 |36 | [What is the data flow followed by props?](#what-is-the-data-flow-followed-by-props)|
@@ -716,19 +716,19 @@ List of 300 VueJS Interview Questions
      일반적으로 자바스크립트에서는 이벤트 핸들러 내부에서 `event.preventDefault()` 또는 `event.stopPropagation()`를 제공합니다. Vue의 메소드 내부에서도 이 작업을 할 수 있지만, DOM에서 발생한 이벤트와 메소드의 로직은 별개로 구분하는 것이 좋습니다.
 
       이 문제를 해결하기 위해, Vue는 `v-on` 이벤트에 이벤트 수식어를 제공합니다. 수식어는 점으로 표시된 접미사 입니다.
-     1. .stop
-     2. .prevent
-     3. .capture
-     4. .self
-     5. .once
-     6. .passive
+     1. `.stop`
+     2. `.prevent`
+     3. `.capture`
+     4. `.self`
+     5. `.once`
+     6. `.passive`
 
-     Let's take an example of stop modifier,
+     `.stop` 수식어를 예로 들어보겠습니다.
      ```html
      <!-- the click event's propagation will be stopped -->
      <a v-on:click.stop="methodCall"></a>
      ```
-     You can also chain modifiers as below,
+     수식어는 연속해서 사용할 수 있습니다.
      ```html
      <!-- modifiers can be chained -->
      <a v-on:click.stop.prevent="doThat"></a>
@@ -966,14 +966,18 @@ List of 300 VueJS Interview Questions
      </alert>
      ```
 
-32.  ### What is global registration in components?
-     The components which are globally registered can be used in the template of any root Vue instance (new Vue) created after registration. In the global registration, the components created using Vue.component as below,
+32.  ### 컴포넌트를 전역 등록하는 방법은?
+
+     컴포넌트를 전역으로 등록하게 되면 모든 Vue 인스턴스에서 해당 컴포넌트를 사용할 수 있습니다. 컴포넌트는 `Vue.component()` 함수를 이용해 전역 등록할 수 있습니다.
+
      ```javascript
      Vue.component('my-component-name', {
        // ... options ...
      })
      ```
-     Let's take multiple components which are globally registered in the vue instance,
+
+     Vue 인스턴스에 여러 개의 컴포넌트를 전역 등록해봅시다.
+
      ```javascript
      Vue.component('component-a', { /* ... */ })
      Vue.component('component-b', { /* ... */ })
@@ -981,7 +985,7 @@ List of 300 VueJS Interview Questions
 
      new Vue({ el: '#app' })
      ```
-     The above components can be used in the vue instance,
+     위의 컴포넌트들은 Vue 인스턴스 내에서 사용될 수 있습니다.
      ```javascript
      <div id="app">
        <component-a></component-a>
@@ -989,17 +993,20 @@ List of 300 VueJS Interview Questions
        <component-c></component-c>
      </div>
      ```
-     Remember that the components can be used in subcomponents as well.
+     전역으로 등록한 컴포넌트들은 하위 컴포넌트에서도 사용이 가능합니다.
 
-33.  ### Why do you need local registration?
-     Due to global registration, even if you don't use the component it could still be included in your final build. So it will create unnecessary javascript in the application. This can be avoided using local registration with the below steps,
-     1. First you need to define your components as plain JavaScript objects
+33.  ### 컴포넌트의 지역 등록이 필요한 이유는?
+
+     전역 등록으로 인해 사용되지 않는 컴포넌트가 빌드 시에 여전히 남아있을 수 있습니다. 이는 불필요한 자바스크립트를 만들죠. 이를 방지하기 위해, 아래와 같이 컴포넌트를 지역 등록할 수 있습니다.
+
+     1. 우선 자바스크립트 객체로 컴포넌트를 정의합니다.
      ```javascript
      var ComponentA = { /* ... */ }
      var ComponentB = { /* ... */ }
      var ComponentC = { /* ... */ }
      ```
-     Locally registered components will not be available in sub components. In this case, you need to add them in components section
+     지역 등록한 컴포넌트는 다른 컴포넌트의 하위에서는 사용할 수 없습니다. 이 경우, `components` 속성으로 컴포넌트를 추가해 사용할 수 있습니다.
+
      ```javascript
      var ComponentA = { /* ... */ }
 
@@ -1010,7 +1017,8 @@ List of 300 VueJS Interview Questions
        // ...
      }
      ```
-     2. You can use the components in the components section of the vue instance,
+     2. Vue 인스턴스에서 `components` 속성에 사용할 컴포넌트들을 정의할 수 있습니다.
+
      ```javascript
      new Vue({
        el: '#app',
@@ -1023,7 +1031,9 @@ List of 300 VueJS Interview Questions
 
 34.  ### What is the difference between local and global registration in
 module system?
+
      In **local registration**, you need to create each component in components folder(optional but it is recommended) and import them in another component file components section. Let's say you want to register component A and B in component C, the configuration seems as below,
+
      ```javascript
      import ComponentA from './ComponentA'
      import ComponentB from './ComponentC'
@@ -1032,8 +1042,7 @@ module system?
        components: {
          ComponentA,
          ComponentB
-       },
-       // ...
+       }
      }
      ```
      Now both ComponentA and ComponentB can be used inside ComponentC's template.
