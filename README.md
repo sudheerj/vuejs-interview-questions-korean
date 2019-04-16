@@ -50,12 +50,12 @@ List of 300 VueJS Interview Questions
 |31 | [slots이란?](#slots이란?)|
 |32 | [컴포넌트를 전역 등록하는 방법은?](#컴포넌트를-전역-등록하는-방법은)|
 |33 | [컴포넌트의 지역 등록이 필요한 이유는?](#컴포넌트의-지역-등록이-필요한-이유는?)|
-|34 | [What is the difference between local and global registration in module system?](#what-is-the-difference-between-local-and-global-registration-in-module-system)|
-|35 | [What are possible prop types?](#what-are-possible-prop-types)|
-|36 | [What is the data flow followed by props?](#what-is-the-data-flow-followed-by-props)|
-|37 | [What are non prop attributes?](#what-are-non-prop-attributes)|
-|38 | [Describe about validations available for props?](#describe-about-validations-available-for-props)|
-|39 | [How do you customize model directive for a component?](#how-do-you-customize-model-directive-for-a-component)|
+|34 | [모듈 시스템에서 전역 등록과 지역 등록의차이점은?](#모듈-시스템에서-전역-등록과-지역-등록의-차이점은?)|
+|35 | [prop 타입의 종류는?](#prop-타입의-종류는?)|
+|36 | [props에 의한 데이터 흐름은?](#props에-의한-데이터-흐름은?)|
+|37 | [Props가 아닌 속성은?](#Props가-아닌-속성은)|
+|38 | [Props를 검증하는 방법은?](#Props를-검증하는-방법은?)|
+|39 | [컴포넌트에서 v-model을 사용자 정의하는 방법은?](#컴포넌트에서-v-model을-사용자-정의하는-방법은?)|
 |40 | [What are the possible ways to provide transitions?](#What-are-the-possible-ways-to-provide-transitions)|
 |41 | [What is vue router and their features?](#what-is-vue-router-and-their-features)|
 |42 | [What are the steps to use vue router and give an example?](#what-are-the-steps-to-use-vue-router-and-give-an-example)|
@@ -1029,10 +1029,9 @@ List of 300 VueJS Interview Questions
      })
      ```
 
-34.  ### What is the difference between local and global registration in
-module system?
+34.  ### 모듈 시스템에서 전역 등록과 지역 등록의 차이점은?
 
-     In **local registration**, you need to create each component in components folder(optional but it is recommended) and import them in another component file components section. Let's say you want to register component A and B in component C, the configuration seems as below,
+     **지역 등록**의 경우, 각 컴포넌트를 디렉토리에 생성하고 각각의 컴포넌트는 다른 컴포넌트 안에서 `import` 하여 사용하는 것이 권장됩니다. 만약 여러분들이 컴포넌트 C에서 컴포넌트 A와 B를 사용하고 싶다면 아래와 같은 설정을 해야 합니다.
 
      ```javascript
      import ComponentA from './ComponentA'
@@ -1045,9 +1044,9 @@ module system?
        }
      }
      ```
-     Now both ComponentA and ComponentB can be used inside ComponentC's template.
+     위의 경우 컴포넌트 A와 컴포넌트 B는 컴포넌트 C의 템플릿에서 사용할 수 있습니다.
 
-     In **global registration**, you need to export all common or base components in a separate file. But some of the popular bundlers like `webpack` make this process simpler by using `require.context` to globally register base components in the below entry file(one-time).
+     **전역 등록**의 경우, 공통적으로 사용되는 컴포넌트를 각각의 파일에서 `export`해야합니다. 하지만 `webpack`과 같은 유명한 번들러들은 `require.context`라는 문법을 이용해서 컴포넌트를 쉽게 전역적으로 등록할 수 있게 해줍니다.
 
      ```javascript
      import Vue from 'vue'
@@ -1085,8 +1084,11 @@ module system?
        )
      })
      ```
-35.  ### What are possible prop types?
-     You can declare props with type or without type. But it is recommended to have prop types because it provides the documentation for the component and warns the developer for any incorrect data type being assigned.
+
+35.  ### Prop 타입의 종류는?
+
+     `props`에는 타입을 지정할 수도, 지정하지 않을 수도 있습니다. 하지만 일반적으로 타입을 지정하면 다른 개발자들이 해당 코드에서 잘못된 타입의 `props`를 넘겨주는 실수를 줄여주기 때문에, 가능하면 타입을 지정해주는 것이 좋습니다.
+
      ```javascript
      props: {
        name: String,
@@ -1096,13 +1098,17 @@ module system?
        address: Object
      }
      ```
-     As mentioned in the above code snippet, you can list props as an object, where the properties' names and values contain the prop names and types, respectively.
-36.  ### What is the data flow followed by props?
-     All props follows a one-way-down binding between the child property and the parent one. i.e, When the parent property is updated then that latest prop value will be passed down to the child, but not the otherway(child to parent) around. The child component should not mutate the prop otherwise it throws a warning in the console.
-     The possible mutation cases can be solved as below,
-     1. When you try to use parent prop as initial value for child property:
+     `props` 객체의 속성과 값을 선언함으로서, 타입을 선언할 수 있습니다.
 
-     In this case you can define a local property in child component and assign parent value as initial value
+36.  ### props에 의한 데이터 흐름은?
+
+     모든 `props`는 하위 속성과 상위 속성 사이에서 단방향 바인딩을 형성합니다. 즉, 상위 속성이 변경되는 것은 하위 속성에게 전달되지만, 그 반대는 안됩니다. 원칙적으로, 하위 컴포넌트에서는 상위 컴포넌트에서 받은 `props`을 수정해서는 안됩니다.
+
+     하위 컴포넌트에서 `props` 수정의 필요성을 느낄 수 있는 몇 가지 경우가 있는데, 아래와 같은 방법으로 해결할 수 있습니다.
+
+     1. 상위 컴포넌트의 `props`는 하위 컴포넌트의 초기값 설정에만 사용되고 그 이후에는 로컬 데이터 속성으로 활용되는 경우:
+
+     이 경우, 하위 컴포넌트에서 사용할 속성을 `data`에 선언하고, 그 값을 `props`로 초기화하면 됩니다.
      ```javascript
      props: ['defaultUser'],
      data: function () {
@@ -1111,9 +1117,10 @@ module system?
        }
      }
      ```
-     2. When you try to transform the parent prop:
+     2. 상위 컴포넌트에서 `props`로 전해주는 값이 수정되는 경우
 
-     You can define a computed property using the prop's value,
+     이 경우, 하위 컴포넌트에서 `computed` 속성을 이용해 `props`의 값이 바뀔 때마다 신규 값을 얻을 수 있습니다.
+
      ```javascript
      props: ['environment'],
      computed: {
@@ -1122,22 +1129,29 @@ module system?
        }
      }
      ```
-37.  ### What are non prop attributes?
-     A non-prop attribute is an attribute that is passed to a component, but does not have a corresponding prop defined.
-     For example, If you are using a 3rd-party custom-input component that requires a `data-tooltip` attribute on the input then you can add this attribute to component instance,
-     ```javascript
+
+37.  ### Props가 아닌 속성은?
+
+     `props`가 아닌 속성이란, 컴포넌트에 전달되기는 하지만 해당 `props`가 하위 컴포넌트에서 정의되지는 않은 속성을 말합니다. 만약 `data-tooltip` 속성을 요구하는 컴포넌트를 사용하고 있다고 가정해봅시다. 이 속성을 컴포넌트 인스턴스에 다음과 같이 추가 할 수 있습니다.
+
+     ```html
      <custom-input data-tooltip="Enter your input" />
      ```
-     If you try to pass the props from parent component the child props with the same names will be overridden. But props like `class` and `style` are exception to this, these values will be merged in the child component.
-     ```javascript
-     //Child component
-     <input type="date" class="date-control">
+
+     상위 컴포넌트에서부터 `props`가 아닌 속성을 넘겨주려 한다면, 하위 컴포넌트에서 같은 이름을 가진 속성은 덮어씌워집니다. 하지만 `class`나 `style`같은 `props`는 예외로, 이 값들은 하위 컴포넌트와 합쳐집니다.
+
+     ```html
      //Parent component
      <custom-input class="custom-class" />
+
+     //Child component
+     <input type="date" class="date-control">
      ```
-38.  ### Describe about validations available for props?
-     Vue provides validations such as types, required fields, default values along with customized validations. You can provide an object with validation requirements to the value of props as below,
-     Let's take an example of user profile Vue component with possible validations,
+
+38.  ### props를 검증하는 방법은?
+
+     Vue에서는 타입, 필수 여부, 디폴트 값 등 `props`의 유효성 검증을 제공하고 있습니다. 아래와 같이 `props`를 검증하는 규칙이 속성으로 담긴 객체를 제공하면 됩니다.
+
      ```javascript
      Vue.component('user-profile', {
        props: {
@@ -1174,8 +1188,11 @@ module system?
        }
      })
      ```
-39.  ### How do you customize model directive for a component?
-     The v-model directive on a component uses **value** as the prop and **input** as the event, but some input types such as `checkboxes` and `radio buttons` may need to use the value attribute for a server side value. In this case, it is preferred to customize model directive. Let's take an example of checkbox component,
+
+39.  ### 컴포넌트에서 v-model을 사용자 정의하는 방법은?
+
+     일반적인 컴포넌트에서 `v-model` 지시자는  **value**를 `props`로 사용하고 **input**을 이벤트로 사용하지만, 체크 박스나 라디오 버튼같은 일부 입력 타입은 다른 목적으로 `value` 속성을 사용할 수 있습니다. 이런 경우에는 `v-model`을 커스터마이징해서 사용하는 것이 좋습니다.
+
      ```javascript
      Vue.component('custom-checkbox', {
        model: {
@@ -1194,11 +1211,15 @@ module system?
        `
      })
      ```
-     Now you can use v-model on this customized component as below,
-     ```javascript
+
+     이 컴포넌트에서 `v-model`은 다음과 같이 사용할 수 있습니다.
+
+     ```html
      <custom-checkbox v-model="selectFramework"></custom-checkbox>
      ```
-     The selectFramework property will be passed to the checked prop and same property will be updated when custom checkbox component emits a change event with a new value.
+
+     `selectFramework` 속성은 `props` 중 `checked`로 넘어갈 것이고, 체크 박스 컴포넌트에서 값이 변경되면 이벤트를 발생시켜 업데이트할 것입니다.
+
 40.  ### What are the possible ways to provide transitions?
      There are many ways Vue provides transition effects when items are inserted, updated, or removed from the DOM. Below are the possible ways,
      1. Automatically apply classes for CSS transitions and animations
