@@ -56,17 +56,17 @@ List of 300 VueJS Interview Questions
 |37 | [Props가 아닌 속성은?](#Props가-아닌-속성은)|
 |38 | [Props를 검증하는 방법은?](#Props를-검증하는-방법은?)|
 |39 | [컴포넌트에서 v-model을 사용자 정의하는 방법은?](#컴포넌트에서-v-model을-사용자-정의하는-방법은?)|
-|40 | [What are the possible ways to provide transitions?](#What-are-the-possible-ways-to-provide-transitions)|
-|41 | [What is vue router and their features?](#what-is-vue-router-and-their-features)|
-|42 | [What are the steps to use vue router and give an example?](#what-are-the-steps-to-use-vue-router-and-give-an-example)|
-|43 | [What is dynamic route matching?](#what-is-dynamic-route-matching)|
-|44 | [How to make router param changes as reactive?](#how-to-make-router-param-changes-as-reactive)|
-|45 | [What is route matching priority?](#what-is-route-matching-priority)|
-|46 | [What are nested routes?](#what-are-nested-routes)|
-|47 | [What are single file components?](#what-are-single-file-components)|
-|48 | [Is Single File Components violating separation of concerns?](#is-single-file-components-violating-separation-of-concerns)|
-|49 | [What are the problems solved by Single File Components?](#what-are-the-problems-solved-by-single-file-components)|
-|50 | [What are filters?](#what-are-filters)|
+|40 | [트랜지션 효과를 넣을 수 있는 방법은?](#트랜지션-효과를-넣을-수-있는-방법은?)|
+|41 | [Vue Router란?](#Vue-Router란)|
+|42 | [Vue Router를 사용하는 방법은?](#Vue-Router를-사용하는-방법은?)|
+|43 | [동적 라우트 매칭이란?](#동적-라우트-매칭이란)|
+|44 | [라우터 params를 반응적으로 만드는 방법은?](#라우터-params를-반응적으로-만드는-방법은?)|
+|45 | [라우트의 우선 순위는?](#라우트의-우선-순위는)|
+|46 | [중첩된 라우트란?](#중첩된-라우트란)|
+|47 | [싱글 파일 컴포넌트란?](#싱글-파일-컴포넌트란)|
+|48 | [관심사 분리(separation of concerns)이란?](#관심사-분리(separation-of-concerns)이란?)|
+|49 | [싱글 파일 컴포넌트는 왜 필요할까?](#싱글-파일-컴포넌트는-왜-필요할까)|
+|50 | [filter란?](#filter란)|
 |51 | [What are the different ways to create filters?](#what-are-the-different-ways-to-create-filters)|
 |52 | [How do you chain filters](#how-do-you-chain-filters)|
 |53 | [Is it possible to pass parameters for filters?](#is-it-possible-to-pass-parameters-for-filters)|
@@ -1218,30 +1218,36 @@ List of 300 VueJS Interview Questions
      <custom-checkbox v-model="selectFramework"></custom-checkbox>
      ```
 
-     `selectFramework` 속성은 `props` 중 `checked`로 넘어갈 것이고, 체크 박스 컴포넌트에서 값이 변경되면 이벤트를 발생시켜 업데이트할 것입니다.
+     `selectFramework` 속성은 `props` 중 `checked`로 넘어갈 것이고, 체크 박스 컴포넌트에서 값이 변경되면 이벤트를 발생시킬 것입니다.
 
-40.  ### What are the possible ways to provide transitions?
-     There are many ways Vue provides transition effects when items are inserted, updated, or removed from the DOM. Below are the possible ways,
-     1. Automatically apply classes for CSS transitions and animations
-     2. Integrate 3rd-party CSS animation libraries. For example, Animate.css
-     3. Use JavaScript to directly manipulate the DOM during transition hooks
-     4. Integrate 3rd-party JavaScript animation libraries. For example, Velocity.js
-41.  ### What is vue router and their features?
-     Vue Router is a official routing library for single-page applications designed for use with the Vue.js framework. Below are their features,
-     1. Nested route/view mapping
-     2. Modular, component-based router configuration
-     3. Route params, query, wildcards
-     4. View transition effects powered by Vue.js' transition system
-     5. Fine-grained navigation control
-     6. Links with automatic active CSS classes
-     7. HTML5 history mode or hash mode, with auto-fallback in IE9
-     8. Restore scroll position when going back in history mode
+40.  ### 트랜지션 효과를 넣을 수 있는 방법은?
 
-42.  ### What are the steps to use vue router and give an example?
-     It is easy to integrate vue router in the vue application. Let us see the example with step by step instructions.
+     Vue에서는 항목들이 DOM에서 추가, 갱신 또는 삭제될 때, 다양한 방법으로 트랜지션 효과를 입힐 수 있습니다.
 
-     **Step 1:** Configure router link and router view in the template
-     ```javascript
+     1. CSS 트랜지션과 애니메이션을 위한 클래스를 자동으로 적용
+     2. Animate.css와 같은 써드파티 CSS 애니메이션 라이브러리 통합
+     3. 트랜지션 훅 중에 JavaScript를 사용하여 DOM을 직접 조작
+     4. Velocity.js와 같은 써드파티 JavaScript 애니메이션 라이브러리 통합
+
+41.  ### Vue Router란?
+
+     Vue Router는 Vue에서 동작하는 공식적인 라우팅 라이브러리입니다.
+
+     1. 중첩된 라우트/뷰 매핑
+     2. 모듈화된, 컴포넌트 기반의 라우터 설정
+     3. 라우터 파라미터, 쿼리, 와일드카드
+     4. Vue의 트랜지션 시스템을 이용한 트랜지션 효과
+     5. 세밀한 네비게이션 컨트롤
+     6. active CSS 클래스를 자동으로 추가해주는 링크
+     7. HTML5 히스토리 모드 또는 해시 모드(IE9에서 자동으로 폴백)
+     8. 사용자 정의 가능한 스크롤 동작
+
+42.  ### Vue Router를 사용하는 방법은?
+
+     Vue를 사용하고 있다면, 쉽게 Vue Router를 통합할 수 있습니다.
+
+     **Step 1:** 먼저 템플릿에서 `<router-link>`태그를 설정합니다.
+     ```html
      <script src="https://unpkg.com/vue/dist/vue.js"></script>
      <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
 
@@ -1256,41 +1262,53 @@ List of 300 VueJS Interview Questions
        <router-view></router-view>
      </div>
      ```
-     **Step 2:** Import Vue and VueRouter packages and then apply router
+
+     **Step 2:** `main.js`에서 Vue와 Vue 라우터를 `import`하고 `Vue.use()`함수를 이용해 호출합니다.
+
      ```javascript
      import Vue from 'vue';
      import VueRouter from 'vue-router';
 
      Vue.use(VueRouter)
      ```
-     **Step 3:** Define or import route components.
-     ```javacript
+
+     **Step 3:** 라우트 컴포넌트를 정의하거나 `import`합니다.
+
+     ```javascript
      const Home = { template: '<div>Home</div>' }
      const Services = { template: '<div>Services</div>' }
      ```
-     **Step 4:** Define your route where each one maps to a component
+
+     **Step 4:** 라우트를 정의합니다. 각 라우트는 반드시 컴포넌트와 매핑되어야 합니다.
+
      ```javascript
      const routes = [
        { path: '/home', component: Home },
        { path: '/services', component: Services }
      ]
      ```
-     **Step 5:** Create the router instance and pass the `routes` option
+
+     **Step 5:** `routes` 옵션과 함께 router 인스턴스를 만듭니다.
+
      ```javascript
      const router = new VueRouter({
        routes // short for `routes: routes`
      })
      ```
-     **Step 6:**  Create and mount the root instance.
-     ```javacript
+
+     **Step 6:**  루트 Vue 인스턴스를 만들고 `mount`합니다.
+     ```javascript
      const app = new Vue({
        router
      }).$mount('#app')
      ```
 
-     Now you are able to navigate different pages(Home, Services) with in Vue application.
-43.  ### What is dynamic route matching?
-     Sometimes it may be required to map routes to the same component based on a pattern. Let's take a user component with the mapped URLs like `/user/john/post/123` and `/user/jack/post/235` using dynamic segments,
+     이제 Vue 어플리케이션에서 다른 페이지(Home, Services)로 네비게이트 할 수 있습니다.
+
+43.  ### 동적 라우트 매칭이란?
+
+     주어진 패턴을 가진 라우트를 동일한 컴포넌트에 매핑해야하는 경우가 자주 있습니다. 동적 세그먼트를 이용해 `/user/john/post/123`나 `/user/jack/post/235`와 같이 매핑된 URL을 가지는 컴포넌트를 만들어봅시다.
+
      ```javascript
      const User = {
        template: '<div>User {{ $route.params.name }}, PostId: {{ route.params.postid }}</div>'
@@ -1303,9 +1321,15 @@ List of 300 VueJS Interview Questions
        ]
      })
      ```
-44.  ### How to make router param changes as reactive?
-     When you navigate from one URL to other(mapped with a single component) using routes with params then the same component instance will be reused. Even though it is more efficient than destroying the old instance and then creating a new one, the lifecycle hooks of the component will not be called. This problem can be solved using either of the below approaches,
-     1. Watch the $route object:
+
+44.  ### 라우터 params를 반응적으로 만드는 방법은?
+
+     매개 변수와 함께 라우트를 사용할 때 주의 해야할 점은 사용자가 `/user/foo`에서 `/user/bar`로 이동할 때 동일한 컴포넌트 인스턴스가 재사용된다는 것입니다. 두 라우트 모두 동일한 컴포넌트를 렌더링하므로 이전 인스턴스를 삭제 한 다음 새 인스턴스를 만드는 것보다 효율적입니다. 그러나 이는 또한 컴포넌트의 라이프 사이클 훅이 호출되지 않음을 의미합니다.
+
+     동일한 컴포넌트의 `params` 변경 사항에 반응하려면 `$route` 객체를 보면됩니다.
+
+     1. `watch`에서 `$route` 관찰하기:
+
      ```javascript
      const User = {
        template: '<div>User {{ $route.params.name }} </div>',
@@ -1316,7 +1340,9 @@ List of 300 VueJS Interview Questions
        }
      }
      ```
-     2. Use beforeRouteUpdate navigation guard: This is only available since 2.2 version.
+
+     2. `beforeRouteUpdate` 네비게이션 가드를 사용하기:
+
      ```javascript
      const User = {
        template: '<div>User {{ $route.params.name }} </div>',
@@ -1325,9 +1351,13 @@ List of 300 VueJS Interview Questions
        }
      }
      ```
-     Note that the beforeRouteEnter guard does NOT have access to `this`. Instead you can pass a callback to `next` to access the vm instance.
-45.  ### What is route matching priority?
-     Sometimes the URL might be matched by multiple routes and the confusion of which route need to be mapped is resolved by route matching priority. The priority is based on order of routes configuration. i.e, The route which declared first has higher priority.
+
+     `beforeRouteEnter` 가드에서는 `this`에 접근할 권한이 없다는 것을 기억하세요. 대신, `next` 콜백 함수를 이용해 인스턴스에 접근할 수 있습니다.
+
+45.  ### 라우트의 우선 순위는?
+
+     동일한 URL이 여러 라우트와 일치하는 경우가 있습니다. 이 경우 일치하는 우선 순위는 라우트 정의의 순서에 따라 결정됩니다. 즉, 경로가 더 먼저 정의 될수록 우선 순위가 높아집니다.
+
      ```javascript
      const router = new VueRouter({
             routes: [
@@ -1338,9 +1368,13 @@ List of 300 VueJS Interview Questions
             ]
           })
      ```
-46.  ### What are nested routes?
-     Generally, the app is composed of nested components which are nested multiple levels deep. The segments of a URL corresponds to a certain structure of these nested components. To render components into the nested outlet, you need to use the `children` option in `VueRouter` constructor config.
-     Let's take a user app composed of profile and posts nested components with respective routes. You can also define a default route configuration when there is no matching nested route.
+
+46.  ### 중첩된 라우트란?
+
+     일반적으로 어플리케이션은 여러 단계의 중첩된 컴포넌트로 이루어져 있습니다. URL의 세그먼트 역시 중첩된 컴포넌트의 특정 구조와 일치합니다. 중첩된 아웃렛에서 컴포넌트를 렌더링하려면 `VueRouter` 생성자에서 `config`로 `children`을 설정해야 합니다.
+
+     프로필과 포스트들이 상대적인 경로로 설정된 어플리케이션을 만들어봅시다. 매칭되는 하위 라우트가 없을 경우에 렌더링되는 라우트 컴포넌트를 설정할 수 있습니다.
+
      ```javascript
      const router = new VueRouter({
        routes: [
@@ -1364,10 +1398,12 @@ List of 300 VueJS Interview Questions
        ]
      })
      ```
-47.  ### What are single file components?
-     Single File Components are an easy concept to understand. Earlier you might heard about all three parts(HTML, JavaScript and CSS) of your application kept in different components. But Single File Components encapsulate the structure, styling and behaviour into one file. In the beginning, it seems strange to have all three parts in one file, but it actually makes a lot more sense.
-     Let's take an example of Singile File Components
-     ```javascript
+
+47.  ### 싱글 파일 컴포넌트란?
+
+     아마 하나의 페이지에서 HTML, CSS, JavaScript을 다른 파일로 분리해 관리해본 경험이 있을 것입니다. 하지만 싱글 파일 컴포넌트에서는 템플릿과 스타일, 로직들을 하나의 파일에 정리합니다.
+
+     ```html
      <template>
          <div>
              <h1>Welcome {{ name }}!</h1>
@@ -1391,28 +1427,40 @@ List of 300 VueJS Interview Questions
          }
      </style>
      ```
-48.  ### Is Single File Components violating separation of concerns?
-     As for the latest modern UI development, separation of concerns is not equal to separation of file types. So it is preferred to divide codebase layers into loosely-coupled components and compose them instead of dividing the codebase into three huge layers that interweave with one another. This way makes Single File Components more cohesive and maintainable by combining template, logic and styles together inside a component.
-     You can also still maintain javascript and CSS files separately with hot-reloading and pre-compilation features. For example,
-     ```
+
+48.  ### 관심사 분리(separation of concerns)이란?
+
+     주목해야 할 중요한 점은 관심사 분리가 파일 타입 분리와 같지 않다는 것입니다. 현대적인 UI 개발에서 코드베이스를 서로 얽혀있는 세 개의 거대한 레이어로 나누는 대신, 느슨하게 결합 된 컴포넌트로 나누고 구성하는 것이 더 중요합니다. 컴포넌트 내부에서 템플릿, 로직 및 스타일이 본질적으로 결합되어 배치되면 컴포넌트의 응집력과 유지 보수성이 향상됩니다.
+
+     싱글 파일 컴포넌트에 대한 아이디어가 마음에 들지 않더라도 JavaScript와 CSS를 별도의 파일로 분리하여 핫 리로드 및 사전 컴파일 기능을 활용할 수 있습니다.
+
+     ```html
      <template>
        <div>This section will be pre-compiled and hot reloaded</div>
      </template>
      <script src="./my-component.js"></script>
      <style src="./my-component.css"></style>
      ```
-49.  ### What are the problems solved by Single File Components?
-     The Single File Components solve the common problems occurred in a javascript driven application with a .vue extension. The list of issues are,
-     1. Global definitions force unique names for every component
-     2. String templates lack syntax highlighting and require ugly slashes for multiline HTML
-     3. No CSS support means that while HTML and JavaScript are modularized into components, CSS is conspicuously left out
-     4. No build step restricts us to HTML and ES5 JavaScript, rather than preprocessors like Pug (formerly Jade) and Babel
-50.  ### What are filters?
-     Filters can be used to apply common text formatting. These Filters should be appended to the end of the JavaScript expression, denoted by the “pipe” symbol. You can use them in two specific cases:
-     1. mustache interpolations
-     2. v-bind expressions
 
-     For example, Let's define a local filter named capitalize in a component's options
+49.  ### 싱글 파일 컴포넌트는 왜 필요할까?
+
+     복잡한 프로젝트의 경우 또는 프론트엔드가 JavaScript 기반인 경우 단점이 분명해집니다. 싱글 파일 컴포넌트가 아닌 경우에는 아래와 같은 문제점이 있을 수 있습니다.
+
+     1. **전역 정의** 모든 구성 요소에 대해 고유한 이름을 지정하도록 강요됩니다.
+     2. **문자열 템플릿** 구문 강조가 약해 여러 줄로 된 HTML에 보기 안좋은 슬래시가 많이 필요합니다.
+     3. **CSS 지원 없음** HTML 및 JavaScript가 컴포넌트로 모듈화 되어 있으나 CSS가 빠져 있는 것을 말합니다.
+     4. **빌드 단계 없음** Pug (이전의 Jade) 및 Babel과 같은 전처리기가 아닌 HTML 및 ES5 JavaScript로 제한됩니다.
+
+     싱글 파일 컴포넌트는 JavaScript 기반에서 발생하는 문제점을 해결하기 위해, 별도의 `.vue` 확장자의 파일로 작성합니다.
+
+50.  ### filter란?
+
+     `filter`는 텍스트 형식화를 위해 사용됩니다. 이 필터들은 자바스크립트 표현식에 파이프(`|`) 기호와 함께 추가되어야 합니다. 크게 두 가지 경우에서 사용될 수 있습니다.
+     1. 중괄호 보간법
+     2. `v-bind` 표현식
+
+     첫 글자를 대문자로 만드는 로컬 필터를 정의해봅시다.
+
      ```javascript
      filters: {
        capitalize: function (value) {
@@ -1422,14 +1470,17 @@ List of 300 VueJS Interview Questions
        }
      }
      ```
-     Now you can use the filter in either mustache interpolation or v-bind expression,
-     ```javascript
+
+     이 필터를 중괄호 보간법 또는 `v-bind` 표현식 함께 사용할 수 있습니다.
+
+     ```html
      <!-- in mustaches -->
      {{ username | capitalize }}
 
      <!-- in v-bind -->
      <div v-bind:id="username | capitalize"></div>
      ```
+
 51.  ### What are the different ways to create filters?
      You can define filters in two ways,
      1. **Local filters:**
@@ -2186,7 +2237,7 @@ List of 300 VueJS Interview Questions
 
 99.  ### What is the purpose of renderError?
      When the default render function encounters an error then you can use rennderError as an alternative render output. The error will be passed to renderError as the second argument. The example usage of renderError is as below,
-     ```javacript
+     ```javascript
      new Vue({
        render (h) {
          throw new Error('An error')
