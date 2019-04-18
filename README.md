@@ -67,16 +67,16 @@ List of 300 VueJS Interview Questions
 |48 | [관심사 분리(separation of concerns)이란?](#관심사-분리(separation-of-concerns)이란?)|
 |49 | [싱글 파일 컴포넌트는 왜 필요할까?](#싱글-파일-컴포넌트는-왜-필요할까)|
 |50 | [filter란?](#filter란)|
-|51 | [What are the different ways to create filters?](#what-are-the-different-ways-to-create-filters)|
-|52 | [How do you chain filters](#how-do-you-chain-filters)|
-|53 | [Is it possible to pass parameters for filters?](#is-it-possible-to-pass-parameters-for-filters)|
-|54 | [What are plugins and their various services?](#what-are-plugins-and-their-various-services)|
-|55 | [ How to create a plugin?](#how-to-create-a-plugin)|
-|56 | [How to use a plugin?](#how-to-use-a-plugin)|
-|57 | [What are mixins?](#what-are-mixins)|
-|58 | [What are global mixins?](#what-are-global-mixins)|
-|59 | [How do you use mixins in CLI?](#how-do-you-use-mixins-in-cli)|
-|60 | [What are the merging strategies in mixins?](#what-are-the-merging-strategies-in-mixins)|
+|51 | [filter를 전역적 또는 지역적으로 만드는 법은?](#filter를-전역적-또는-지역적으로-만드는-법은?)|
+|52 | [filter를 연속해 쓰는 방법은?](#filter를-연속해-쓰는-방법은?)|
+|53 | [filter에 파라미터를 전달할 수 있을까?](#filter에-파라미터를-전달할-수-있을까)|
+|54 | [플러그인이란?](#플러그인이란)|
+|55 | [플러그인을 만드는 방법은?](#플러그인을-만드는-방법은)|
+|56 | [플러그인을 사용하는 방법은?](#플러그인을-사용하는-방법은)|
+|57 | [믹스인이란?](#믹스인이란)|
+|58 | [전역 믹스인이란?](#전역-믹스인이란)|
+|59 | [CLI 환경에서 믹스인을 사용하는 법은](#CLI-환경에서-믹스인을-사용하는-법은)|
+|60 | [믹스인의 옵션이 컴포넌트의 옵션과 충돌한다면?](#믹스인의-옵션이-컴포넌트의-옵션과-충돌한다면)|
 
 
 <!-- |61 | [What are custom options merging strategies?](#what-are-custom-options-merging-strategies)|
@@ -1481,10 +1481,11 @@ List of 300 VueJS Interview Questions
      <div v-bind:id="username | capitalize"></div>
      ```
 
-51.  ### What are the different ways to create filters?
-     You can define filters in two ways,
-     1. **Local filters:**
-     You can define local filters in a component's options. In this case, filter is applicable to that specific component.
+51.  ### filter를 전역적 또는 지역적으로 만드는 법은?
+
+     1. **지역 필터(Local filters):**
+     지역 필터는 컴포넌트의 옵션에서 정의할 수 있습니다. 이 경우, 필터는 해당 컴포넌트에서만 사용 가능합니다.
+
      ```javascript
      filters: {
        capitalize: function (value) {
@@ -1494,8 +1495,10 @@ List of 300 VueJS Interview Questions
        }
      }
      ```
-     2. **Global filters:**
-     You can also define a filter globally before creating the Vue instance. In this case, filter is applicable to all the components with in the vue instance,
+
+     2. **전역 필터(Global filters):**
+     Vue 인스턴스를 만들기 전에 전역적으로 필터를 정의할 수 있습니다. 이 경우 Vue 인스턴스 내의 모든 컴포넌트에서 필터를 사용할 수 있습니다.
+
      ```javascript
      Vue.filter('capitalize', function (value) {
        if (!value) return ''
@@ -1507,37 +1510,51 @@ List of 300 VueJS Interview Questions
        // ...
      })
      ```
-52.  ### How do you chain filters?
-     You can chain filters one after the other to perform multiple manipulations on the expression. The generic structure of filter chain would be as below,
+
+52.  ### filter를 연속해 쓰는 방법은?
+
+     일반적으로 아래와 같이, 표현식에서 필터 뒤에 또 다른 필터를 사용할 수 있습니다.
+
      ```javascript
-     {{ message | filterA | filterB | filterB ... }}
+     {{ message | filterA | filterB | filterC ... }}
      ```
-     In the above chain stack, you can observe that message expression applied with three filters, each separated by a pipe(|) symbol. The first filter(filterA) takes the expression as a single argument and the result of the expression becomes an argument for second filter(filterB) and the chain continue for remaining filters.
-     For example, if you want to transform date expression with a full date format and uppercase then you can apply dateFormat and uppercase filters as below,
+
+     각각의 필터는 파이프(`|`)로 구분되며, `message`는 `filterA`의 결과가  `filterB`의 영향을 받고, 그 결과가 다시 `filterC`의 영향을 받습니다.
+
+     예를 들어, 날짜 형식의 데이터를 변경한 뒤 대문자로 변경하고 싶다면 아래와 같이 사용할 수 있습니다.
+
      ```javascript
      {{ birthday | dateFormat | uppercase }}
      ```
 
-53.  ### Is it possible to pass parameters for filters?
-     Yes, you can pass arguments for a filter similar to a javascript function. The generic structure of filter parameters would be as follows,
+53.  ### filter에 파라미터를 전달할 수 있을까?
+
+     필터는 기본적으로 자바스크립트 함수이기 때문에, 아래와 같이 두 개 이상의 인수를 받을 수 있습니다.
+
      ```javascript
      {{ message | filterA('arg1', arg2) }}
      ```
-     In this case, filterA takes message expression as first argument and the explicit parameters mentioned in the filter as second and third arguments.
-     For example, you can find the exponential strength of a particular value
+
+     여기서 `filterA`는 세 개의 인수를 받는 함수로 정의되었습니다. `message`의 값은 첫번째 인수로 전달될 것이며, 순수 문자열인 `'arg1'`은 두번째 인수로 전달될 것이며, 자바스크립트 표현식인 `arg2`는 표현식이 실행된 이후에 세번째 인수로 전달될 것입니다.
+
      ```javascript
      {{ 2 | exponentialStrength(10) }} // prints 2 power 10 = 1024
      ```
-54.  ### What are plugins and their various services?
 
-     Plugins provides global-level functionality to Vue application. The plugins provide various services,
-     1. Add some global methods or properties. For example, vue-custom-element
-     2. Add one or more global assets (directives, filters and transitions). For example, vue-touch
-     3. Add some component options by global mixin. For example, vue-router
-     4. Add some Vue instance methods by attaching them to Vue.prototype.
-     5. A library that provides an API of its own, while at the same time injecting some combination of the above. For example, vue-router
-55.  ### How to create a plugin?
-     The Plugin is created by exposing an `install` method which takes Vue constructor as a first argument along with options. The structure of VueJS plugin with possible functionality would be as follows,
+54.  ### 플러그인이란?
+
+     플러그인은 일반적으로 전역 수준 기능을 Vue 어플리케이션에 추가합니다.
+
+     1. 전역 메소드 또는 속성 추가(`<vue-custom-element>`)
+     2. 하나 이상의 글로벌 에셋 추가(지시자, 필터, 트랜지션)
+     3. 전역 믹스인으로 컴포넌트 옵션(vuex)
+     4. `Vue.prototype`를 이용해 Vue에 인스턴스 메소드를 추가
+     5. 위의 기능과 함께 자체 API를 제공하는 라이브러리(vue-router)
+
+55.  ### 플러그인을 만드는 방법은?
+
+     플러그인에서는 `install` 메소드를 정의해야 합니다. 이 메소드는 첫 번째 인자로 Vue 생성자와 외부에서 설정 가능한 옵션을 파라미터로 전달받습니다.
+
       ```javascript
       MyPlugin.install = function (Vue, options) {
         // 1. add global method or property
@@ -1567,8 +1584,11 @@ List of 300 VueJS Interview Questions
         }
       }
       ```
-56.  ### How to use a plugin?
-     You can use plugin by passing your plugin to Vue's **use** global method. You need to apply this method before start your app by calling new Vue().
+
+56.  ### 플러그인을 사용하는 방법은?
+
+     `Vue.use()` 전역 메소드를 호출하여 플러그인을 사용할 수 있습니다. 이 함수는 생성자 `new Vue()`로 Vue 인스턴스를 생성하기 전에 호출되어야 합니다.
+
      ```javascript
      // calls `MyPlugin.install(Vue, { someOption: true })`
      Vue.use(MyPlugin)
@@ -1577,8 +1597,13 @@ List of 300 VueJS Interview Questions
        //... options
      })
      ```
-57.  ### What are mixins?
-     Mixin gives us a way to distribute reusable functionalities in Vue components. These reusable functions are merged with existing functions. A mixin object can contain any component options. Let us take an example of mixin with `created` lifecycle which can be shared across components,
+
+57.  ### 믹스인이란?
+
+     Mixins는 Vue 컴포넌트에 재사용 가능한 기능을 배포하는 유연한 방법입니다. 믹스인에 존재하는 기능들은 호출된 컴포넌트의 기능들과 합쳐집니다.
+
+     mixin 객체는 모든 구성 요소 옵션을 포함할 수 있습니다. 다른 컴포넌트에서 재사용될 수 있는 `created` 라이프사이클 훅을 가진 믹스인을 작성해봅시다.
+
      ```javascript
      const myMixin = {
        created(){
@@ -1590,26 +1615,36 @@ List of 300 VueJS Interview Questions
        mixins: [myMixin]
      })
      ```
-     **Note:** Multiple mixins can be specified in the mixin array of the component.
-58.  ### What are global mixins?
-     Sometimes there is a need to extend the functionality of Vue or apply an option to all Vue components available in our application. In this case, mixins can be applied globally to affect all components in Vue. These mixins are called as global mixins. Let's take an example of global mixin,
+     **Note:** 여러 믹스인은 배열의 형태로 사용할 수 있습니다.
+
+58.  ### 전역 믹스인이란?
+
+     Vue 어플리케이션의 모든 컴포넌트에 동일한 옵션이나 기능을 확장해 사용할 필요가 있을 수 있습니다. 이 경우, 전역 믹스인을 활용해 Vue의 모든 컴포넌트에 영향을 줄 수 있습니다.
+
      ```javascript
      Vue.mixin({
-       created(){
-       console.log("Write global mixins")
-       }
+        created(){
+          console.log("Write global mixins")
+        }
      })
 
      new Vue({
        el: '#app'
      })
      ```
-     In the above global mixin, the mixin options spread across all components with the console running during the instance creation. These are useful during test, and debugging or third party libraries. At the same time, You need to use these global mixins sparsely and carefully, because it affects every single Vue instance created, including third party components.
-59.  ### How do you use mixins in CLI?
-     Using Vue CLI, mixins can be specified anywhere in the project folder but preferably within `/src/mixins` for ease of access. Once these mixins are created in a `.js` file and exposed with the `export` keyword, they can be imported in any component with the `import` keyword and their file paths.
-60.  ### What are the merging strategies in mixins?
-     When a mixin and the component itself contain overlapping options, the options will be merged based on some strategies.
-     1. The data objects undergo a recursive merge, with the component's data taking priority over mixins in cases of overlapping or conflicts.
+
+     위의 전역 믹스인은 해당 Vue 인스턴스에서 각 컴포넌트가 생성될 때마다 `created` 훅에서 로그를 발생시킵니다. 즉 모든 단일 Vue 인스턴스에 영향을 주기 때문에 적게 이용하고 신중하게 사용해야 합니다.
+
+59.  ### CLI 환경에서 믹스인을 사용하는 법은?
+
+     Vue CLI를 사용한다면, 믹스인은 일반적으로 `/src/mixins` 디렉토리에서 `.js`파일로 작성합니다. `export` 키워드로 외부에 내보낸다는 것을 선언해야 하며 사용할 Vue 컴포넌트에서 `import` 키워드로 불러올 수 있습니다.
+
+60.  ### 믹스인의 옵션이 컴포넌트의 옵션과 충돌한다면?
+
+     믹스인과 컴포넌트에서 충돌하는 옵션이 있다면, 옵션은 몇 가지 방법을 통해 충돌하는 옵션을 병합합니다.
+
+     1. `data`는 재귀적으로 병합하되, 충돌되는 속성은 컴포넌트의 데이터가 우선적으로 병합됩니다.
+
      ```javascript
      var mixin = {
        data: function () {
@@ -1630,7 +1665,9 @@ List of 300 VueJS Interview Questions
        }
      })
      ```
-     2. The Hook functions which are overlapping merged into an array so that all of them will be called. Mixin hooks will be called before the component's own hooks.
+
+     2. 라이프사이클 훅 함수는 믹스인 함수가 먼저 실행되고, 그 다음에 컴포넌트의 함수가 실행됩니다.
+
      ```javascript
      const myMixin = {
        created(){
@@ -1649,7 +1686,9 @@ List of 300 VueJS Interview Questions
      //Called from Mixin
      //Called from Component
      ```
-     3. The options that expect object values(such as methods, components and directives) will be merged into the same object. In this case, the component's options will take priority when there are conflicting keys in these objects.
+
+     3. `methods`, `components`, `directives` 역시 재귀적으로 병합하되, 이러한 객체에 충돌하는 키가 있을 경우 컴포넌트의 옵션이 우선순위를 갖습니다.
+
      ```javascript
      var mixin = {
        methods: {
@@ -1678,6 +1717,7 @@ List of 300 VueJS Interview Questions
      vm.lastName() // "Murray"
      vm.contact() // "+91 893839389"
      ```
+
 61.  ### What are custom options merging strategies?
      Vue uses the default strategy which overwrites the existing value while custom options are merged. But if you want a custom option merged using custom login then you need to attach a function to `Vue.config.optionMergeStrategies`
      For the example, the structure of `myOptions` custom option would be as below,
