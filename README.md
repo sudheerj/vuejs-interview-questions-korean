@@ -117,12 +117,13 @@ List of 300 VueJS Interview Questions
 |98 | [Vue를 사용하고 있는 기업들은?](#Vue를-사용하고-있는-기업들은)|
 |99 | [renderError 메소드의 목적은?](#renderError-메소드의-목적은)|
 |100| [하위 컴포넌트에서 상위 컴포넌트로 직접 접근하는 방법은?](#하위-컴포넌트에서-상위-컴포넌트로-직접-접근하는-방법은)|
+|101| [vuex란?](#vuex란)|
+|102| [상태 관리 패턴의 주요 구성 요소는 무엇입니까?](#상태-관리-패턴의-주요-구성-요소는-무엇입니까)|
+|103| [Vuex에서 단방향 데이터 흐름 모델을 어떻게 표현합니까?](#Vuex에서-단방향-데이터-흐름-모델을-어떻게-표현합니까)|
+|104| [vuejs loader는 무엇입니까?](#vuejs-loader는-무엇입니까)|
+|105| [웹팩에서 vue loader를 설정하는 방법은?](#웹팩에서-vue-loader를-설정하는-방법은)|
 
-<!-- |101| [What is vuex?](#what-is-vuex)|
-|102| [What are the major components of State Management Pattern?](#what-are-the-major-components-of-state-management-pattern)|
-|103| [How do you represent one way data flow in vuex?](#how-do-you-represent-one-way-data-flow-in-vuex)|
-|104| [What is a vuejs loader?](#what-is-a-vuejs-loader)|
-|105| [How do you configure vue loader in webpack?](#how-do-you-configure-vue-loader-in-webpack)|
+<!-- 
 |106| [What are asset url transform rules?](#what-are-asset-url-transform-rules)|
 |107| [How do you work with preprocessors using vue loader?](#how-do-you-work-with-preprocessors-using-vue-loader)|
 |108| [What is scoped CSS?](#What-is-scoped-CSS)|
@@ -2391,14 +2392,14 @@ List of 300 VueJS Interview Questions
 
      상위 컴포넌트에서는 하위 컴포넌트들을 `$children` 배열로 참조하며, 하위 컴포넌트에서 상위 컴포넌트를 `$parent` 속성으로 참조합니다.
 
-101. ### What is vuex?
-     Vuex is a state management pattern + library (Flux-inspired Application Architecture) for Vue.js applications. It serves as a centralized store for all the components in an application, with rules ensuring that the state can only be mutated in a predictable fashion.
-102. ### What are the major components of State Management Pattern?
-     The state management has state, view and actions as major components. The pattern followed by these components in a application is known as State Management Pattern. Below are the components in a detail,
-     1. The **state**, which is the source of truth that drives our app
-     2. The **view**, which is just a declarative mapping of the state
-     3. The **actions**, which are the possible ways the state could change in reaction to user inputs from the view.
-     Let us take a counter example which follows state management pattern with the above 3 components,
+101. ### vuex란?
+     Vuex는 Vue.js 애플리케이션을 위한 상태 관리 패턴 + 라이브러리(Flux에서 영감을 받은 애플리케이션 아키텍처)입니다. 예측 가능한 방식으로만 상태가 변경될 수 있도록 보장하는 규칙을 가지고 있는 애플리케이션의 모든 컴포넌트를 위한 중앙 집중식 저장소입니다.
+     
+102. ### 상태 관리 패턴의 주요 구성 요소는 무엇입니까?
+     상태 관리의 주요 구성요소는 상태 및 뷰, 액션입니다. 이러한 구성요소에 따른 패턴을 애플리케이션에서 상태 관리 패턴이라고 합니다. 아래에  자세한 구성 요소가 자세히 설명되어 있습니다.
+     1. **상태**는 앱을 구동시키는 원천입니다.
+     2. **뷰**는 단지 상태의 선언적 매핑입니다.
+     3. **액션**은 뷰에서 사용자 입력에 반응하여 상태가 변할 수 있도록 하는 방법입니다. 위의 3가지 구성요소와 함께 상태 관리 패턴을 따르는 카운터 예를 들어보겠습니다.
      ```javascript
      new Vue({
        // state
@@ -2419,11 +2420,12 @@ List of 300 VueJS Interview Questions
        }
      })
      ```
-103. ### How do you represent one way data flow in vuex?
-     Vue.js has a one-way data flow model, through the props property. The same concept can be represented in vuex has below,
+103. ### Vuex에서 단방향 데이터 흐름 모델을 어떻게 표현합니까?
+     Vue.js는 props 속성을 통해 단방향 데이터 흐름 모델을 표현합니다. vuex에서 이와 동일한 개념은 아래와 같이 나타낼 수 있습니다.
+     
      <img src="https://github.com/sudheerj/vuejs-interview-questions/blob/master/images/flow.png" width="400" height="500">
-104. ### What is a vuejs loader?
-     Vue loader is a loader for webpack that allows you to author Vue components in a format called Single-File Components (SFCs). For example, it authors HelloWorld component in a SFC,
+104. ### vuejs loader는 무엇입니까?
+     Vue loader는 Vue 컴포넌트를 싱글 파일 컴포넌트(SFC, SFCs)라고 하는 형식으로 작성할 수 있는 웹팩용 로더입니다. 예를 들어 HelloWorld 라는 SFC를 작성하면 아래와 같습니다.
      ```javascript
      <template>
        <div class="greeting">{{ message }}</div>
@@ -2445,9 +2447,9 @@ List of 300 VueJS Interview Questions
      }
      </style>
      ```
-105. ### How do you configure vue loader in webpack?
-     Vue Loader's configuration is a bit different from other loaders by adding Vue Loader's plugin to your webpack config. The vue loader plugin is required for cloning any other rules(js and css rules) defined and applying them to the corresponding language blocks(`<script>` and `<style>`) in .vue files.
-     For example, the simple demonistration of webpack configuration for vue loader would be as below,
+
+105. ### 웹팩에서 vue loader를 설정하는 방법은?
+     Vue Loader의 설정은 웹팩 설정에 Vue Loader의 플러그인을 추가하기 때문에 다른 로더와는 약간 다릅니다. Vue 로더 플러그인은 정의된 다른 규칙(js 및 css 규칙)을 복제하여 `.vue` 파일에서 해당 언어 블록(`script` 및 `style`)에 적용하기 위해 필요합니다. Vue 로더에 대한 웹 팩 구성의 간단한 예는 다음과 같습니다.
      ```javascript
      // webpack.config.js
      const VueLoaderPlugin = require('vue-loader/lib/plugin')
