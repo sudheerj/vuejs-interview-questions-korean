@@ -77,49 +77,48 @@ List of 300 VueJS Interview Questions
 |58 | [전역 믹스인이란?](#전역-믹스인이란)|
 |59 | [CLI 환경에서 믹스인을 사용하는 법은](#CLI-환경에서-믹스인을-사용하는-법은)|
 |60 | [믹스인의 옵션이 컴포넌트의 옵션과 충돌한다면?](#믹스인의-옵션이-컴포넌트의-옵션과-충돌한다면)|
+|61 | [믹스인의 병합 방법을 사용자 정의하는 방법은?](#믹스인의-병합-방법을-사용자-정의하는-방법은)|
+|62 | [사용자 정의 지시자(Custom directive)란?](#사용자-정의-지시자(Custom-directive)란)|
+|63 | [지시자를 지역 등록하는 방법은?](#지시자를-지역-등록하는-방법은)|
+|64 | [지시자에 의해 제공되는 라이프 사이클 훅은?](#지시자에-의해-제공되는-라이프-사이클-훅은)|
+|65 | [디렉티브 훅의 전달인자는?](#디렉티브-훅의-전달인자는)|
+|66 | [지시자에 여러 값들을 전달하는 방법은?](#지시자에-여러-값들을-전달하는-방법은)|
+|67 | [지시자 훅에서 함수 약어는?](#지시자-훅에서-함수-약어는)|
+|68 | [render 함수를 사용하는 이유는?](#render-함수를-사용하는-이유는)|
+|69 | [render 함수란?](#render-함수란?)|
+|70 | [createElement 함수란](#createElement-함수란)|
+|71 | [가상 노드를 여러 번 사용할 수 있는 방법은?](#가상-노드를-여러-번-사용할-수-있는-방법은?)|
+|72 | [render 함수와 템플릿을 비교한다면?](#render-함수와-템플릿을-비교한다면)|
+|73 | [함수형 컴포넌트(Functional component)란?](#함수형-컴포넌트(Functional-component)란)|
+|74 | [Vue와 React의 공통점은?](#Vue와-React의-공통점은?)|
+|75 | [Vue와 React의 차이점은?](#Vue와-React의-차이점은?)|
+|76 | [Vue가 React에 비해 나은 점은](#Vue가-React에-비해-나은-점은)|
+|77 | [React가 Vue에 비해 나은 점은](#React가-Vue에-비해-나은-점은)|
+|78 | [Vue와 AngularJS의 차이점은](#Vue와-AngularJS의-차이점은)|
+|79 | [동적 컴포넌트란?](#동적-컴포넌트란)|
+|80 | [keep-alive 태그란?](#keep-alive-태그란?)|
+|81 | [비동기 컴포넌트(Async component)란?](#비동기-컴포넌트(Async-component)란)|
+|82 | [비동기 컴포넌트 팩토리 패턴이란?](#비동기-컴포넌트-팩토리-패턴이란)|
+|83 | [인라인 템플릿(inline templates)이란?](#인라인-템플릿(inline-templates)이란)|
+|84 | [X-Templates이란?](#X-Templates이란)|
+|85 | [재귀 컴포넌트(recursive components)란?](#재귀-컴포넌트(recursive-components)란)|
+|86 | [컴포넌트 사이의 순환 참조 해결 방법은?](#컴포넌트-사이의-순환-참조-해결-방법은)|
+|87 | [CSP 환경에서 Vue 어플리케이션을 빌드하는 법은](#CSP-환경에서-Vue-어플리케이션을-빌드하는-법은)|
+|88 | [전체 빌드와 런타임 빌드의 차이점은?](#전체-빌드와-런타임-빌드의-차이점은)|
+|89 | [Vue의 빌드 종류는?](#Vue의-빌드-종류는)|
+|90 | [웹팩에서 Vue 설정을 하는 방법은?](#웹팩에서-Vue-설정을-하는-방법은)|
+|91 | [Vue 컴파일러의 목적은?](#Vue-컴파일러의-목적은)|
+|92 | [DevTool이란](#DevTool이란)|
+|93 | [VueJS의 브라우저 지원은?](#VueJS의-브라우저-지원은)|
+|94 | [CDN으로 Vue를 사용하는 방법은?](#CDN으로-Vue를-사용하는-방법은)|
+|95 | [강제로 업데이트를 발생시키는 방법은?](#강제로-업데이트를-발생시키는-방법은)|
+|96 | [템플릿에서 once 지시자를 쓰는 이유는?](#템플릿에서-once-지시자를-쓰는-이유는)|
+|97 | [루트 Vue 인스턴스에 접근하는 방법은?](#루트-Vue-인스턴스에-접근하는-방법은)|
+|98 | [Vue를 사용하고 있는 기업들은?](#Vue를-사용하고-있는-기업들은)|
+|99 | [renderError 메소드의 목적은?](#renderError-메소드의-목적은)|
+|100| [하위 컴포넌트에서 상위 컴포넌트로 직접 접근하는 방법은?](#하위-컴포넌트에서-상위-컴포넌트로-직접-접근하는-방법은)|
 
-
-<!-- |61 | [What are custom options merging strategies?](#what-are-custom-options-merging-strategies)|
-|62 | [What are custom directives?](#what-are-custom-directives)|
-|63 | [How do you register directives locally?](#how-do-you-register-directives-locally)|
-|64 | [What are the hook functions provided by directives?](#what-are-the-hook-functions-provided-by-directives)|
-|65 | [What are the directive Hook Arguments?](#what-are-the-directive-hook-arguments)|
-|66 | [How do you pass multiple values to a directive?](#how-do-you-pass-multiple-values-to-a-directive)|
-|67 | [What is function shorthand in directive hooks?](#what-is-function-shorthand-in-directive-hooks)|
-|68 | [What is the benefit of render functions over templates?](#what-is-the-benefit-of-render-functions-over-templates)|
-|69 | [What is a render function?](#What-is-a-render-function)|
-|70 | [Explain the structure of createElement with arguments](#explain-the-structure-of-createelement-with-arguments)|
-|71 | [How can you write duplicate virtual nodes in a component?](#how-can-you-write-duplicate-virtual-nodes-in-a-component)|
-|72 | [List down the template equivalents in render functions?](#list-down-the-template-equivalents-in-render-functions)|
-|73 | [What are functional components?](#what-are-functional-components)|
-|74 | [What are the similarities between VueJS and ReactJS?](#what-are-the-similarities-between-vuejs-and-reactjs)|
-|75 | [What is the difference between VueJS and ReactJS?](#what-is-the-difference-between-vuejs-and-reactjs)|
-|76 | [What are the advantages of VueJS over ReactJS?](#what-are-the-advantages-of-vuejs-over-reactjs)|
-|77 | [What are the advantages of ReactJS over VueJS?](#what-are-the-advantages-of-reactjs-over-vuejs)|
-|78 | [What are the differences between VueJS and AngularJS?](#What-are-the-differences-between-vuejs-and-angularjs)|
-|79 | [What are dynamic components?](#what-are-dynamic-components)|
-|80 | [What is the purpose of keep alive tag?](#what-is-the-purpose-of-keep-alive-tag)|
-|81 | [What are async components?](#what-are-async-components)|
-|82 | [What is the structure of async component factory?](#what-is-the-structure-of-async-component-factory)|
-|83 | [What are inline templates?](#what-are-inline-templates)|
-|84 | [What are X Templates?](#what-are-x-templates)|
-|85 | [What are recursive components?](#what-are-recursive-components)|
-|86 | [How do you resolve circular dependencies between components?](#how-do-you-resolve-circular-dependencies-between-components)|
-|87 | [How do you make sure vue application is CSP complaint?](#how-do-you-make-sure-vue-application-is-csp-complaint)|
-|88 | [What is the difference between full and runtime only builds?](#what-is-the-difference-between-full-and-runtime-only-builds)|
-|89 | [List down different builds of vuejs?](#list-down-different-builds-of-vuejs)|
-|90 | [How do you configure vuejs in webpack?](#how-do-you-configure-vuejs-in-webpack)|
-|91 | [What is the purpose of vuejs compiler?](#what-is-the-purpose-of-vuejs-compiler)|
-|92 | [What is Dev Tools and its purpose?](#what-is-dev-tools-and-its-purpose)|
-|93 | [What is the browser support of VueJS?](#what-is-the-browser-support-of-vuejs)|
-|94 | [How do you use various CDNs?](#how-do-you-use-various-cdns?)|
-|95 | [How do you force update?](#how-do-you-force-update)|
-|96 | [What is the purpose of vuejs once directive?](#what-is-the-purpose-of-vuejs-once-directive)|
-|97 | [How do you access the root instance?](#how-do-you-access-the-root-instance)|
-|98 | [List out top 10 organizations using Vuejs?](#list-out-top-10-organizations-using-vuejs)|
-|99 | [What is the purpose of renderError?](#what-is-the-purpose-of-rendererror)|
-|100| [How do you access parent instance?](#how-do-you-access-parent-instance)|
-|101| [What is vuex?](#what-is-vuex)|
+<!-- |101| [What is vuex?](#what-is-vuex)|
 |102| [What are the major components of State Management Pattern?](#what-are-the-major-components-of-state-management-pattern)|
 |103| [How do you represent one way data flow in vuex?](#how-do-you-represent-one-way-data-flow-in-vuex)|
 |104| [What is a vuejs loader?](#what-is-a-vuejs-loader)|
@@ -1718,15 +1717,18 @@ List of 300 VueJS Interview Questions
      vm.contact() // "+91 893839389"
      ```
 
-61.  ### What are custom options merging strategies?
-     Vue uses the default strategy which overwrites the existing value while custom options are merged. But if you want a custom option merged using custom login then you need to attach a function to `Vue.config.optionMergeStrategies`
-     For the example, the structure of `myOptions` custom option would be as below,
+61.  ### 믹스인의 병합 방법을 사용자 정의하는 방법은?
+
+     Vue에서는 사용자 지정 옵션을 병합할 때 기본적으로 기존 값을 덮어는 방법을 이용합니다. 만약 사용자 정의의 로직을 사용해 커스텀 옵션을 병합하려면,`Vue.config.optionMergeStrategies`에 함수를 추가할 필요가 있습니다.
+
      ```javascript
      Vue.config.optionMergeStrategies.myOption = function (toVal, fromVal) {
        // return mergedVal
      }
      ```
-     Let's take below Vuex 1.0 merging strategy as an advanced example,
+
+     더 고급 예제는 Vuex의 1.x 병합 전략에서 확인하실 수 있습니다.
+
      ```javascript
      const merge = Vue.config.optionMergeStrategies.computed
      Vue.config.optionMergeStrategies.vuex = function (toVal, fromVal) {
@@ -1739,8 +1741,13 @@ List of 300 VueJS Interview Questions
        }
      }
      ```
-62.  ### What are custom directives?
-     Custom Directives are tiny commands that you can attach to DOM elements. They are prefixed with v- to let the library know you're using a special bit of markup and to keep syntax consistent. They are typically useful if you need low-level access to an HTML element to control a bit of behavior. Let's create a custom focus directive to provide focus on specific form element during page load time,
+
+62.  ### 사용자 정의 지시자(Custom directive)란?
+
+     지시자는 DOM 엘리먼트에 부착할 수 있는 명령어입니다. 위에서 본 것처럼 `v-`로 시작하는 문법을 사용해 Vue가 이 명령어를 인식할 수 있도록 해야 합니다. 일반적으로 하위 수준의 DOM을 제어하기 위해 직접 접근해야 할 필요가 있을 때 유용하게 사용됩니다.
+
+     페이지가 로드될 때 `input`에 자동으로 포커싱되는 사용자 정의 지시자를 전역으로 만들어봅시다.
+
      ```javascript
      // Register a global custom directive called `v-focus`
      Vue.directive('focus', {
@@ -1751,12 +1758,17 @@ List of 300 VueJS Interview Questions
        }
      })
      ```
-     Now you can use v-focus directive on any element as below,
+
+     이제 이 지시자는 `v-focus`라는 문법과 함께 어떤 컴포넌트에서든 사용될 수 있습니다.
+
      ```html
      <input v-focus>
      ```
-63.  ### How do you register directives locally?
-     You can also register directives locally(apart from globally) using directives option in component as below,
+
+63.  ### 지시자를 지역 등록하는 방법은?
+
+     지시자를 지역 등록하기 위해서는 `directives` 옵션을 이용합니다.
+
      ```javascript
      directives: {
        focus: {
@@ -1767,41 +1779,52 @@ List of 300 VueJS Interview Questions
        }
      }
      ```
-     Now you can use v-focus directive on any element as below,
+
+     이 지시자는 선언된 해당 컴포넌트에서만 사용될 수 있습니다.
+
      ```html
      <input v-focus>
      ```
-64.  ### What are the hook functions provided by directives?
-     A directive object can provide several hook functions,
-     1. bind: This occurs once the directive is attached to the element.
-     2. inserted: This hook occurs once the element is inserted into the parent DOM.
-     3. update: This hook is called when the element updates, but children haven't been updated yet.
-     4. componentUpdated: This hook is called once the component and the children have been updated.
-     5. unbind: This hook is called only once when the directive is removed.
 
-     **Note:** There are several arguments that can be passed to the above hooks.
-65.  ### What are the directive Hook Arguments?
-     All the hooks have `el`, `binding`, and `vnode` as arguments. Along with that, **update** and **componentUpdated** hooks expose `oldVnode`, to differentiate between the older value passed and the newer value. Below are the arguments passed to the hooks,
-     1. `el`: The element the directive is bound to and it can be used to directly manipulate the DOM.
-     2. `binding`: An object containing the following properties.
-        1. `name`: The name of the directive, without the `v-` prefix.
-        2. `value`: The value passed to the directive. For example in `v-my-directive="1 + 1"`, the value would be 2.
-        3. `oldValue`: The previous value, only available in update and componentUpdated. It is available whether or not the value has changed.
-        4. `expression`: The expression of the binding as a string. For example in `v-my-directive="1 + 1"`, the expression would be "1 + 1".
-        5. `arg`: The argument passed to the directive, if any. For example in v-my-directive:foo, the arg would be "foo".
-        6. `modifiers`: An object containing modifiers, if any. For example in v-my-directive.foo.bar, the modifiers object would be `{ foo: true, bar: true }`.
-     3. `vnode`: The virtual node produced by Vue's compiler.
-     4. `oldVnode`: The previous virtual node, only available in the update and componentUpdated hooks.
+64.  ### 지시자에 의해 제공되는 라이프 사이클 훅은?
 
-     The arguments can be represented diagrammatically across the hooks as below,
-     ![custom-directives](images/custom-directives.svg)
-66.  ### How do you pass multiple values to a directive?
-     A directive can take any valid javascript expression. So if you want to pass multiple values then you can pass in a JavaScript object literal.
-     Let's pass object literal to an avatar directive as below
+     지시자 객체가 등록될 때 몇 개의 라이프 사이클 훅을 제공합니다.
+
+     1. `bind`: 지시자가 처음 엘리먼트에 부착될 때 한 번 호출됩니다.
+     2. `inserted`: 지시자가 부착된 엘리먼트가 DOM에 삽입되었을 때 호출됩니다.
+     3. `update`: 해당 엘리먼트가 업데이트 될 때 호출됩니다. 하지만 아직 하위 엘리먼트는 업데이트 되지 않은 상태입니다.
+     4. `componentUpdated`: 하위 컴포넌트까지 업데이트 된 상태일 때 호출됩니다.
+     5. `unbind`: 지시자가 엘리먼트에서부터 삭제될 때 호출됩니다.
+
+     **Note:** 위의 훅에서는 특정한 전달인자(Argument)를 받는다.
+
+65.  ### 디렉티브 훅의 전달인자는?
+
+     모든 훅에서는 전달인자로 `el`, `binding`와 `vnode`를 갖고 있습니다. 그와 함께, **update**와 **componentUpdated**훅에서는 새 값과 이전 값을 비교하기 위해 `oldVnode`를 추가적으로 갖고 있습니다.
+
+     1. `el`: 해당 지시자가 부착된 엘리먼트로, 이를 이용해 DOM을 조작할 수 있습니다.
+     2. `binding`: 아래의 속성을 가진 객체입니다.
+        1. `name`: 지시자의 이름으로, `v-` 접두사가 제거된 이름입니다.
+        2. `value`: 지시자에서 전달 받은 값입니다. 만약 `v-my-directive="1 + 1"`라면 `2`가 됩니다.
+        3. `oldValue`: 이전 값으로, `update`와 `componentUpdated`훅에서만 사용할 수 있습니다. 이를 통해 값이 변경되었는지 아닌지를 확인할 수 있습니다.
+        4. `expression`: 문자열로 바인딩된 표현식입니다. 만약 `v-my-directive="1 + 1"`라면 `"1 + 1"`이 됩니다..
+        5. `arg`: 지시자의 전달인자입니다. 만약 `v-my-directive:foo`라면 `"foo"`가 됩니다..
+        6. `modifiers`: 수식어가 포함된 객체입니다. 만약 `v-my-directive.foo.bar`라면 `{ foo: true, bar: true }`가 됩니다.
+     3. `vnode`: Vue의 컴파일러에 의해 생성된 가상 노드입니다.
+     4. `oldVnode`: 이 전의 가상 노드로, `update`와 `componentUpdated`훅에서만 사용할 수 있습니다.
+
+     ![custom-directives](https://github.com/sudheerj/vuejs-interview-questions/blob/master/images/custom-directives.svg)
+
+66.  ### 지시자에 여러 값들을 전달하는 방법은?
+
+     지시자는 유효한 자바스크립트 표현식은 모두 수용할 수 있습니다. 따라서 지사자에 여러 값들을 전달하려면, 자바스크립트 객체 리터럴을 이용해 전달할 수 있습니다.
+
      ```html
      <div v-avatar="{ width: 500, height: 400, url: 'path/logo', text: 'Iron Man' }"></div>
      ```
-     Now let us configure avatar directive globally,
+
+     이제 `v-avatar` 지시자를 전역으로 설정해봅시다.
+
      ```javascript
      Vue.directive('avatar', function (el, binding) {
        console.log(binding.value.width) // 500
@@ -1810,26 +1833,37 @@ List of 300 VueJS Interview Questions
        console.log(binding.value.text)  // "Iron Man"
      })
      ```
-67.  ### What is function shorthand in directive hooks?
-     In few cases, you may want the same behavior on `bind` and `update` hooks irrespective of other hooks. In this situation you can use function shorthand,
+
+67.  ### 지시자 훅에서 함수 약어는?
+
+     드문 경우지만, 다른 훅과는 상관없이 `bind`나 `update` 훅에서 같은 동작을 하기 원할 수 있습니다. 이 경우에는 함수 약어를 사용할 수 있습니다.
+
      ```javascript
      Vue.directive('theme-switcher', function (el, binding) {
        el.style.backgroundColor = binding.value
      })
      ```
-68.  ### What is the benefit of render functions over templates?
-     In VueJS, the templates are very powerful and recommended to build HTML as part of your application. However, some of the special cases like dynamic component creation based on input or slot value can be achieved through render functions. Also, these functions gives the full programmatic power of javascript eco system.
-69.  ### What is a render function?
-     Render function is a normal function which receives a `createElement` method as it's first argument used to create virtual nodes. Internally Vue.js' templates actually compile down to render functions at build time. Hence templates are just syntactic sugar of render functions. Let's take an example of simple Div markup and corresponding render function,
-     The HTML markup can be written in template tag as below,
-     ```javascript
+
+68.  ### render 함수를 사용하는 이유는?
+
+     일반적인 경우 Vue의 템플릿을 이용해 HTML을 작성하는 것을 권장합니다. 하지만 `input`이나 `slot`의 값을 이용해 동적인 컴포넌트를 생성하는 것처럼, 일부 특별한 경우에는 JavaScript가 필요한 경우가 있습니다. 이때 `render` 함수를 사용하며, `render`함수는 JavaScript로 작성하기 때문에 프로그래밍 환경을 온전히 이용할 수 있다는 장점이 있습니다.
+
+69.  ### render 함수란?
+
+     `render` 함수는 `createElement`라는 함수를 첫 번째 인자로 받아 가상 노드를 생성하는 함수입니다. 내부적으로 Vue의 템플릿은 빌드 타임에서 `render` 함수를 이용해 컴파일하고 있습니다. 그러므로 템플릿은 `render` 함수를 문법적으로 보기 쉽게 만들어 놓은 것에 가깝습니다.
+
+     `<div>` 태그를 각각 템플릿과 `render` 함수를 이용해 작성해봅시다. 템플릿은 아래와 같이 작성할 수 있습니다.
+
+     ```html
      <template>
-           <div :class="{'is-rounded': isRounded}">
-            <p>Welcome to Vue render functions</p>
-           </div>
+      <div :class="{'is-rounded': isRounded}">
+        <p>Welcome to Vue render functions</p>
+      </div>
      </template>
      ```
-     and the compiled down or explicit render function would appear as below,
+
+     위의 템플릿을 `render` 함수로 작성하면 아래와 같습니다.
+
      ```javascript
      render: function (createElement) {
         return createElement('div', {
@@ -1841,9 +1875,13 @@ List of 300 VueJS Interview Questions
         ]);
        },
      ```
-     **Note:** The react components are built with render functions in JSX.
-70.  ### Explain the structure of createElement with arguments?
-     The createElement accepts few arguments to use all the template features. Let us see the basic structure of createElement with possible arguments,
+
+     <!-- **Note:** The react components are built with render functions in JSX. -->
+
+70.  ### createElement 함수란?
+
+     `createElement` 함수는 몇 가지의 약속된 전달인자를 받는데, 이를 이용해 템플릿에서 사용되는 기능을 JavaScript 코드로 작성할 수 있습니다.
+
      ```javascript
      // @returns {VNode}
      createElement(
@@ -1899,10 +1937,15 @@ List of 300 VueJS Interview Questions
        ]
      )
      ```
-     see details of the date object in official [doc](https://vuejs.org/v2/guide/render-function.html#The-Data-Object-In-Depth).
-71.  ### How can you write duplicate virtual nodes in a component?
-     All virtual nodes(VNodes) in the component tree must be unique.i.e, You can't write duplicated nodes in a straightforward way. If you want to duplicate the same element/component many times then you should use factory function.
-     The below render function is invalid where you are trying to duplicate h1 element 3 times,
+
+     자세한 내용은 [공식 문서](https://vuejs.org/v2/guide/render-function.html#The-Data-Object-In-Depth)에서 확인할 수 있습니다.
+
+71.  ### 가상 노드를 여러 번 사용할 수 있는 방법은?
+
+     컴포넌트 트리의 모든 가상 노드(VNodes)는 고유해야 합니다. 즉, 직접 가상 노드를 여러 번 사용할 수는 없습니다. 만약 같은 엘리먼트나 컴포넌트를 여러 번 반복해서 사용해야 한다면, 팩토리 패턴을 이용해 작성해야 합니다.
+
+     아래의 `render` 함수는 `h1` 엘리먼트를 세 번 반복하려 했기 때문에 유효하지 않습니다.
+
      ```javascript
      render: function (createElement) {
        var myHeadingVNode = createElement('h1', 'This is a Virtual Node')
@@ -1911,7 +1954,9 @@ List of 300 VueJS Interview Questions
        ])
      }
      ```
-     You can make duplicates with factory function,
+
+     팩토리 패턴을 이용하면 됩니다.
+
      ```javascript
      render: function (createElement) {
        return createElement('div',
@@ -1921,22 +1966,27 @@ List of 300 VueJS Interview Questions
        )
      }
      ```
-72.  ### List down the template equivalents in render functions?
-     VueJS provides proprietary alternatives and plain javascript usage for the template features. Let's list down them in a table for comparision,
 
-        | Templates | Render function |
+72.  ### render 함수와 템플릿을 비교한다면?
+
+     Vue에서 HTML을 작성하는데 사용되는 템플릿과 render 함수를 비교해봅시다.
+
+        | 템플릿(Templates) | 렌더 함수(Render function) |
         |---- | --------- |
-        | Conditional and looping directives: v-if and v-for  | Use JavaScript's if/else and map concepts|
-        | Two-way binding: v-model  | Apply own JS logic with value binding and event binding |
-        | Capture Event modifiers: .passive, .capture, .once and .capture.once or .once.capture| &, !, ~ and ~! |
-        | Event and key modifiers: .stop, .prevent, .self, keys(.enter, .13) and Modifiers Keys(.ctrl, .alt, .shift, .meta) | Use javascript solutions: event.stopPropagation(), event.preventDefault(), if (event.target !== event.currentTarget) return, if (event.keyCode !== 13) return and if (!event.ctrlKey) return |
-        | Slots: slot attributes | Render functions provide this.$slots and this.$scopedSlots instance properties|
-73.  ### What are functional components?
-     The functional components are just simple functions to create simple components just by passing a context. Every functional component follows two rules,
-      1. **Stateless:** It doesn't keep any state by itself
-      2. **Instanceless:** It has no instance, thus no this
+        | `v-if`와 `v-for`를 이용해 조건문/반복문 실행  | JavaScript의 `if else`문과 `map` 메소드로 조건문/반복문 실행|
+        | `v-model`로 양방향 바인딩 | 바인딩과 이벤트를 직접 설정 |
+        | Capture 이벤트 수식어는 `.passive`, `.capture`, `.once,` `.capture.once`, `.once.capture` | &, !, ~, ~! |
+        | 이벤트 수식어와 키 수식어: `.stop`, `.prevent`, `.self`, keys(`.enter`, `.13`) and Modifiers Keys(`.ctrl`, `.alt`, `.shift`, `.meta`) | JavaScript로 해결, `event.stopPropagation()`, `event.preventDefault()`, `if (event.target !== event.currentTarget) return`, `if (event.keyCode !== 13) return`, `if (!event.ctrlKey) return` |
+        | 슬롯 속성 활용 | 렌더 함수의 `this.$slots`와 `this.$scopedSlots` 활용 |
 
-     You need to define `functional: true` to make it functional. Let's take an example of functional components,
+73.  ### 함수형 컴포넌트(Functional component)란?
+
+     함수형 컴포넌트는 `context`를 통해 전달받은 정보로만 생성되는 간단한 컴포넌트입니다.
+      1. **상태 없음(Stateless):** 즉 `data`가 없습니다
+      2. **인스턴스 없음(Instanceless):** 즉 `this`가 없습니다
+
+     이 경우, `functional: true` 속성을 이용해 컴포넌트를 함수형으로 작성할 수 있습니다.
+
      ```javascript
      Vue.component('my-component', {
        functional: true,
@@ -1951,48 +2001,53 @@ List of 300 VueJS Interview Questions
        }
      })
      ```
-     **Note:** The functional components are quite popular in React community too.
-74.  ### What are the similarities between VueJS and ReactJS?
-     Even though ReactJS and VueJS are two different frameworks there are few similarities(apart from the common goal of utilized in interface design) between them.
-     1. Both frameworks are based on the **Virtual DOM** model
-     2. They provide features such Component-based structure and reactivity
-     3. They are intended for working with the root library, while all the additional tasks are transferred to other libraries(routing, state management etc).
-75.  ### What is the difference between VueJS and ReactJS?
-     Even though VueJS and ReactJS share few common features there are many difference between them. Let's list down them in a table format.
 
-      | Feature | VueJS | ReactJS |
-      |---- | --------- | ---- |
-      | Type |  JavaScript MVC Framework | JavaScript Library |
-      | Platform  | Primarily focused on web development | Both Web and Native |
-      | Learning Curve | A steep learning curve and requires deep knowledge | A steep learning curve and requires deep knowledge |
-      | Simplicity | Vue is simpler than React | React is more complex than Vue |
-      | Bootstrap Application | Vue-cli | CRA (Create React App) |
-76.  ### What are the advantages of VueJS over ReactJS?
-     Vue has the following advantages over React
-     1. Vue is smaller and faster
-     2. The convenient templates ease the process of developing
-     3. It has simpler javascript syntax without learning JSX
-77.  ### What are the advantages of ReactJS over VueJS?
-     React has the following advantages over Vue
-     1. ReactJS gives more flexibility in large apps developing
-     2. Easy to test
-     3. Well-suited for mobile apps creation
-     4. The eco system is quite big and well matured.
-78.  ### What are the differences between VueJS and AngularJS?
-     The  the syntax of Vue and Angular is common at some points because Angular is the basis for VueJS development in the beginning. But there are many differences between VueJS and Angular as listed,
+     <!-- **Note:** The functional components are quite popular in React community too. -->
 
-      | Feature | VueJS | AngularJS |
+74.  ### Vue와 React의 공통점은?
+
+     1. 두 프레임워크 모두 **가상 DOM** 모델을 사용합니다.
+     2. 반응적이고 조합 가능한 컴포넌트를 제공합니다.
+     3. 코어 라이브러리에만 집중하고 있고, 라우팅 및 상태 관리와 같은 라이브러리가 부가적으로 있습니다.
+
+75.  ### Vue와 React의 차이점은?
+
+      | 특징 | Vue | React |
       |---- | --------- | ---- |
-      | Complexity | Easy to learn, simple API and design | The framework is bit huge and need some learning curve on typescript etc |
-      | Binding of Data  | One-way binding | Two-way binding |
-      | Learning Curve | A steep learning curve and requires deep knowledge | A steep learning curve and requires deep knowledge |
-      | Founders | Created by Former Google Employee | Powered by Google |
-      | Initial Release | February 2014 | September 2016 |
-      | Model | Based on Virtual DOM(Document Object Model) | Based on MVC(Model-View-Controller) |
-      | Written in | JavaScript | TypeScript |
-79.  ### What are dynamic components?
-     The dynamic component is used to dynamically switch beetween multiple components using **<component>** element and pass data to v-bind:is attribute.
-     Let's create a dynamic component to switch between different pages of a website,
+      | 타입 |  JavaScript MVC 프레임워크 | JavaScript 라이브러리 |
+      | 플랫폼  | 웹을 우선적으로 | 웹과 네이티브 모두 |
+      | 복잡도 | 상대적으로 간단 | 상대적으로 복잡 |
+      | 빌드 어플리케이션 | Vue-cli | CRA (`Create-React-App`) |
+
+76.  ### Vue가 React에 비해 나은 점은?
+
+     1. 가볍고 빠릅니다.
+     2. 템플릿이 개발 과정을 쉽게 만들어줍니다.
+     3. JSX에 비해 가벼운 JavaScript 문법을 사용합니다.
+
+77.  ### React가 Vue에 비해 나은 점은?
+
+     1. 큰 규모의 어플리케이션을 유연하게 만들 수 있습니다.
+     2. 테스트가 쉽습니다.
+     3. 모바일 앱 제작에도 적합합니다.
+     4. 생태계가 크고 풍부합니다.
+
+78.  ### Vue와 AngularJS의 차이점은?
+
+     Vue의 개발 초기 단계에서 AngularJS를 참고했기 때문에, Vue와 AngularJS의 문법은 상당히 비슷합니다. 하지만 차이점 역시 존재합니다.
+
+      | 특징 | Vue | AngularJS |
+      |---- | --------- | ---- |
+      | 복잡도 | 배우기 쉬운 API와 디자인 | 프레임워크가 꽤 크고 타입스크립트 등의 지식 필요 |
+      | 데이터 바인딩 | 양방향 바인딩 | 단방향 바인딩 |
+      | 초기 릴리즈 | 2014 | 2016 |
+      | 모델 | 가상 DOM 기반 | MVC |
+      | 작성된 언어 | JavaScript | TypeScript |
+
+79.  ### 동적 컴포넌트란?
+
+     `<component>` 태그에서 `v-bind:is`로 바인딩된 컴포넌트를 동적으로 전환할 수 있습니다.
+
      ```javascript
      new Vue({
        el: '#app',
@@ -2012,7 +2067,9 @@ List of 300 VueJS Interview Questions
        }
      })
      ```
-     Now you can use the dynamic component which holds the current page,
+
+     이제 템플릿에서 `<component>` 태그에 바인딩 될 컴포넌트를 설정할 수 있습니다.
+
      ```html
      <div id="app">
         <component v-bind:is="currentPage">
@@ -2021,37 +2078,47 @@ List of 300 VueJS Interview Questions
         </component>
      </div>
      ```
-80.  ### What is the purpose of keep alive tag?
-     Keep-alive tag is an abstract component used to preserve component state or avoid re-rendering. When you wrapped <keep-alive> tag around a dynamic component,  it caches the inactive component instances without destroying them.
-     Let's see the example usage of it,
-     ```javascript
+
+80.  ### keep-alive 태그란?
+
+     `<keep-alive>`는 컴포넌트의 상태를 보존해서 재 렌더링을 막아주는 추상 컴포넌트입니다. 만약 동적인 컴포넌트를 `<keep-alive>` 태그로 감싼다면, 컴포넌트 인스턴스를 없애지 않고 메모리에 유지해 보존합니다.
+
+     ```html
      <!-- Inactive components will be cached! -->
      <keep-alive>
        <component v-bind:is="currentTabComponent"></component>
      </keep-alive>
      ```
-     When there are multiple conditional children, it requires that only one child is rendered at a time.
 
-     ```javascript
+     만약 조건문이 있다면, 해당 조건의 하위 컴포넌트만 렌더링됩니다.
+
+     ```html
      <!-- multiple conditional children -->
      <keep-alive>
        <comp-a v-if="a > 1"></comp-a>
        <comp-b v-else></comp-b>
      </keep-alive>
      ```
-     **Note:** Remember that keep-alive tag doesn't render a DOM element itself, and doesn't show up in the component parent chain.
-81.  ### What are async components?
-     In large applications, we may need to divide the app into smaller chunks and only load a component from the server when it's needed. To make this happen, Vue allows you to define your component as a factory function that asynchronously resolves your component definition. These components are known as async component.
-     Let's see an example of async component using webpack code-splitting feature,
+
+     **Note:** `<keep-alive>`는 DOM에 렌더링 되지 않습니다.
+
+81.  ### 비동기 컴포넌트(Async component)란?
+
+     대규모 응용 프로그램에서는 응용 프로그램을 더 작은 덩어리로 나누고 실제로 필요할 때만 서버에서 컴포넌트를 로드해야 할 수도 있습니다. Vue를 사용하면 컴포넌트 정의를 비동기식으로 해결하는 팩토리 함수로 컴포넌트를 정의 할 수 있습니다.
+
      ```javascript
      Vue.component('async-webpack-example', function (resolve, reject) {
        // Webpack automatically split your built code into bundles which are loaded over Ajax requests.
        require(['./my-async-component'], resolve)
      })
      ```
-     Vue will only trigger the factory function when the component needs to be rendered and will cache the result for future re-renders
-82.  ### What is the structure of async component factory?
-     Async component factory is useful to resolve the component asynchronously. The async component factory can  return an object of the below format.
+
+     Vue는 Vue는 컴포넌트가 렌더링되어야 할 때만 팩토리 함수를 실행시키고, 이후의 나중에 있을 리렌더링을 위해 결과를 캐시합니다.
+
+82.  ### 비동기 컴포넌트 팩토리 패턴이란?
+
+     비동기 컴포넌트 팩토리는 다음 형태의 객체를 반환할 수 있습니다.
+
      ```javascript
      const AsyncComponent = () => ({
        // The component to load (should be a Promise)
@@ -2067,9 +2134,12 @@ List of 300 VueJS Interview Questions
        timeout: 3000
      })
      ```
-83.  ### What are inline templates?
-     If you keep an `inline-template` on a child component then it will use its inner content as a template instead of treating as reusable independent content.
-     ```javascript
+
+83.  ### 인라인 템플릿(inline templates)이란?
+
+     하위 컴포넌트에 `inline-template` 속성이 존재할 때, 컴포넌트는 내부 컨텐츠를 템플릿으로 사용합니다. 따라서 보다 유연한 템플릿 작성이 가능합니다.
+
+     ```html
      <my-component inline-template>
         <div>
             <h1>Inline templates</p>
@@ -2077,50 +2147,59 @@ List of 300 VueJS Interview Questions
         </div>
      </my-component>
      ```
-     **Note:** Even though this inline-templates gives more flexibility for template authoring, it is recommended to define template using template property or `<template>` tag inside .vue component.
 
-84.  ### What are X Templates?
-     Apart from regular templates and inline templates, you can also define templates using a script element with the type `text/x-template` and then referencing the template by an id.
-     Let's create a x-template for simple use case as below,
+     **Note:** `inline-template`은 템플릿의 범위를 추론하기 어렵게 만듭니다. 가장 좋은 방법은 `template` 옵션을 사용하거나 `.vue` 파일의 `template` 엘리먼트를 사용하여 컴포넌트 내부에 템플릿을 정의하는 것입니다.
+
+84.  ### X-Templates이란?
+
+     템플릿를 정의하는 또 다른 방법은 `text/x-template` 유형의 스크립트 엘리먼트 내부의 ID로 템플릿을 참조하는 것입니다.
+
      ```javascript
      <script type="text/x-template" id="script-template">
        <p>Welcome to X-Template feature</p>
      </script>
      ```
-     Now you can define the template using reference id,
+
      ```javascript
      Vue.component('x-template-example', {
        template: '#script-template'
      })
      ```
 
-85.  ### What are recursive components?
-     The Components that can recursively invoke themselves in their own template are known as recursive components.
+85.  ### 재귀 컴포넌트(recursive components)란?
+
+     컴포넌트는 자신의 템플릿에서 자기 자신을 재귀적으로 호출할 수 있습니다.
+
      ```javascript
      Vue.component('recursive-component', {
        template: `<!--Invoking myself!-->
                   <recursive-component></recursive-component>`
      });
      ```
-     Recursive components are useful for displaying comments on a blog, nested menus, or basically anything where the parent and child are the same, eventhough with different content.
 
-     **Note:** Remember that recursive component can lead infinite loops with `max stack size exceeded` error, so make sure recursive invocation is conditional(for example, v-if directive).
+     재귀 컴포넌트는 블로그의 덧글이나 메뉴처럼 상위 컴포넌트와 하위 컴포넌트가 동등한 기능을 할 때 유용합니다.
 
-86.  ### How do you resolve circular dependencies between components?
-     In complex applications, vue components will actually be each other's descendent and ancestor in the render tree. Let's say componentA and componentB included in their respective templates which makes circular dependency,
-     ```javascript
+     **Note:** 위와 같은 컴포넌트는 최대 스택 크기 초과 오류가 발생하므로 재귀 호출이 조건부인지 확인해야 합니다.
+
+86.  ### 컴포넌트 사이의 순환 참조 해결 방법은?
+
+     복잡한 어플리케이션에서 Vue 컴포넌트가 서로가 서로를 호출하고 있는 상황이 발생할 수 있습니다. 컴포넌트 A와 컴포넌트 B가 서로 순환 참조를 하고 있는 상황을 살펴봅시다.
+
+     ```html
      //ComponentA
      <div>
        <component-b >
      </div>
      ```
-     ```javascript
+
+     ```html
      //ComponentB
      <div>
        <component-b >
      </div>
      ```
-     This can be solved by either registering(or wait until) the child component in `beforeCreate` hook or using webpack's asynchronous import while registering the component,
+
+     이런 경우는 `beforeCreate` 라이프 사이클 훅 시점까지 기다렸다가 해당 컴포넌트를 등록하거나, 웹팩의 비동기 `import`를 활용합니다.
 
      **Solution1:**
      ```javascript
@@ -2128,36 +2207,38 @@ List of 300 VueJS Interview Questions
       this.$options.components.componentB = require('./component-b.vue').default
      }
      ```
+
      **Solution2:**
      ```javascript
      components: {
       componentB: () => import('./component-b.vue')
      }
      ```
-87.  ### How do you make sure vue application is CSP complaint?
 
-     Some environments(Google Chrome Apps) prohibits the usage of `new Function()` for evaluating expressions and the full builds of vue applications depends on this feature to compile templates. Due to this reason, the full builds of VueJS application are not CSP complaint. In this case you can use **runtime-only** builds with Webpack + vue-loader or Browserify + vueify technology stack through which templates will be precompiled into render functions. This way you can make sure VueJS applications are 100% CSP complaint.
+87.  ### CSP 환경에서 Vue 어플리케이션을 빌드하는 법은?
 
-88.  ### What is the difference between full and runtime only builds?
+     Google 크롬 앱과 같은 일부 환경에서는 CSP(컨텐츠 보안 정책)를 적용하여 표현식을 평가하는 데 `new Function()` 을 사용할 수 없습니다. 전체 빌드는 이 기능을 사용하여 템플릿을 컴파일하므로 이러한 환경에서는 사용할 수 없습니다.
 
-     There are two types of builds provided by VueJS,
+     반면 런타임 전용 빌드는 CSP와 완벽하게 호환됩니다. Webpack + vue-loader 또는 Browserify + vueify로 런타임 전용 빌드를 사용하는 경우 템플릿은 CSP 환경에서 완벽하게 작동하는 `render` 함수로 미리 컴파일됩니다.
 
-     **1. Full:** These are the builds that contain both the compiler and the runtime.
+88.  ### 전체 빌드와 런타임 빌드의 차이점은?
 
-     **2. Runtime Only:** These builds doesn't include compiler but the code is responsible for creating Vue instances, rendering and patching virtual DOM. These are about 6KB lighter min+gzip.
+     **1. 전체 빌드(Full):** 컴파일러와 런타임 빌드를 동시에 포함합니다. 템플릿을 작성한 경우 필요합니다.
 
-89.  ### List down different builds of vuejs?
-     Below are the list of different builds of VueJS based on type of build,
+     **2. 런타임 빌드(Runtime):** Vue 인스턴스 생성과 `render` 함수, 가상 돔을 포함하고 있지만 컴파일러 빌드를 포함하고 있지 않습니다.
 
-        | Type | UMD | CommonJS | ES Module (for bundlers) | ES Module (for browsers) |
+89.  ### Vue의 빌드 종류는?
+
+        | 타입 | UMD | CommonJS | ES Module (for bundlers) | ES Module (for browsers) |
         |---- | --------- | ---- | ---- | --- |
-        | Full | vue.js | vue.common.js | vue.esm.js | vue.esm.browser.js |
-        | Runtime only  | vue.runtime.js | vue.runtime.common.js | vue.runtime.esm.js | NA |
-        | Full (production) | vue.min.js | NA | NA | vue.esm.browser.min.js |
-        | Runtime-only (production) | vue.runtime.min.js | NA | NA | NA |
+        | 전체 빌드 | vue.js | vue.common.js | vue.esm.js | vue.esm.browser.js |
+        | 런타임 빌드  | vue.runtime.js | vue.runtime.common.js | vue.runtime.esm.js | NA |
+        | 전체 빌드 (배포 모드) | vue.min.js | NA | NA | vue.esm.browser.min.js |
+        | 런타임 빌드 (배포 모드) | vue.runtime.min.js | NA | NA | NA |
 
-90.  ### How do you configure vuejs in webpack?
-     You can configure vueJS in webpack using alias as below,
+90.  ### 웹팩에서 Vue 설정을 하는 방법은?
+
+     `alias`를 이용해 Vue를 설정할 수 있습니다.
 
         ```javascript
         module.exports = {
@@ -2169,8 +2250,11 @@ List of 300 VueJS Interview Questions
           }
         }
         ```
-91.  ### What is the purpose of vuejs compiler?
-     The compiler is  is responsible for compiling template strings into JavaScript render functions. For example, the below code snippet shows the difference of templates which need compiler and not,
+
+91.  ### Vue 컴파일러의 목적은?
+
+     Vue는 컴파일러를 이용해 템플릿을 `render` 함수로 변환합니다.
+
      ```javascript
      // this requires the compiler
      new Vue({
@@ -2184,40 +2268,45 @@ List of 300 VueJS Interview Questions
        }
      })
      ```
-92.  ### What is Dev Tools and its purpose?
-     DevTools is a browser extension allowing you to inspect and debug your Vue applications in a more user-friendly interface. You can find the below extensions for different browsers or environments,
-     1. Chrome Extension
-     2. Firefox Addon
-     3. Standalone Electron app (works with any environment)
 
-     The DevTools plugins can be used as shown in the below snapshot,
+92.  ### DevTool이란?
+
+     DevTool은 Vue 어플리케이션을 사용자 친화적인 인터페이스로 디버그 할 수 있게 도와주는 브라우저 확장 프로그램입니다.
 
      <img src="https://github.com/sudheerj/vuejs-interview-questions/blob/master/images/DevTools.png" width="700" height="500">
 
-     **Note:**
-     1. If the page uses a production/minified build of Vue.js, devtools inspection is disabled by default so the Vue pane won't show up.
-     2. To make it work for pages opened via `file://` protocol, you need to check "Allow access to file URLs" for this extension in Chrome's extension management panel.
-93.  ### What is the browser support of VueJS?
-     It supports all ECMAScript5 complaint browsers as mentioned in this [url](https://caniuse.com/#feat=es5). VueJS doesn't support IE8 browser and below, because it uses ECMAScript 5 features that are un-shimmable(require support from the underlying JS engine) in IE8.
-94.  ### How do you use various CDNs?
-     VueJS is available in jsdelivr, unpkg and cdnjs etc CDNs. Normally you can use them for prototyping or learning purposes. For example, you can use them using jsdelivr with latest versions as below,
+     **Note:** Vue 페이지가 배포 모드일 경우에는 DevTool로 디버그할 수 없습니다.
+
+93.  ### Vue의 브라우저 지원은?
+
+     ECMAScript5를 지원하는 브라우저에서 동작 가능합니다. IE8 이하의 브라우저에서는 지원하지 않습니다.
+
+94.  ### CDN으로 Vue를 사용하는 방법은?
+
+     Vue는 jsdelivr, unpkg, cdnjs에서 제공하는 CDN을 이용해서도 사용이 가능합니다. 일반적으로 초기 기획, 학습용으로 적합합니다.
+
      ```javascript
      <script src="https://cdn.jsdelivr.net/npm/vue@2.6.7/dist/vue.js"></script>
      ```
-     You can use it for native ES modules as below,
+
      ```javascript
      <script type="module">
        import Vue from 'https://cdn.jsdelivr.net/npm/vue@2.6.7/dist/vue.esm.browser.js'
      </script>
      ```
 
-     **Note:** You can remove version number to get latest version.
-95.  ### How do you force update?
-     It is extremely rare situation of having to manually force an update despite the fact that no reactive data has changed. i.e, To force the Vue instance to re-render manually. You can do it force update using **vm.$forceUpdate()** API method.
+     **Note:** 버전 정보를 지우면 항상 최신 버전을 가져옵니다.
 
-     **Note:**  It does not affect all child components but only the instance itself and child components with inserted slot content.
-96.  ### What is the purpose of vuejs once directive?
-     If you want to render `a lot of static content` then you need to make sure it only evaluated once and then cached thereafter. In this case, you can use `v-once` directive by wrapping at the root level. The example usage of v-once directive would be as below,
+95.  ### 강제로 업데이트를 발생시키는 방법은?
+
+     매우 드문 경우지만, 데이터가 변경되지 않았음에도 재 렌더링을 위해 강제로 업데이트를 발생시켜야 할 수도 있습니다. 이 경우 `vm.$forceUpdate()` API 메소드를 이용할 수 있습니다.
+
+     **Note:** 모든 하위 컴포넌트에는 영향이 미치지 않으며, 슬롯 그 자체가 삽입된 슬롯 자체 및 하위 컴포넌트에만 영향을 미칩니다.
+
+96.  ### 템플릿에서 once 지시자를 쓰는 이유는?
+
+     많은 양의 정적 컨텐츠를 렌더링 할 때, 성능 향상을 위해 엘리먼트 및 컴포넌트를 한번만 렌더링하는 용도로 사용합니다.
+
      ```javascript
      Vue.component('legal-terms', {
        template: `
@@ -2229,9 +2318,12 @@ List of 300 VueJS Interview Questions
      })
      ```
 
-     **Note:** It is recommended not to overuse unless there is slow rendering due to lot of static content.
-97.  ### How do you access the root instance?
-     The root instance(new Vue()) can be accessed with the `$root` property. Let's see the usage of root instance with an example. First let's create a root instance with properties and methods as below,
+     **Note:** 정적 컨텐츠가 많아서 느려지는 일이 발생하지 않는 한, 과다하게 사용하지 않는 것이 좋습니다.
+
+97.  ### 루트 Vue 인스턴스에 접근하는 방법은?
+
+     루트 Vue 인스턴스(`new Vue()`)는 `$root` 속성을 이용해 접근할 수 있습니다.
+
      ```javascript
      // The root Vue instance
      new Vue({
@@ -2246,7 +2338,9 @@ List of 300 VueJS Interview Questions
        }
      })
      ```
-     Now you can access root instance data and it's methods with in subcomponents as below,
+
+     루트 인스턴스의 데이터와 메소드들을 하위 컴포넌트에서 아래와 같은 방법으로 접근할 수 있습니다.
+
      ```javascript
      // Get root data
      this.$root.age
@@ -2260,23 +2354,28 @@ List of 300 VueJS Interview Questions
      // Call root methods
      this.$root.interest()
      ```
-     It is recommend using Vuex to manage state instead of using root instance as a global store.
-98.  ### List out top 10 organizations using Vuejs?
-     Below are the top 10 organizations using VueJS for their applications or products,
 
-     1. Facebook - Used on marketing side of its Newsfeed
-     2. Netflix - Used in two internal apps for building movie streaming interfaces
-     3. Adobe -  Used for Portfolio, a custom website builder designed to help users showcase their creative work
-     4. Xiaomi - Used for products where it sells from consumer electronics to software
-     5. Alibaba - Provide their apps an excellent experience to its customers
-     6. WizzAir - A budget airline WizzAir used for their customers user interface
+     상태 관리를 위한 용도라면 Vuex를 사용하는 것이 낫습니다.
+
+98.  ### Vue를 사용하는 기업들은?
+
+     아래는 Vue를 사용하고 있는 유명 기업들입니다.
+
+     1. Facebook
+     2. Netflix
+     3. Adobe
+     4. Xiaomi
+     5. Alibaba
+     6. WizzAir
      7. EuroNews
      8. Laracasts
      9. GitLab
      10. Laracasts
 
-99.  ### What is the purpose of renderError?
-     When the default render function encounters an error then you can use rennderError as an alternative render output. The error will be passed to renderError as the second argument. The example usage of renderError is as below,
+99.  ### renderError 메소드의 목적은?
+
+     기본 `render` 함수가 렌더링 도중 에러가 발생하면, 대체되는 렌더링 결과를 제공합니다. `renderError`의 두 번째 전달인자로 에러가 전달됩니다.
+
      ```javascript
      new Vue({
        render (h) {
@@ -2287,8 +2386,11 @@ List of 300 VueJS Interview Questions
        }
      }).$mount('#app')
      ```
-100. ### How do you access parent instance?
-     The $parent object refers to the **immediate outer scope**. The parent will be accessible as `this.$parent` for the child, and the child will be pushed into the parent's $children array. It establishes a parent-child relationship between the two instances(parent and child). You can access parent data and properties similar to $root.
+
+100. ### 하위 컴포넌트에서 상위 컴포넌트로 직접 접근하는 방법은?
+
+     상위 컴포넌트에서는 하위 컴포넌트들을 `$children` 배열로 참조하며, 하위 컴포넌트에서 상위 컴포넌트를 `$parent` 속성으로 참조합니다.
+
 101. ### What is vuex?
      Vuex is a state management pattern + library (Flux-inspired Application Architecture) for Vue.js applications. It serves as a centralized store for all the components in an application, with rules ensuring that the state can only be mutated in a predictable fashion.
 102. ### What are the major components of State Management Pattern?
