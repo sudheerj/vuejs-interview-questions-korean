@@ -122,13 +122,13 @@ List of 300 VueJS Interview Questions
 |103| [Vuex에서 단방향 데이터 흐름 모델을 어떻게 표현합니까?](#Vuex에서-단방향-데이터-흐름-모델을-어떻게-표현합니까)|
 |104| [vuejs loader는 무엇입니까?](#vuejs-loader는-무엇입니까)|
 |105| [웹팩에서 vue loader를 설정하는 방법은?](#웹팩에서-vue-loader를-설정하는-방법은)|
+|106| [vue-loader의 Asset URL 핸들링 규칙은?](#vue-loader의-Asset-URL-핸들링-규칙은)|
+|107| [vue-loader에서 전처리기를 사용하는 경우라면?](#vue-loader에서-전처리기를-사용하는-경우라면)|
+|108| [범위 CSS(Scoped CSS)란?](#범위-CSS(Scoped-CSS)란)|
+|109| [범위 CSS와 전역 CSS를 함께 쓸 수 있을까?](#범위-CSS와-전역-CSS를-함께-쓸-수-있을까)|
+|110| [범위 CSS가 자식 컴포넌트에 영향을 미치게 하는 방법은?](#범위-CSS가-자식-컴포넌트에-영향을-미치게-하는-방법은)|
 
-<!-- 
-|106| [What are asset url transform rules?](#what-are-asset-url-transform-rules)|
-|107| [How do you work with preprocessors using vue loader?](#how-do-you-work-with-preprocessors-using-vue-loader)|
-|108| [What is scoped CSS?](#What-is-scoped-CSS)|
-|109| [Is it possible to mix both local and global styles?](#is-it-possible-to-mix-both-local-and-global-styles)|
-|110| [How do you use deep selectors?](#how-do-you-use-deepselectors)|
+<!--
 |111| [Is parent styles leaked into child components in scoped css?](#is-parent-styles-leaked-into-child-components-in-scoped-css)|
 |112| [How do you style dynamic generated content using scoped css?](#how-do-you-style-dynamic-generated-content-using-scoped-css)|
 |113| [Is CSS modules supported in Vuejs?](#is-css-modules-supported-in-vuejs)|
@@ -2394,7 +2394,7 @@ List of 300 VueJS Interview Questions
 
 101. ### vuex란?
      Vuex는 Vue.js 애플리케이션을 위한 상태 관리 패턴 + 라이브러리(Flux에서 영감을 받은 애플리케이션 아키텍처)입니다. 예측 가능한 방식으로만 상태가 변경될 수 있도록 보장하는 규칙을 가지고 있는 애플리케이션의 모든 컴포넌트를 위한 중앙 집중식 저장소입니다.
-     
+
 102. ### 상태 관리 패턴의 주요 구성 요소는 무엇입니까?
      상태 관리의 주요 구성요소는 상태 및 뷰, 액션입니다. 이러한 구성요소에 따른 패턴을 애플리케이션에서 상태 관리 패턴이라고 합니다. 아래에  자세한 구성 요소가 자세히 설명되어 있습니다.
      1. **상태**는 앱을 구동시키는 원천입니다.
@@ -2421,11 +2421,15 @@ List of 300 VueJS Interview Questions
      })
      ```
 103. ### Vuex에서 단방향 데이터 흐름 모델을 어떻게 표현합니까?
+
      Vue.js는 props 속성을 통해 단방향 데이터 흐름 모델을 표현합니다. vuex에서 이와 동일한 개념은 아래와 같이 나타낼 수 있습니다.
-     
+
      <img src="https://github.com/sudheerj/vuejs-interview-questions/blob/master/images/flow.png" width="400" height="500">
+
 104. ### vuejs loader는 무엇입니까?
-     Vue loader는 Vue 컴포넌트를 싱글 파일 컴포넌트(SFC, SFCs)라고 하는 형식으로 작성할 수 있는 웹팩용 로더입니다. 예를 들어 HelloWorld 라는 SFC를 작성하면 아래와 같습니다.
+
+     Vue loader는 Vue 컴포넌트를 싱글 파일 컴포넌트(SFC, SFCs)라고 하는 형식으로 작성할 수 있는 웹팩용 로더입니다. 예를 들어 `HelloWorld` 라는 SFC를 작성하면 아래와 같습니다.
+
      ```javascript
      <template>
        <div class="greeting">{{ message }}</div>
@@ -2449,7 +2453,9 @@ List of 300 VueJS Interview Questions
      ```
 
 105. ### 웹팩에서 vue loader를 설정하는 방법은?
-     Vue Loader의 설정은 웹팩 설정에 Vue Loader의 플러그인을 추가하기 때문에 다른 로더와는 약간 다릅니다. Vue 로더 플러그인은 정의된 다른 규칙(js 및 css 규칙)을 복제하여 `.vue` 파일에서 해당 언어 블록(`script` 및 `style`)에 적용하기 위해 필요합니다. Vue 로더에 대한 웹 팩 구성의 간단한 예는 다음과 같습니다.
+
+     `Vue-Loader`의 설정은 웹팩 설정에 Vue Loader의 플러그인을 추가하기 때문에 다른 로더와는 약간 다릅니다. Vue 로더 플러그인은 정의된 다른 규칙(js 및 css 규칙)을 복제하여 `.vue` 파일에서 해당 언어 블록(`script` 및 `style`)에 적용하기 위해 필요합니다. Vue 로더에 대한 웹팩 구성의 간단한 예는 다음과 같습니다.
+
      ```javascript
      // webpack.config.js
      const VueLoaderPlugin = require('vue-loader/lib/plugin')
@@ -2483,43 +2489,56 @@ List of 300 VueJS Interview Questions
        ]
      }
      ```
-106. ### What are asset url transform rules?
-     Below are the list of Asset URL transform rules
-     1. ** Absolute path**: If the URL is an absolute path (for example, /images/loader.png)then it will be preserved as-is.
-     2. ** Relative path**: If the URL starts with `.` (for example, ./images/loader.png) then it will be interpreted as a relative module request and resolved based on the folder structure on your file system.
-     3. ** URLs starts with ~ symbol **: If the URL starts with `~` symbol(for example, ./some-node-package/loader.png) then it is interpreted as a module request. This way it can reference assets inside node modules too.
-     4. ** URLs starts with @ symbol**: If the URL starts with `@` symbol then it is interpreted as a module request. This is useful if your webpack config has an alias for @, which by default points to `/src` path.
-107. ### How do you work with preprocessors using vue loader?
-     `Vue-loader` will automatically infer the proper loaders to use based on the `lang` attribute of a language block and the rules defined in webpack config. You can use pre-processors such as SASS,LESS, Stylus and PostCSS using vuejs loader.
-108. ### What is scoped CSS?
-     Scoped CSS is a mechanism in VueJS Single File Components(SFC) that prevents styles from leaking out of the current component and affecting other unintended components on your page. i.e, When a `<style>` tag has the scoped attribute, its CSS will apply to elements of the current component only. It uses PostCSS to transform scoped css to plain CSS.
-     Let's take an example usage of scoped css,
-     ```javascript
+
+106. ### vue-loader의 Asset URL 핸들링 규칙은?
+
+     1. **절대 경로(Absolute path)**: 만약 URL 경로가 `/images/loader.png`와 같은 절대 경로라면 그대로 보존됩니다.
+     2. **상대 경로(Relative path)**: 만약 URL 경로가 `./images/loader.png`와 같은 절대 경로라면 상대 모듈 요청(`require(./images/loader.png)`)으로 컴파일되고 파일 시스템의 폴더 구조를 기반으로 해결됩니다.
+     3. **~로 시작하는 경로(URLs starts with ~ symbol)**: 만약 URL 경로가 `./some-node-package/loader.png`와 같은 `~`로 시작된다면, 모듈 요청으로 컴파일됩니다.
+     4. **@로 시작하는 경로(URLs starts with @ symbol)**: 만약 URL 경로가 `@`로 시작된다면, 모듈 요청으로 컴파일됩니다. 이것은 웹팩 `config`에 `@`에 대한 별칭이 있는 경우에 유용하며, 기본적으로 `vue-cli`가 만든 모든 프로젝트에서 `/src`를 가리킵니다.
+
+107. ### vue loader에서 전처리기를 사용하는 경우라면?
+
+     `Vue-loader`는 작성된 언어 블록의 `lang` 속성을 이용해 적절한 로더를 적용하고 웹팩 설정에 적용된 규칙을 따릅니다. `Vue-loader`에서 SASS, LESS, Stylus나 PostCSS 같은 전처리기를 사용할 수 있습니다.
+
+108. ### 범위 CSS(Scoped CSS)란?
+
+     범위를 가지는 CSS(Scoped CSS)는 Vue에서 싱글 파일 컴포넌트에서 해당 컴포넌트에 작성된 CSS가 다른 컴포넌트에 영향을 미치지 않도록 그 적용 범위를 제한하는 것을 의미합니다. 즉, `<style>` 태그가 `scoped` 속성을 가지고 있다면, 해당 CSS는 해당 컴포넌트에서만 영향을 미칩니다.
+
+     ```css
      <style scoped>
      .greeting {
        color: green;
      }
      </style>
-
+     ```
+     ```html
      <template>
        <div class="greeting">Let's start Scoped CSS</div>
      </template>
      ```
+
      The above code will be converted to plain CSS,
-     ```javascript
-       <style scoped>
+
+     ```css
+      <style scoped>
       .greeting[data-v-f3f3eg9] {
         color: green;
       }
       </style>
+      ```
 
+      ```html
       <template>
         <div class="greeting" data-v-f3f3eg9>Let's start Scoped CSS</div>
       </template>
      ```
-109. ### Is it possible to mix both local and global styles?
-     Yes, You can include both scoped and non-scoped styles in the same component. If you don't mention scoped attribute then it will become global style.
-     ```javascript
+
+109. ### 범위 CSS와 전역 CSS를 함께 쓸 수 있을까?
+
+     범위가 지정된 스타일과 범위가 지정되지 않은 스타일은 동일한 컴포넌트에 포함할 수 있습니다.
+
+     ```css
      <style>
      /* global styles */
      </style>
@@ -2528,18 +2547,25 @@ List of 300 VueJS Interview Questions
      /* local styles */
      </style>
      ```
-110. ### How do you use deep selectors?
-     In scoped css, if you need to modify the styles of a child component using deep selectors(i,e from parent scoped css) then you need to use **>>>** combinator. For example, the scoped deep selector on parent scoped css would be as below,
-     ```javascript
+
+110. ### 범위 CSS가 자식 컴포넌트에 영향을 미치게 하는 방법은?
+
+     범위가 지정된 CSS에서, 자식 컴포넌트에 영향을 미치게 하는 방법은 `>>>` 연산자를 사용하면 됩니다.
+
+     ```css
      <style scoped>
      .class1 >>> .class2 { /* ... */ }
      </style>
      ```
-     It will be converted as,
-     ```javascript
+
+     위의 CSS는 아래로 컴파일됩니다.
+
+     ```css
      .class1[data-v-f3f3eg9] .class2 { /* ... */ }
      ```
-     **Note:** If you preprocessors such as SASS then it may not be able to processs >>> properly. In such cases use the /deep/ or ::v-deep combinator instead >>> combinator.
+
+     **Note:** SASS에서는 `>>>` 연산자가 제대로 작동하지 않을 수 있습니다. 이때는 `/deep/` 또는 `::v-deep` 선택자를 대신 이용합니다.
+
 111. ### Is parent styles leaked into child components in scoped css?
      The parent component's styles will not leak into child components. But a child component's root node will be affected by both the parent's scoped CSS and the child's scoped CSS. i.e, your child component's root element has a class that also exists in the parent component, the parent component's styles will leak to the child. Anyway this is by design so that the parent can style the child root element for layout purposes.
      For example, the background color property of parent component leaked into child component as below,
