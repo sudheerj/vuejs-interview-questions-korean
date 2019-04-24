@@ -127,13 +127,13 @@ List of 300 VueJS Interview Questions
 |108| [범위 CSS(Scoped CSS)란?](#범위-CSSScoped-CSS란)|
 |109| [범위 CSS와 전역 CSS를 함께 쓸 수 있을까?](#범위-CSS와-전역-CSS를-함께-쓸-수-있을까)|
 |110| [범위 CSS가 자식 컴포넌트에 영향을 미치게 하는 방법은?](#범위-CSS가-자식-컴포넌트에-영향을-미치게-하는-방법은)|
+|111| [상위 컴포넌트의 범위 CSS가 하위 컴포넌트에 영향을 주는가?](#상위-컴포넌트의-범위-CSS가-하위-컴포넌트에-영향을-주는가)|
+|112| [동적으로 생성된 컨텐츠에 범위 CSS를 적용시키는 방법은?](#동적으로-생성된-컨텐츠에-범위-CSS를-적용시키는-방법은)|
+|113| [Vue에서 CSS 모듈을 사용할 수 있을까?](#Vue에서-CSS-모듈을-사용할-수-있을까)|
+|114| [모든 템플릿에 대해 런타임 빌드를 할 수 있는가?](#모든-템플릿에-대해-런타임-빌드를-할-수-있는가?)|
+|115| [Vue에서 CSS 모듈을 사용하는 방법은?](#Vue에서-CSS-모듈을-사용하는-방법은)|
 
 <!--
-|111| [Is parent styles leaked into child components in scoped css?](#is-parent-styles-leaked-into-child-components-in-scoped-css)|
-|112| [How do you style dynamic generated content using scoped css?](#how-do-you-style-dynamic-generated-content-using-scoped-css)|
-|113| [Is CSS modules supported in Vuejs?](#is-css-modules-supported-in-vuejs)|
-|114| [Can I use runtime builds for all templates?](#can-i-use-runtime-builds-for-all-templates)|
-|115| [How to use CSS modules in vuejs?](#how-to-use-css-modules-in-vuejs)|
 |116| [Can I use CSS modules for preprocessors?](#can-i-use-css-modules-for-preprocessors)|
 |117| [Is it possible to use custom inject name for CSS modules?](#is-it-possible-to-use-custom-inject-name-for-css-modules)|
 |118| [What is hot reloading in vue loader?](#what-is-hot-reloading-in-vue-loader)|
@@ -2518,7 +2518,7 @@ List of 300 VueJS Interview Questions
      </template>
      ```
 
-     The above code will be converted to plain CSS,
+     위의 코드는 아래로 변환됩니다.
 
      ```css
       <style scoped>
@@ -2566,11 +2566,12 @@ List of 300 VueJS Interview Questions
 
      **Note:** SASS에서는 `>>>` 연산자가 제대로 작동하지 않을 수 있습니다. 이때는 `/deep/` 또는 `::v-deep` 선택자를 대신 이용합니다.
 
-111. ### Is parent styles leaked into child components in scoped css?
-     The parent component's styles will not leak into child components. But a child component's root node will be affected by both the parent's scoped CSS and the child's scoped CSS. i.e, your child component's root element has a class that also exists in the parent component, the parent component's styles will leak to the child. Anyway this is by design so that the parent can style the child root element for layout purposes.
-     For example, the background color property of parent component leaked into child component as below,
-     //parent.vue
+111. ### 상위 컴포넌트의 범위 CSS가 하위 컴포넌트에 영향을 주는가?
+
+    일반적으로 상위 컴포넌트의 스타일은 하위 컴포넌트에 영향을 미치지 않습니다. 하지만 하위 컴포넌트의 루트 노드는 상위 컴포넌트와 하위 컴포넌트의 스타일에 모두 영향을 받습니다. 즉, 하위 컴포넌트의 루트 노드에 상위 컴포넌트에서 사용된 클래스가 사용된다면, 상위 컴포넌트의 스타일이 하위 컴포넌트에도 영향을 끼칩니다. 이는 상위 컴포넌트에서 레이아웃을 위해 하위 컴포넌트에 영향을 미칠 수 있도록 디자인된 것입니다. 아래의 예시는 상위 컴포넌트의 `background`가 하위 컴포넌트에까지 영향을 미치는 예제입니다.
+
      ```javascript
+     // parent.vue
      <template>
        <div class="wrapper">
          <p>parent</p>
@@ -2594,8 +2595,9 @@ List of 300 VueJS Interview Questions
      }
      </style>
      ```
-     //child.vue
+
      ```javascript
+     //child.vue
      <template>
        <div class="wrapper">
          <p>child</p>
@@ -2613,16 +2615,23 @@ List of 300 VueJS Interview Questions
      }
      </style>
      ```
-     Now the background color of child wrapper is going to be blue instead red.
-112. ### How do you style dynamic generated content using scoped css?
-     The scoped css style doesn't impact v-html directive's dynamically generated content. In this case, you can use deep selectors to solve this styling issue.
-113. ### Is CSS modules supported in Vuejs?
-     Yes, vue-loader provides first-class integration with CSS Modules as an alternative for simulated scoped CSS.
-114. ### Can I use runtime builds for all templates?
-     No, templates (or any Vue-specific HTML) are ONLY allowed in .vue files and render functions are required in other cases.
-115. ### How to use CSS modules in vuejs?
-     Below are the steps to use css modules in VueJS,
-     1. ** Enable CSS modules:**  CSS Modules must be enabled by passing modules: true option to css-loader
+     하위 컴포넌트의 `wrapper` 클래스의 배경색은 빨간색이 아니라 파란색이 됩니다.
+
+112. ### 동적으로 생성된 컨텐츠에 범위 CSS를 적용시키는 방법은?
+
+     범위 CSS는 `v-html` 지시자로 동적으로 생성된 내용에 영향을 주지 않습니다. 이 경우, `deep` 선택자를 통해 문제를 해결할 수 있습니다.
+
+113. ### Vue에서 CSS 모듈을 사용할 수 있을까?
+
+      CSS 모듈은 CSS를 모듈화하고 구성하는데 널리 사용되는 시스템입니다. `vue-loader`는 시뮬레이트된 범위 CSS의 대안으로 CSS 모듈과 함께 1급 클래스로의 통합을 제공합니다.
+
+114. ### 모든 템플릿에 대해 런타임 빌드를 할 수 있는가?
+
+     안 됩니다. Vue에서 사용되는 템플릿은 오직 `.vue` 파일에서만 사용되며, 다른 경우라면 `render` 함수가 필요합니다.
+
+115. ### Vue에서 CSS 모듈을 사용하는 방법은?
+
+     1. **CSS 모듈 활성화:** `webpack.config.js`의 `css-loader`에서 `modules: true` 옵션을 활성화해줍니다.
      ```javascript
      // webpack.config.js
      {
@@ -2648,23 +2657,29 @@ List of 300 VueJS Interview Questions
        }
      }
      ```
-     2. ** Add module attribute:** Add the module attribute to your `<style>`
-     ```javascript
+
+     2. **모듈 속성 추가:** `<style>` 태그에 `module` 속성을 추가합니다.
+
+     ```css
      <style module>
      .customStyle {
        background: blue;
      }
      </style>
      ```
-     3. ** Inject CSS modules:** You can inject CSS modules object with computed property $style
-     ```javascript
+
+     3. **CSS 모듈 주입:** `computed` 속성인 `$style`을 통해 CSS 모듈을 객체로 접근할 수 있습니다.
+
+     ```html
      <template>
        <div :class="$style.blue">
          Background color should be in blue
        </p>
      </template>
      ```
-     It can work with object/array syntax of :class binding.
+
+     `:class`의 객체, 배열 문법에도 동작합니다.
+
 116. ### Can I use CSS modules for preprocessors?
      Yes,You can use preprocessors with CSS Modules. For example, sass-loader can configured in webpack file for sass preprocessor.
      ```javascript
