@@ -130,25 +130,25 @@ List of 300 VueJS Interview Questions
 |111| [상위 컴포넌트의 범위 CSS가 하위 컴포넌트에 영향을 주는가?](#상위-컴포넌트의-범위-CSS가-하위-컴포넌트에-영향을-주는가)|
 |112| [동적으로 생성된 컨텐츠에 범위 CSS를 적용시키는 방법은?](#동적으로-생성된-컨텐츠에-범위-CSS를-적용시키는-방법은)|
 |113| [Vue에서 CSS 모듈을 사용할 수 있을까?](#Vue에서-CSS-모듈을-사용할-수-있을까)|
-|114| [모든 템플릿에 대해 런타임 빌드를 할 수 있는가?](#모든-템플릿에-대해-런타임-빌드를-할-수-있는가?)|
+|114| [모든 템플릿에 대해 런타임 빌드를 할 수 있는가?](#모든-템플릿에-대해-런타임-빌드를-할-수-있는가)|
 |115| [Vue에서 CSS 모듈을 사용하는 방법은?](#Vue에서-CSS-모듈을-사용하는-방법은)|
+|116| [CSS 모듈을 전처리기에서 사용할 수 있는가?](#CSS-모듈을-전처리기에서-사용할-수-있는가)|
+|117| [CSS 모듈에 사용자 정의의 이름을 사용할 수 있는가?](#CSS-모듈에-사용자-정의의-이름을-사용할-수-있는가)|
+|118| [핫 리로드(Hot Reload)란?](#핫-리로드Hot-Reload란)|
+|119| [핫 리로드가 비활성화 될 때는?](#핫-리로드가-비활성화-될-때는)|
+|120| [핫 리로드를 명시적으로 비활성화하는 방법은?](#핫-리로드를-명시적으로-비활성화하는-방법은)|
+|121| [핫 리로드를 활성화하는 방법은?](#핫-리로드를-활성화하는-방법은)|
+|122| [핫 리로드에서 상태가 보존되는 규칙은?](#핫-리로드에서-상태가-보존되는-규칙은)|
+|123| [Vue loader를 이용해 함수형 컴포넌트를 생성하는 방법은?](#Vue-loader를-이용해-함수형-컴포넌트를-생성하는-방법은)|
+|124| [함수형 컴포넌트에서 전역 속성에 접근하는 방법은?](#함수형-컴포넌트에서-전역-속성에-접근하는-방법은)|
+|125| [Vue에서 테스트 하는 방법은?](#Vue에서-테스트-하는-방법은?)|
+|126| [CSS에 Lint를 설정하는 방법은?](#CSS에-Lint를-설정하는-방법은)|
+|127| [eslint 플러그인을 사용하는 방법은?](#eslint-플러그인을-사용하는-방법은)|
+|128| [eslint-loader를 사용하는 이유는?](#eslint-loader를-사용하는-이유는)|
+|129| [CSS 단일 파일 추출이란?](#CSS-단일-파일-추출이란)|
+|130| [사용자 정의 블록이란?](#사용자-정의-블록이란)|
 
 <!--
-|116| [Can I use CSS modules for preprocessors?](#can-i-use-css-modules-for-preprocessors)|
-|117| [Is it possible to use custom inject name for CSS modules?](#is-it-possible-to-use-custom-inject-name-for-css-modules)|
-|118| [What is hot reloading in vue loader?](#what-is-hot-reloading-in-vue-loader)|
-|119| [What is the default behavior of hot reloading?](#what-is-the-default-behavior-of-hot-reloading)|
-|120| [How do you disable hot reloading explicitly?](#how-do-you-disable-hot-reloading-explicitly)|
-|121| [How do you use hot reloading?](#how-do-you-use-hot-reloading)|
-|122| [What are state preservation rules in hot reloading?](#what-are-state-preservation-rules-in-hot-reloading)|
-|123| [How to create functional components using vue loader?](#how-to-create-functional-components-using-vue-loader)|
-|124| [How do you access global properties of functional components?](#how-do-you-access-global-properties-of-functional-components)|
-|125| [How do you perform testing in vuejs?](#how-do-you-perform-testing-in-vuejs)|
-|126| [How do you apply linting for css?](#how-do-you-apply-linting-for-css)|
-|127| [How do you use eslint plugin?](#how-do-you-use-eslint-plugin)|
-|128| [What is the purpose of eslint loader?](#what-is-the-purpose-of-eslint-loader)|
-|129| [What is CSS extraction?](#what-is-css-extraction)|
-|130| [What are custom blocks?](#what-are-custom-blocks)|
 |131| [What are the features of stylelint?](#what-are-the-features-of-stylelint?)|
 |132| [What are the principles for vuex application structure?](#what-are-the-principles-for-vuex-application-structure)|
 |133| [Is Vuex supports hot reloading?](#is-vuex-supports-hot-reloading)|
@@ -2680,8 +2680,10 @@ List of 300 VueJS Interview Questions
 
      `:class`의 객체, 배열 문법에도 동작합니다.
 
-116. ### Can I use CSS modules for preprocessors?
-     Yes,You can use preprocessors with CSS Modules. For example, sass-loader can configured in webpack file for sass preprocessor.
+116. ### CSS 모듈을 전처리기에서 사용할 수 있는가?
+
+     CSS 모듈을 전처리기에서 사용할 수 있습니다. 예를 들어, Sass 전처리기는 웹팩에서 아래와 같이 설정할 수 있습니다.
+
      ```javascript
      // webpack.config.js -> module.rules
      {
@@ -2696,9 +2698,12 @@ List of 300 VueJS Interview Questions
        ]
      }
      ```
-117. ### Is it possible to use custom inject name for CSS modules?
-     You can customize the name of the injected computed property by giving the module attribute a value. This will be helpful to avoid overwriting injected styled if you have more than one `<style>` tags in a single *.vue component. For example, you can use module attribute as below,
-     ```javascript
+
+117. ### CSS 모듈에 사용자 정의의 이름을 사용할 수 있는가?
+
+     주입된 CSS 모듈에 `module` 속성을 부여해서, 모듈의 이름을 커스터마이징할 수 있습니다. `*.vue` 파일에서 둘 이상의 `<style>` 태그가 존재할 때, 스타일이 서로 덮어쓰지 않게 하는 데 유용합니다. 예를 들어, 아래와 같이 속성을 줄 수 있습니다.
+
+     ```css
      <style module="a">
        /* identifiers injected as a */
      </style>
@@ -2707,16 +2712,23 @@ List of 300 VueJS Interview Questions
        /* identifiers injected as b */
      </style>
      ```
-118. ### What is hot reloading in vue loader?
-     Hot reloading is not about reloading the page when you edit any .vue file. Instead, when you edit a *.vue file, all instances of that component will be swapped in without reloading the page. It improves the development experience when you are tweaking the templates or styling of your components.
-119. ### What is the default behavior of hot reloading?
-     Hot Reload is always enabled except below situations:
 
-     1. webpack target is node (SSR)
-     2. webpack minifies the code
-     3. process.env.NODE_ENV === 'production'
-120. ### How do you disable hot reloading explicitly?
-     You can use `hotReload: false` option to disable the Hot Reload explicitly. It can be configured as below,
+118. ### 핫 리로드(Hot Reload)란?
+
+     핫 리로드는 `*.vue` 파일을 편집할 때 단순히 페이지를 다시 로드하는 것이 아닙니다. 핫 리로드 기능을 사용하면 `*.vue` 파일을 편집할 때 해당 컴포넌트의 모든 인스턴스가 페이지를 리로딩하지 않고 변경됩니다. 심지어 앱의 현재 상태와 변경된 컴포넌트를 보존합니다. 이것은 템플릿 또는 컴포넌트의 스타일을 수정할 때 개발 환경이 크게 개선됩니다.
+
+119. ### 핫 리로드가 비활성화 될 때는?
+
+     핫 리로드는 아래의 상황에서는 비활성화 되어있습니다.
+
+     1. 웹팩의 `target`이 `node`일 때 (SSR)
+     2. 웹팩이 코드를 minify할 때
+     3. `process.env.NODE_ENV === 'production'`일 때
+
+120. ### 핫 리로드를 명시적으로 비활성화하는 방법은?
+
+     `hotReload: false` 옵션을 웹팩 로더에서 설정하면 됩니다.
+
      ```javascript
      module: {
        rules: [
@@ -2730,40 +2742,52 @@ List of 300 VueJS Interview Questions
        ]
      }
      ```
-121. ### How do you use hot reloading?
-     The vue loader plugin internally uses hot reloading. If you are scaffolding project with `vue-cli`, hot reloading comes out of the box but if you are manually setting up the project then hot reloading is enabled by default with `webpack-dev-server --hot` command.
-122. ### What are state preservation rules in hot reloading?
-     Below are the state preservation rules in hot reloading,
-     1.When editing the `<template>` of a component, instances of the edited component will re-render in place, preserving all current private state.
-     2.When editing the `<script>` part of a component, instances of the edited component will be destroyed and re-created in place.
-     3.When editing the `<style>` hot reload operates on its own via vue-style-loader without affecting application state.
-123. ### How to create functional components using vue loader?
-     You can create functional components by adding functional attribute to template block,
 
-     ```javascript
+121. ### 핫 리로드를 활성화하는 방법은?
+
+     `vue-loader` 플러그인은 내부적으로 핫 리로드를 사용하고 있습니다. 만약 `vue-cli`를 이용해 프로젝트를 시작했다면, 핫 리로드를 바로 사용할 수 있습니다. 만약 프로젝트를 직접 세팅했다면, `webpack-dev-server --hot`옵션으로 프로젝트를 시작해 활성화 할 수 있습니다.
+
+122. ### 핫 리로드에서 상태가 보존되는 규칙은?
+
+     1. 컴포넌트의 `<template>`을 수정할 때, 수정된 컴포넌트는 모든 상태를 보존한 채로 다시 렌더링됩니다.
+     2. 컴포넌트의 `<script>`를 수정할 때, 수정된 컴포넌트는 해체(destroy) 된 후 다시 생성(re-create)됩니다.
+     3. 컴포넌트의 `<style>`을 수정할 때, 핫 리로드는 `vue-style-loader`에 의해 실행되며 상태에 영향을 끼치지 않습니다.
+
+123. ### Vue loader를 이용해 함수형 컴포넌트를 생성하는 방법은?
+
+     `functional` 속성을 템플릿에 추가해 함수형 컴포넌트를 생성할 수 있습니다.
+
+     ```html
      <template functional>
        <div>{{ props.msg }}</div>
      </template>
      ```
 
-124. ### How do you access global properties of functional components?
-     If you need to access properties defined globally on `Vue.prototype` then you can access them on parent,
+124. ### 함수형 컴포넌트에서 전역 속성에 접근하는 방법은?
 
-     ```javascript
+     `Vue.prototype`에 전역으로 정의된 속성에 접근해야 한다면, `parent` 속성을 이용해 접근할 수 있습니다.
+
+     ```html
      <template functional>
        <div>{{ parent.$someProperty }}</div>
      </template>
      ```
-125. ### How do you perform testing in vuejs?
-     You can perform testing in two ways,
-     1. ** Using vue-cli:** It offers pre-configured unit testing and e2e testing setups
-     2. ** Manual setup:** You can manually setting up unit tests for *.vue files using either mocha-webpack or jest
-126. ### How do you apply linting for css?
-     The stylelint linter supports linting style parts of Vue single file components. You can run linter on particular vue file as below
-     ```javascript
+
+125. ### Vue에서 테스트 하는 방법은?
+
+     1. **vue-cli:** 유닛 테스트와 e2e 테스트 환경이 미리 설정되어 제공됩니다.
+     2. **직접 세팅:** `@vue/test-utils`에서 `mocha-webpack`이나 `jest`를 `*.vue` 파일을 대상으로 직접 설정합니다.
+
+126. ### CSS에 Lint를 설정하는 방법은?
+
+     Stylelint를 이용해 Vue의 싱글 파일 컴포넌트의 스타일 부분의 Lint를 설정할 수 있습니다. 특정 `.vue` 파일의 Lint는 아래와 같이 실행합니다.
+
+     ```bash
      stylelint MyComponent.vue
      ```
-     Other option is configuring stylelint-webpack-plugin in webpack. It can be configured as a dev dependency.
+
+     다른 방법은 웹팩에서 `stylelint-webpack-plugin`를 `dev-dependency`로 설치하고, 웹팩 설정에서 아래와 같이 설정하는 방법입니다.
+
      ```javascript
      // webpack.config.js
      const StyleLintPlugin = require('stylelint-webpack-plugin');
@@ -2776,8 +2800,11 @@ List of 300 VueJS Interview Questions
        ]
      }
      ```
-127. ### How do you use eslint plugin?
-     The official `eslint-plugin-vue` supports linting both the template and script parts of Vue single file components. You can configure plugin in your ESLint config,
+
+127. ### eslint 플러그인을 사용하는 방법은?
+
+     공식 `eslint-plugin-vue` 플러그인은 Vue의 싱글 파일 컴포넌트의 템플릿과 스크립트 부분에 대해 Lint를 제공합니다.
+
      ```javascript
      // .eslintrc.js
      module.exports = {
@@ -2786,16 +2813,25 @@ List of 300 VueJS Interview Questions
        ]
      }
      ```
-     You can run linter on particular component as below,
-     ```javascript
+
+     특정 파일에 대한 Lint는 아래와 같이 실행할 수 있습니다.
+
+     ```bash
      eslint --ext js,vue MyComponent.vue
      ```
-128. ### What is the purpose of eslint loader?
-     You can use `eslint-loader` for *.vue files in order to automatically linted on save during development. It can be installed as npm module,
-     ```javascript
+
+128. ### eslint-loader를 사용하는 이유는?
+
+     `eslint-loader`를 이용하면 개발 도중에 자동으로 `*.vue` 파일들에 대해 Lint를 적용시킬 수 있습니다.
+
+     우선 아래와 같이 NPM 모듈을 설치해야 합니다.
+
+     ```bash
      npm install -D eslint eslint-loader
      ```
-     After that you need to add it as pre-loader,
+
+     그 후 웹팩의 설정에 추가해야 합니다.
+
      ```javascript
      // webpack.config.js
      module.exports = {
@@ -2812,12 +2848,17 @@ List of 300 VueJS Interview Questions
        }
      }
      ```
-129. ### What is CSS extraction?
-     CSS Extraction is used to extract all the processed CSS in all Vue components into a single CSS file. For webpack4, you need to install below npm command,
-     ```javascript
+
+129. ### CSS 단일 파일 추출이란?
+
+     CSS 단일 파일 추출(CSS Extraction)은 모든 Vue 컴포넌트에서 사용된 CSS를 단일 CSS 파일로 추출하는 것을 의미합니다.
+
+     ```bash
      npm install -D mini-css-extract-plugin
      ```
-     You can configure this plugin in webpack as below,
+
+     그 후 웹팩의 설정에 추가해야 합니다.
+
      ```javascript
      // webpack.config.js
      var MiniCssExtractPlugin = require('mini-css-extract-plugin')
@@ -2846,8 +2887,11 @@ List of 300 VueJS Interview Questions
        ]
      }
      ```
-130. ### What are custom blocks?
-     You can define custom language blocks inside *.vue files based on the `lang` attribute of the block, the block's tag name, and the rules in your webpack config. You can also use `resourceQuery` to match a rule against a custom block with no lang. For example, to match against <message> custom blocks.
+
+130. ### 사용자 정의 블록이란?
+
+     사용자 정의 블록(Custom block)은 `*.vue` 파일에서 사용할 수 있는 `<template>`, `<script>`, `<style>` 태그 블록 이외의 블록을 정의하는 것을 말합니다. `lang` 속성, 태그 이름, 웹팩 설정의 `resourceQuery` 속성에 의해 정의할 수 있습니다. 아래 예시는 `*.vue` 파일에서 `<message>`로 정의된 태그를 찾는 방법입니다.
+
      ```javascript
      {
        module: {
@@ -2860,13 +2904,16 @@ List of 300 VueJS Interview Questions
        }
      }
      ```
+
 131. ### What are the features of stylelint?
+
      Below are the list of major stylelint features
      1. It has more than **160 built-in rules** to catch errors, apply limits and enforce stylistic conventions
      2. Understands **latest CSS syntax** including custom properties and level 4 selectors
      3. It **extracts embedded styles** from HTML, markdown and CSS-in-JS object & template literals
      4. Parses **CSS-like syntaxes** like SCSS, Sass, Less and SugarSS
      5. Supports **Plugins** for reusing community plugins and creating own plugins
+
 132. ### What are the principles for vuex application structure?
      Vuex enforces below rules to structure any application.
      1. Application-level state is centralized in the store.
