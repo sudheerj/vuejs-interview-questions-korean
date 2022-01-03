@@ -2196,7 +2196,7 @@ List of 300 VueJS Interview Questions
      ```html
      //ComponentB
      <div>
-       <component-b >
+       <component-a >
      </div>
      ```
 
