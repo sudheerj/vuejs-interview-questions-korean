@@ -894,7 +894,7 @@ List of 300 VueJS Interview Questions
 
 29.  ### 하위 컴포넌트에서 상위 컴포넌트로 이벤트를 전달하는 방법은?
 
-     하위 컴포넌트에서 `$event` 객체를 이용해 상위 컴포넌트로 이벤트를 발생킬 수 있습니다.
+     하위 컴포넌트에서 `$emit` 객체를 이용해 상위 컴포넌트로 이벤트를 발생킬 수 있습니다.
 
      ```javascript
      Vue.component('todo-tem', {
@@ -2196,7 +2196,7 @@ List of 300 VueJS Interview Questions
      ```html
      //ComponentB
      <div>
-       <component-b >
+       <component-a >
      </div>
      ```
 
